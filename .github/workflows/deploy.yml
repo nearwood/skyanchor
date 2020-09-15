@@ -15,10 +15,21 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
+      with:
+        persist-credentials: false
     - name: Use Node.js 12
       uses: actions/setup-node@v1
       with:
         node-version: 12.x
-    - run: yarn install --frozen-lockfile
-    - run: yarn run test
-    - run: yarn run deploy
+    - run: |
+        yarn install --frozen-lockfile
+        yarn run test
+        yarn install --production --frozen-lockfile
+        yarn run build
+    - name: Deploy 🚀
+      uses: JamesIves/github-pages-deploy-action@3.6.1
+      with:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        BRANCH: gh-pages
+        FOLDER: build
+        CLEAN: true # Automatically remove deleted files from the deploy branch
