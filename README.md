@@ -10,6 +10,7 @@ Bootstrapped with create-react-app. See [CRA.md](./CRA.md) for instructions.
 ## Features
 
 * Responsive!
+* Shareable links? (would need react-router, and/or some type of persistence)
 * PWA?
 * Easily swappable API?
 * a11y?
