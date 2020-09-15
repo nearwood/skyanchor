@@ -7,7 +7,7 @@ const headers = {
 };
 
 export default function App() {
-  const [zipcode, setZipcode] = useState(null); //TODO: Consider i8n implications.
+  //const [zipcode, setZipcode] = useState(null); //TODO: Consider i8n implications.
   const [latitude, setLatitude] = useState(null); //39.7456,-97.0892 
   const [longitude, setLongitude] = useState(null);
   const [forecast, setForecast] = useState(null);
