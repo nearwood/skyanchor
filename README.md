@@ -14,6 +14,10 @@ Bootstrapped with create-react-app. See [CRA.md](./CRA.md) for instructions.
 * Easily swappable API?
 * a11y?
 * i8n?
+* HTML geolocation: https://www.npmjs.com/package/react-geolocated?
+  * might roll my own
+* zip or geolocation
+  * would need zip to lat+lon/grid
 
 ## Testing
 
