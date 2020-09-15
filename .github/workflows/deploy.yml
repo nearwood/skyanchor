@@ -11,7 +11,7 @@ on:
 
 #Avoiding separate deploy job since that uses artifact storage, which is a pain to cleanup.
 jobs:
-  build+deploy:
+  deploy:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
