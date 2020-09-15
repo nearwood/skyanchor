@@ -13,10 +13,9 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "REACT_APP_GIT_COMMIT_HASH=\"$(git rev-parse HEAD)\" react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "prebuild": "REACT_APP_GIT_COMMIT_HASH=\"$(git rev-parse HEAD)\" yarn run build",
     "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
