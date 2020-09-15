@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
 
+const versionString = process.env.REACT_APP_GIT_COMMIT_HASH ? `${process.env.REACT_APP_GIT_COMMIT_HASH}`.substr(0, 7) : 'dev';
+
 const headers = {
   //Sigh... https://bugs.chromium.org/p/chromium/issues/detail?id=571722
   "User-Agent": "(https://github.com/nearwood/skyanchor, nearwood@gmail.com)" //TODO: Consider externalizing this
@@ -61,6 +63,9 @@ export default function App() {
           <img alt="weather icon" src={period.icon}/><span>{period.name}</span><span>{period.detailedForecast}</span>
         </div>)}
       </div>
+      <footer>
+        <span>{versionString}</span><span>Created by <a href="https://twitter.com/nearwood">@nearwood</a>.</span><span><a href="https://github.com/nearwood/skyanchor"><img alt="Github logo" height="32" width="32" src="https://cdn.jsdelivr.net/npm/simple-icons@v3/icons/github.svg" /></a></span>
+      </footer>
     </div>
   );
 }
