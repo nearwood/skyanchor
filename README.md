@@ -13,6 +13,8 @@ Bootstrapped with create-react-app. See [CRA.md](./CRA.md) for instructions.
 * Responsive!
 * PWA?
 * Easily swappable API?
+* a11y?
+* i8n?
 
 ## Testing
 
