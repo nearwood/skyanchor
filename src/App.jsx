@@ -1,6 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
 
+const headers = {
+  //Sigh... https://bugs.chromium.org/p/chromium/issues/detail?id=571722
+  "User-Agent": "(https://github.com/nearwood/skyanchor, nearwood@gmail.com)" //TODO: Consider externalizing this
+};
+
 export default function App() {
   //const [location, setLocation] = useState(null); //39.7456,-97.0892
   const [forecast, setForecast] = useState(null);
@@ -8,7 +13,7 @@ export default function App() {
 
   useEffect(() => {
     async function fetchData() {
-      const response = await fetch('https://api.weather.gov/points/39.7456,-97.0892').then(results => results.json());
+      const response = await fetch('https://api.weather.gov/points/39.7456,-97.0892', { headers }).then(results => results.json());
       console.log(response);
       setForecastURL(response?.properties?.forecast);
     }
@@ -17,7 +22,7 @@ export default function App() {
 
   useEffect(() => {
     async function fetchData() {
-      const response = await fetch(forecastURL).then(results => results.json());
+      const response = await fetch(forecastURL, { headers }).then(results => results.json());
       console.log(response);
       setForecast(response?.properties?.periods);
     }
