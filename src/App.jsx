@@ -7,18 +7,38 @@ const headers = {
 };
 
 export default function App() {
-  //const [location, setLocation] = useState(null); //39.7456,-97.0892
+  const [zipcode, setZipcode] = useState(null); //TODO: Consider i8n implications.
+  const [latitude, setLatitude] = useState(null); //39.7456,-97.0892 
+  const [longitude, setLongitude] = useState(null);
   const [forecast, setForecast] = useState(null);
   const [forecastURL, setForecastURL] = useState(null);
 
   useEffect(() => {
+    if (!navigator.geolocation) {
+      //TODO: Maybe a notification of some type.
+      console.warn("NO GEO");
+    } else {
+      function success(data) {
+        console.log(data);
+        setLatitude(data.coords.latitude);
+        setLongitude(data.coords.longitude);
+      }
+
+      navigator.geolocation.getCurrentPosition(success, console.error);
+    }
+  }, []);
+
+  useEffect(() => {
     async function fetchData() {
-      const response = await fetch('https://api.weather.gov/points/39.7456,-97.0892', { headers }).then(results => results.json());
+      const response = await fetch(`https://api.weather.gov/points/${latitude},${longitude}`, { headers }).then(results => results.json());
       console.log(response);
       setForecastURL(response?.properties?.forecast);
     }
-    fetchData();
-  }, []);
+
+    if (typeof latitude === 'number' && typeof longitude === 'number') {
+      fetchData();
+    }
+  }, [latitude, longitude]);
 
   useEffect(() => {
     async function fetchData() {
@@ -108,4 +128,20 @@ temperatureTrend: null
 temperatureUnit: "F"
 windDirection: "S"
 windSpeed: "5 to 10 mph"
+*/
+
+/*
+GeolocationPosition: {
+  coords: {
+    accuracy: 5
+    altitude: null
+    altitudeAccuracy: null
+    heading: null
+    latitude: 30.4042
+    longitude: -91.1431
+    speed: null
+  }
+  __proto__: GeolocationCoordinates
+  timestamp: 1600209266936
+}
 */
