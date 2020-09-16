@@ -29,3 +29,8 @@ Bootstrapped with create-react-app. See [CRA.md](./CRA.md) for instructions.
 ## Deployment
 
 * Github pages: https://nearwood.dev/skyanchor/
+
+# TODO
+
+- Ensure nix/windows script/line endings differences won't affect anything.
+- Turn linter up to 11
