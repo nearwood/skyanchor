@@ -20,7 +20,7 @@ export default function App() {
   const [longitude, setLongitude] = useState(null);
   const [forecast, setForecast] = useState(null);
   const [forecastURL, setForecastURL] = useState(null);
-  const [forecastHourlyURL, setForecastHourlyURL] = useState(null);
+  //const [forecastHourlyURL, setForecastHourlyURL] = useState(null);
 
   useEffect(() => {
     if (!navigator.geolocation) {
@@ -40,7 +40,7 @@ export default function App() {
     async function fetchData() {
       const response = await fetch(`https://api.weather.gov/points/${latitude},${longitude}`, { headers }).then(results => results.json());
       setForecastURL(response?.properties?.forecast);
-      setForecastHourlyURL(response?.properties?.forecastHourly);
+      //setForecastHourlyURL(response?.properties?.forecastHourly);
     }
 
     if (typeof latitude === 'number' && typeof longitude === 'number') {
@@ -58,12 +58,23 @@ export default function App() {
     }
   }, [forecastURL]);
 
+  // useEffect(() => {
+  //   async function fetchData() {
+  //     const response = await fetch(hourlyURL).then(results => results.json());
+  //     console.log(response);
+  //     setHourlyForecast(response?.properties?.periods);
+  //   }
+  //   if (hourlyURL) {
+  //     fetchData();
+  //   }
+  // }, [hourlyURL]);
+
   return (
     <div className="App">
       <Grid container spacing={3}>
         {Array.isArray(forecast) && forecast.map(period =>
           <Grid item xs={12} md={6} lg={2} key={`${period.number}_${period.name}`}>
-            <WeatherCard period={period} hourlyURL={period.number === 1 ? forecastHourlyURL : null}/>
+            <WeatherCard period={period}/>
           </Grid>)}
       </Grid>
         {/* <span>{versionString}</span><span>Created by <a href="https://twitter.com/nearwood">@nearwood</a>.</span><span><a href="https://github.com/nearwood/skyanchor"><img alt="Github logo" height="32" width="32" src="https://cdn.jsdelivr.net/npm/simple-icons@v3/icons/github.svg" /></a></span> */}
