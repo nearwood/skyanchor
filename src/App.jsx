@@ -1,18 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import Avatar from '@material-ui/core/Avatar';
 import Grid from '@material-ui/core/Grid';
-import IconButton from '@material-ui/core/IconButton';
-import Card from '@material-ui/core/Card';
-import CardHeader from '@material-ui/core/CardHeader';
-import CardActions from '@material-ui/core/CardActions';
-import CardContent from '@material-ui/core/CardContent';
-import Divider from '@material-ui/core/Divider';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import Collapse from '@material-ui/core/Collapse';
 import './App.css';
 
-const versionString = process.env.REACT_APP_GIT_COMMIT_HASH ? `${process.env.REACT_APP_GIT_COMMIT_HASH}`.substr(0, 7) : 'dev';
+import WeatherCard from './WeatherCard';
+
+
+//const versionString = process.env.REACT_APP_GIT_COMMIT_HASH ? `${process.env.REACT_APP_GIT_COMMIT_HASH}`.substr(0, 7) : 'dev';
 
 const headers = {
   //Sigh... https://bugs.chromium.org/p/chromium/issues/detail?id=571722
@@ -20,35 +13,14 @@ const headers = {
   //"User-Agent": "(https://github.com/nearwood/skyanchor, nearwood@gmail.com)" //TODO: Consider externalizing this
 };
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    maxWidth: 345,
-  },
-  media: {
-    height: 0,
-    paddingTop: '56.25%', // 16:9
-  },
-  expand: {
-    transform: 'rotate(0deg)',
-    marginLeft: 'auto',
-    transition: theme.transitions.create('transform', {
-      duration: theme.transitions.duration.shortest,
-    }),
-  },
-  expandOpen: {
-    transform: 'rotate(180deg)',
-  }
-}));
 
 export default function App() {
-  const classes = useStyles();
   //const [zipcode, setZipcode] = useState(null); //TODO: Consider i8n implications.
   const [latitude, setLatitude] = useState(null); //39.7456,-97.0892 
   const [longitude, setLongitude] = useState(null);
   const [forecast, setForecast] = useState(null);
   const [forecastURL, setForecastURL] = useState(null);
-
-  const [expanded, setExpanded] = useState(true);
+  const [forecastHourlyURL, setForecastHourlyURL] = useState(null);
 
   useEffect(() => {
     if (!navigator.geolocation) {
@@ -56,7 +28,6 @@ export default function App() {
       console.warn("NO GEO");
     } else {
       function success(data) {
-        console.log(data);
         setLatitude(data.coords.latitude);
         setLongitude(data.coords.longitude);
       }
@@ -68,8 +39,8 @@ export default function App() {
   useEffect(() => {
     async function fetchData() {
       const response = await fetch(`https://api.weather.gov/points/${latitude},${longitude}`, { headers }).then(results => results.json());
-      console.log(response);
       setForecastURL(response?.properties?.forecast);
+      setForecastHourlyURL(response?.properties?.forecastHourly);
     }
 
     if (typeof latitude === 'number' && typeof longitude === 'number') {
@@ -80,7 +51,6 @@ export default function App() {
   useEffect(() => {
     async function fetchData() {
       const response = await fetch(forecastURL, { headers }).then(results => results.json());
-      console.log(response);
       setForecast(response?.properties?.periods);
     }
     if (forecastURL) {
@@ -91,27 +61,10 @@ export default function App() {
   return (
     <div className="App">
       <Grid container spacing={3}>
-        {Array.isArray(forecast) && forecast.map(period => <Grid item xs={12} md={6} lg={2} key={`${period.number}_${period.name}`}>
-          <Card className={classes.root}>
-            <CardHeader
-              avatar={<Avatar src={period.icon} aria-label="weather icon" className={classes.avatara}/>}
-              title={period.name}
-              subheader="September 14, 2016"
-            />
-            <CardContent>
-              <span>{period.temperature} °{period.temperatureUnit}</span><div>{period.shortForecast}</div>
-            </CardContent>
-            <Divider variant="middle" />
-            {period.number === 1 && <CardActions>
-              <IconButton
-                onClick={() => setExpanded(!expanded)}
-                aria-expanded={expanded}
-                aria-label="show more">
-                <ExpandMoreIcon />
-              </IconButton>
-            </CardActions>}
-          </Card>
-        </Grid>)}
+        {Array.isArray(forecast) && forecast.map(period =>
+          <Grid item xs={12} md={6} lg={2} key={`${period.number}_${period.name}`}>
+            <WeatherCard period={period} hourlyURL={period.number === 1 ? forecastHourlyURL : null}/>
+          </Grid>)}
       </Grid>
         {/* <span>{versionString}</span><span>Created by <a href="https://twitter.com/nearwood">@nearwood</a>.</span><span><a href="https://github.com/nearwood/skyanchor"><img alt="Github logo" height="32" width="32" src="https://cdn.jsdelivr.net/npm/simple-icons@v3/icons/github.svg" /></a></span> */}
     </div>
@@ -165,22 +118,6 @@ units: "us"
 updateTime: "2020-09-15T20:25:36+00:00"
 updated: "2020-09-15T20:25:36+00:00"
 validTimes: "2020-09-15T14:00:00+00:00/P7DT11H"
-*/
-
-/*
-detailedForecast: "Mostly clear, with a low around 59. South wind 5 to 10 mph."
-endTime: "2020-09-16T06:00:00-05:00"
-icon: "https://api.weather.gov/icons/land/night/few?size=medium"
-isDaytime: false
-name: "Tonight"
-number: 2
-shortForecast: "Mostly Clear"
-startTime: "2020-09-15T18:00:00-05:00"
-temperature: 59
-temperatureTrend: null | temperatureTrend: "falling" | temperatureTrend: "rising"
-temperatureUnit: "F"
-windDirection: "S"
-windSpeed: "5 to 10 mph"
 */
 
 /*
