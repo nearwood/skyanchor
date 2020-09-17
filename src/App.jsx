@@ -6,7 +6,8 @@ const versionString = process.env.REACT_APP_GIT_COMMIT_HASH ? `${process.env.REA
 
 const headers = {
   //Sigh... https://bugs.chromium.org/p/chromium/issues/detail?id=571722
-  "User-Agent": "(https://github.com/nearwood/skyanchor, nearwood@gmail.com)" //TODO: Consider externalizing this
+  //Also User-Agent isn't allowed for CORS
+  //"User-Agent": "(https://github.com/nearwood/skyanchor, nearwood@gmail.com)" //TODO: Consider externalizing this
 };
 
 export default function App() {
