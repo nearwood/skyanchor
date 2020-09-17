@@ -5,8 +5,7 @@ Bootstrapped with create-react-app. See [CRA.md](./CRA.md) for instructions.
 ## Stack
 
 * React
-* ~~Material UI?~~ NES React: https://github.com/bschulte/nes-react
-* https://github.com/React95/React95
+* Material UI?
 * https://www.weather.gov/documentation/services-web-api
 
 ## Features
@@ -16,13 +15,15 @@ Bootstrapped with create-react-app. See [CRA.md](./CRA.md) for instructions.
 * PWA?
 * Easily swappable API?
 * a11y?
-* i8n?
 * HTML geolocation: https://www.npmjs.com/package/react-geolocated?
   * might roll my own
 * zip or geolocation
   * would need zip to lat+lon/grid
 * get prob. of precip? Latest? Hourly? 
 * Alerts? https://api.weather.gov/alerts/active?area={state}
+
+* Parse icon URL to derive emoji + percentage?
+* Settable units C/F
 
 ## Testing
 
