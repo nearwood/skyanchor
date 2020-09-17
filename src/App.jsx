@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Container } from "nes-react";
 import './App.css';
 
 const versionString = process.env.REACT_APP_GIT_COMMIT_HASH ? `${process.env.REACT_APP_GIT_COMMIT_HASH}`.substr(0, 7) : 'dev';
@@ -55,13 +56,10 @@ export default function App() {
 
   return (
     <div className="App">
-      <header className="App-header">
-        <span role="img" aria-label="skyanchor logo" className="logo">🌩️</span>
-      </header>
       <div>
-        {Array.isArray(forecast) && forecast.map(period => <div key={period.name}>
-          <img alt="weather icon" src={period.icon}/><span>{period.name}</span><span>{period.detailedForecast}</span>
-        </div>)}
+        {Array.isArray(forecast) && forecast.map(period => <Container key={`${period.number}_${period.name}`} dark={!period.isDaytime} title={period.name}>
+          <img alt="weather icon" src={period.icon}/><span>{period.temperature} °{period.temperatureUnit}</span><div>{period.shortForecast}</div>
+        </Container>)}
       </div>
       <footer>
         <span>{versionString}</span><span>Created by <a href="https://twitter.com/nearwood">@nearwood</a>.</span><span><a href="https://github.com/nearwood/skyanchor"><img alt="Github logo" height="32" width="32" src="https://cdn.jsdelivr.net/npm/simple-icons@v3/icons/github.svg" /></a></span>
