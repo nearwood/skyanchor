@@ -1,9 +1,28 @@
 import React, { useState, useEffect } from 'react';
+import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
+import BottomNavigation from '@material-ui/core/BottomNavigation';
+import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
+
+import CloudIcon from '@material-ui/icons/Cloud';
+import ScheduleIcon from '@material-ui/icons/Schedule';
+import NotificationImportantIcon from '@material-ui/icons/NotificationImportant';
 import './App.css';
 
 import WeatherCard from './WeatherCard';
 
+const useStyles = makeStyles((theme) => ({
+  root: {
+    
+  },
+  bottomNav: {
+    position: 'fixed',
+    bottom: 0,
+    left: 0,
+    right: 0,
+    height: theme.spacing(7)
+  }
+}));
 
 //const versionString = process.env.REACT_APP_GIT_COMMIT_HASH ? `${process.env.REACT_APP_GIT_COMMIT_HASH}`.substr(0, 7) : 'dev';
 
@@ -21,6 +40,10 @@ export default function App() {
   const [forecast, setForecast] = useState(null);
   const [forecastURL, setForecastURL] = useState(null);
   //const [forecastHourlyURL, setForecastHourlyURL] = useState(null);
+
+  const [selectedPage, setSelectedPage] = useState(0);
+
+  const classes = useStyles();
 
   useEffect(() => {
     if (!navigator.geolocation) {
@@ -70,14 +93,20 @@ export default function App() {
   // }, [hourlyURL]);
 
   return (
-    <div className="App">
-      <Grid container spacing={3}>
+    <div className="App" style={{padding: 10}}>
+      <Grid container spacing={2}>
         {Array.isArray(forecast) && forecast.map(period =>
           <Grid item xs={12} md={6} lg={2} key={`${period.number}_${period.name}`}>
-            <WeatherCard period={period}/>
+            <WeatherCard period={period} />
           </Grid>)}
       </Grid>
-        {/* <span>{versionString}</span><span>Created by <a href="https://twitter.com/nearwood">@nearwood</a>.</span><span><a href="https://github.com/nearwood/skyanchor"><img alt="Github logo" height="32" width="32" src="https://cdn.jsdelivr.net/npm/simple-icons@v3/icons/github.svg" /></a></span> */}
+      <BottomNavigation showLabels className={classes.bottomNav}
+        value={selectedPage} onChange={(event, newValue) => { setSelectedPage(newValue); }}>
+        <BottomNavigationAction label="Weather" icon={<CloudIcon />} />
+        <BottomNavigationAction label="Hourly" icon={<ScheduleIcon />} />
+        <BottomNavigationAction label="Alerts" icon={<NotificationImportantIcon />} />
+      </BottomNavigation>
+      {/* <span>{versionString}</span><span>Created by <a href="https://twitter.com/nearwood">@nearwood</a>.</span><span><a href="https://github.com/nearwood/skyanchor"><img alt="Github logo" height="32" width="32" src="https://cdn.jsdelivr.net/npm/simple-icons@v3/icons/github.svg" /></a></span> */}
     </div>
   );
 }

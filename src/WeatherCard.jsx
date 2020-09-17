@@ -1,36 +1,30 @@
 import React from 'react';
-// import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 import Avatar from '@material-ui/core/Avatar';
 import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
 import CardContent from '@material-ui/core/CardContent';
 // import Divider from '@material-ui/core/Divider';
 
-// const useStyles = makeStyles((theme) => ({
-//   root: {
-//     maxWidth: 345,
-//   },
-//   expand: {
-//     transform: 'rotate(0deg)',
-//     marginLeft: 'auto',
-//     transition: theme.transitions.create('transform', {
-//       duration: theme.transitions.duration.shortest,
-//     }),
-//   },
-//   expandOpen: {
-//     transform: 'rotate(180deg)',
-//   }
-// }));
+const useStyles = makeStyles((theme) => ({
+  root: {
+    maxWidth: 512
+  },
+  avatar: {
+    width: theme.spacing(8),
+    height: theme.spacing(8),
+  }
+}));
 
 export default function WeatherCard(props) { //TODO prop-types
   const { period } = props;
 
-  // const classes = useStyles();
+  const classes = useStyles();
 
   return (
-    <Card>
+    <Card className={classes.root}>
       <CardHeader
-        avatar={<Avatar src={period.icon} aria-label="weather icon" />}
+        avatar={<Avatar src={period.icon} variant="square" aria-label="weather icon" className={classes.avatar} />}
         title={period.name}
         subheader="September 14, 2016"
       />

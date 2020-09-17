@@ -40,3 +40,4 @@ Bootstrapped with create-react-app. See [CRA.md](./CRA.md) for instructions.
 - Ensure nix/windows script/line ending differences won't affect anything.
 - Turn linter up to 11
 - Check API status: GET https://api.weather.gov/
+- Mobile: Bottom nav, Desktop: side nav
