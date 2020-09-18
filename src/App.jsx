@@ -1,26 +1,32 @@
 import React, { useState, useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
-import BottomNavigation from '@material-ui/core/BottomNavigation';
-import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
+import LinearProgress from '@material-ui/core/LinearProgress';
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
+import Typography from '@material-ui/core/Typography';
+import IconButton from '@material-ui/core/IconButton';
 
-import CloudIcon from '@material-ui/icons/Cloud';
-import ScheduleIcon from '@material-ui/icons/Schedule';
+// import CloudIcon from '@material-ui/icons/Cloud';
+// import ScheduleIcon from '@material-ui/icons/Schedule';
 import NotificationImportantIcon from '@material-ui/icons/NotificationImportant';
 import './App.css';
 
 import WeatherCard from './WeatherCard';
 
 const useStyles = makeStyles((theme) => ({
-  root: {
-    
+  appBar: {
+    display: 'none',
+    [theme.breakpoints.down('sm')]: {
+      display: 'block',
+    },
+    marginBottom: theme.spacing(1),
   },
-  bottomNav: {
-    position: 'fixed',
-    bottom: 0,
-    left: 0,
-    right: 0,
-    height: theme.spacing(7)
+  title: {
+    flexGrow: 1,
+  },
+  menuButton: {
+    
   }
 }));
 
@@ -32,146 +38,181 @@ const headers = {
   //"User-Agent": "(https://github.com/nearwood/skyanchor, nearwood@gmail.com)" //TODO: Consider externalizing this
 };
 
+const ApiState = {
+  initial: 'initial',
+  loading: 'loading',
+  error: 'error',
+  loaded: 'loaded'
+};
 
 export default function App() {
-  //const [zipcode, setZipcode] = useState(null); //TODO: Consider i8n implications.
-  const [latitude, setLatitude] = useState(null); //39.7456,-97.0892 
-  const [longitude, setLongitude] = useState(null);
-  const [forecast, setForecast] = useState(null);
-  const [forecastURL, setForecastURL] = useState(null);
-  //const [forecastHourlyURL, setForecastHourlyURL] = useState(null);
+  const [geolocationState, setGeolocationState] = useState(ApiState.initial);
+  const [locationState, setLocationState] = useState(ApiState.initial);
+  const [forecastState, setForecastState] = useState(ApiState.initial);
+  const [hourlyState, setHourlyState] = useState(ApiState.initial);
+  const [alertsState, setAlertsState] = useState(ApiState.initial);
 
-  const [selectedPage, setSelectedPage] = useState(0);
+  const [latitude, setLatitude] = useState(null);
+  const [longitude, setLongitude] = useState(null);
+  const [cityState, setCityState] = useState("Loading...");
+  const [forecastURL, setForecastURL] = useState(null);
+  const [forecast, setForecast] = useState(null);
+  const [hourlyURL, setHourlyURL] = useState(null);
+  const [hourlyForecast, setHourlyForecast] = useState(null);
+  const [alertsURL, setAlertsURL] = useState(null);
+  const [alerts, setAlerts] = useState(null);
 
   const classes = useStyles();
 
   useEffect(() => {
     if (!navigator.geolocation) {
       //TODO: Maybe a notification of some type.
-      console.warn("NO GEO");
+      setGeolocationState(ApiState.error);
     } else {
       function success(data) {
         setLatitude(data.coords.latitude);
         setLongitude(data.coords.longitude);
+        setGeolocationState(ApiState.loaded);
       }
 
-      navigator.geolocation.getCurrentPosition(success, console.error);
+      function failure(error) {
+        console.error(error);
+        setGeolocationState(ApiState.error);
+      }
+
+      setGeolocationState(ApiState.loading);
+      navigator.geolocation.getCurrentPosition(success, failure);
     }
   }, []);
 
+  const parseLocation = (relativeLocation) => {
+    if (relativeLocation?.properties) {
+      const { city, state } = relativeLocation?.properties;
+      return `${city}, ${state}`;
+    }
+
+    return '';
+  };
+
   useEffect(() => {
     async function fetchData() {
-      const response = await fetch(`https://api.weather.gov/points/${latitude},${longitude}`, { headers }).then(results => results.json());
-      setForecastURL(response?.properties?.forecast);
-      //setForecastHourlyURL(response?.properties?.forecastHourly);
+      try {
+        const response = await fetch(`https://api.weather.gov/points/${latitude},${longitude}`, { headers }).then(results => results.json());
+        setCityState(parseLocation(response?.properties?.relativeLocation));
+        setForecastURL(response?.properties?.forecast);
+        setHourlyURL(response?.properties?.forecastHourly);
+        //State
+        //setAlertsURL(`https://api.weather.gov/alerts/active?status=actual&message_type=alert,update,cancel&area=CA`);
+        //API allows county value for zone, but location response only has that as part of a URL
+        //https://api.weather.gov/alerts/active?status=actual&point=30.4042%2C-91.1431
+        const latLonPoint = `${latitude},${longitude}`;
+        setAlertsURL(`https://api.weather.gov/alerts/active?status=actual&message_type=alert,update,cancel&point=${encodeURIComponent(latLonPoint)}`);
+        setLocationState(ApiState.loaded);
+      } catch (err) {
+        console.error(err);
+        setLocationState(ApiState.error);
+      }
     }
 
     if (typeof latitude === 'number' && typeof longitude === 'number') {
+      setLocationState(ApiState.loading);
       fetchData();
     }
   }, [latitude, longitude]);
 
   useEffect(() => {
     async function fetchData() {
-      const response = await fetch(forecastURL, { headers }).then(results => results.json());
-      setForecast(response?.properties?.periods);
+      try {
+        const response = await fetch(forecastURL, { headers }).then(results => results.json());
+        setForecast(response?.properties?.periods);
+        setForecastState(ApiState.loaded);
+      } catch (err) {
+        console.error(err);
+        setForecastState(ApiState.error);
+      }
     }
+
     if (forecastURL) {
+      setForecastState(ApiState.loading);
       fetchData();
     }
   }, [forecastURL]);
 
-  // useEffect(() => {
-  //   async function fetchData() {
-  //     const response = await fetch(hourlyURL).then(results => results.json());
-  //     console.log(response);
-  //     setHourlyForecast(response?.properties?.periods);
-  //   }
-  //   if (hourlyURL) {
-  //     fetchData();
-  //   }
-  // }, [hourlyURL]);
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        const response = await fetch(hourlyURL).then(results => results.json());
+        console.log(response);
+        setHourlyForecast(response?.properties?.periods);
+        setHourlyState(ApiState.loaded);
+      } catch (err) {
+        console.error(err);
+        setHourlyState(ApiState.error);
+      }
+    }
+
+    if (hourlyURL) {
+      setHourlyState(ApiState.loading);
+      fetchData();
+    }
+  }, [hourlyURL]);
+
+
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        const response = await fetch(alertsURL).then(results => results.json());
+        console.log(response);
+        setAlerts(response?.properties?.features);
+        setAlertsState(ApiState.loaded);
+      } catch (err) {
+        console.error(err);
+        setAlertsState(ApiState.error);
+      }
+    }
+
+    if (alertsURL) {
+      setAlertsState(ApiState.loading);
+      fetchData();
+    }
+  }, [alertsURL]);
+
+  const loadingProgress = () => {
+    const map = [geolocationState, locationState, forecastState, hourlyState, alertsState];
+    const increment = Math.round(100 / map.length);
+    const value = map.reduce((total, value) => total + (value === ApiState.loaded ? increment : 0), 0);
+    console.log(value);
+    return value;
+  };
 
   return (
     <div className="App" style={{padding: 10}}>
+      <AppBar position="static" className={classes.appBar}>
+      <Toolbar>
+        <Typography variant="h6" noWrap className={classes.title}>
+        <span role="img" aria-label="Skyanchor logo">🌩️</span>
+        {cityState}
+        </Typography>
+          <IconButton edge="end" className={classes.menuButton} color="inherit" aria-label="alerts">
+            <NotificationImportantIcon />
+          </IconButton>
+          </Toolbar>
+      </AppBar>
+      {forecastState !== ApiState.loaded && <LinearProgress variant="determinate" value={loadingProgress()} />}
       <Grid container spacing={2}>
+        <Grid item xs={12} md={6} lg={2}>
+          <div>Geo: {geolocationState}</div>
+          <div>Grid: {locationState}</div>
+          <div>Forecast: {forecastState}</div>
+          <div>Hourly: {hourlyState}</div>
+          <div>Alerts: {alertsState}</div>
+        </Grid>
         {Array.isArray(forecast) && forecast.map(period =>
           <Grid item xs={12} md={6} lg={2} key={`${period.number}_${period.name}`}>
             <WeatherCard period={period} />
           </Grid>)}
       </Grid>
-      <BottomNavigation showLabels className={classes.bottomNav}
-        value={selectedPage} onChange={(event, newValue) => { setSelectedPage(newValue); }}>
-        <BottomNavigationAction label="Weather" icon={<CloudIcon />} />
-        <BottomNavigationAction label="Hourly" icon={<ScheduleIcon />} />
-        <BottomNavigationAction label="Alerts" icon={<NotificationImportantIcon />} />
-      </BottomNavigation>
       {/* <span>{versionString}</span><span>Created by <a href="https://twitter.com/nearwood">@nearwood</a>.</span><span><a href="https://github.com/nearwood/skyanchor"><img alt="Github logo" height="32" width="32" src="https://cdn.jsdelivr.net/npm/simple-icons@v3/icons/github.svg" /></a></span> */}
     </div>
   );
 }
-
-/*
-properties:
-@id: "https://api.weather.gov/points/39.7456,-97.0892"
-@type: "wx:Point"
-county: "https://api.weather.gov/zones/county/KSC201"
-cwa: "TOP"
-fireWeatherZone: "https://api.weather.gov/zones/fire/KSZ009"
-forecast: "https://api.weather.gov/gridpoints/TOP/31,80/forecast"
-forecastGridData: "https://api.weather.gov/gridpoints/TOP/31,80"
-forecastHourly: "https://api.weather.gov/gridpoints/TOP/31,80/forecast/hourly"
-forecastOffice: "https://api.weather.gov/offices/TOP"
-forecastZone: "https://api.weather.gov/zones/forecast/KSZ009"
-gridId: "TOP"
-gridX: 31
-gridY: 80
-observationStations: "https://api.weather.gov/gridpoints/TOP/31,80/stations"
-radarStation: "KTWX"
-relativeLocation: {type: "Feature", geometry: {…}, properties: {…}}
-timeZone: "America/Chicago"
-*/
-
-/*
-properties:
-elevation: {value: 441.96, unitCode: "unit:m"}
-forecastGenerator: "BaselineForecastGenerator"
-generatedAt: "2020-09-15T22:00:13+00:00"
-periods: Array(14)
-0: {number: 1, name: "This Afternoon", startTime: "2020-09-15T17:00:00-05:00", endTime: "2020-09-15T18:00:00-05:00", isDaytime: true, …}
-1: {number: 2, name: "Tonight", startTime: "2020-09-15T18:00:00-05:00", endTime: "2020-09-16T06:00:00-05:00", isDaytime: false, …}
-2: {number: 3, name: "Wednesday", startTime: "2020-09-16T06:00:00-05:00", endTime: "2020-09-16T18:00:00-05:00", isDaytime: true, …}
-3: {number: 4, name: "Wednesday Night", startTime: "2020-09-16T18:00:00-05:00", endTime: "2020-09-17T06:00:00-05:00", isDaytime: false, …}
-4: {number: 5, name: "Thursday", startTime: "2020-09-17T06:00:00-05:00", endTime: "2020-09-17T18:00:00-05:00", isDaytime: true, …}
-5: {number: 6, name: "Thursday Night", startTime: "2020-09-17T18:00:00-05:00", endTime: "2020-09-18T06:00:00-05:00", isDaytime: false, …}
-6: {number: 7, name: "Friday", startTime: "2020-09-18T06:00:00-05:00", endTime: "2020-09-18T18:00:00-05:00", isDaytime: true, …}
-7: {number: 8, name: "Friday Night", startTime: "2020-09-18T18:00:00-05:00", endTime: "2020-09-19T06:00:00-05:00", isDaytime: false, …}
-8: {number: 9, name: "Saturday", startTime: "2020-09-19T06:00:00-05:00", endTime: "2020-09-19T18:00:00-05:00", isDaytime: true, …}
-9: {number: 10, name: "Saturday Night", startTime: "2020-09-19T18:00:00-05:00", endTime: "2020-09-20T06:00:00-05:00", isDaytime: false, …}
-10: {number: 11, name: "Sunday", startTime: "2020-09-20T06:00:00-05:00", endTime: "2020-09-20T18:00:00-05:00", isDaytime: true, …}
-11: {number: 12, name: "Sunday Night", startTime: "2020-09-20T18:00:00-05:00", endTime: "2020-09-21T06:00:00-05:00", isDaytime: false, …}
-12: {number: 13, name: "Monday", startTime: "2020-09-21T06:00:00-05:00", endTime: "2020-09-21T18:00:00-05:00", isDaytime: true, …}
-13: {number: 14, name: "Monday Night", startTime: "2020-09-21T18:00:00-05:00", endTime: "2020-09-22T06:00:00-05:00", isDaytime: false, …}
-length: 14
-__proto__: Array(0)
-units: "us"
-updateTime: "2020-09-15T20:25:36+00:00"
-updated: "2020-09-15T20:25:36+00:00"
-validTimes: "2020-09-15T14:00:00+00:00/P7DT11H"
-*/
-
-/*
-GeolocationPosition: {
-  coords: {
-    accuracy: 5
-    altitude: null
-    altitudeAccuracy: null
-    heading: null
-    latitude: 30.4042
-    longitude: -91.1431
-    speed: null
-  }
-  __proto__: GeolocationCoordinates
-  timestamp: 1600209266936
-}
-*/
