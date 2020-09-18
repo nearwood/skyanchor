@@ -2,6 +2,20 @@
 
 Bootstrapped with create-react-app. See [CRA.md](./CRA.md) for instructions.
 
+## Running locally
+
+### Requirements
+
+* Node.js 12+
+* Yarn: https://classic.yarnpkg.com/en/ (though npm should also work)
+
+### Instructions
+
+* Clone repository: `git clone https://github.com/nearwood/skyanchor.git`
+* Install dependancies: `yarn`
+* Build and serve locally: `yarn run start`
+* Open a browser to: http://localhost:3000/
+
 ## Stack
 
 * React
@@ -19,7 +33,7 @@ Bootstrapped with create-react-app. See [CRA.md](./CRA.md) for instructions.
   * might roll my own
 * zip or geolocation
   * would need zip to lat+lon/grid
-* get prob. of precip? Latest? Hourly? 
+* get prob. of precip? Latest? Hourly?
 * Alerts? https://api.weather.gov/alerts/active?area={state}
 
 * Parse icon URL to derive emoji + percentage?
