@@ -2,6 +2,7 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Avatar from '@material-ui/core/Avatar';
 import Card from '@material-ui/core/Card';
+import CardActionArea from '@material-ui/core/CardActionArea';
 import CardHeader from '@material-ui/core/CardHeader';
 import CardContent from '@material-ui/core/CardContent';
 // import Divider from '@material-ui/core/Divider';
@@ -21,17 +22,24 @@ export default function WeatherCard(props) { //TODO prop-types
 
   const classes = useStyles();
 
+  const convertDate = (utcString) => {
+    const dateObj = new Date(utcString);
+    return dateObj?.toLocaleDateString();
+  };
+
   return (
     <Card className={classes.root}>
-      <CardHeader
-        avatar={<Avatar src={period.icon} variant="square" aria-label="weather icon" className={classes.avatar} />}
-        title={period.name}
-        subheader="September 14, 2016"
-      />
-      <CardContent>
-        <span>{period.temperature} °{period.temperatureUnit}</span><div>{period.shortForecast}</div>
-      </CardContent>
-      {/* <Divider variant="middle" /> */}
+      <CardActionArea>
+        <CardHeader
+          avatar={<Avatar src={period.icon} variant="square" aria-label="weather icon" className={classes.avatar} />}
+          title={period.name}
+          subheader={convertDate(period.startTime)}
+        />
+        <CardContent>
+          <span>{period.temperature} °{period.temperatureUnit}</span><div>{period.shortForecast}</div>
+        </CardContent>
+        {/* <Divider variant="middle" /> */}
+      </CardActionArea>
     </Card>
   );
 }
