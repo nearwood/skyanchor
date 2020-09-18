@@ -1,0 +1,994 @@
+{
+  "@context": [
+    "https://geojson.org/geojson-ld/geojson-context.jsonld",
+    {
+      "@version": "1.1",
+      "wx": "https://api.weather.gov/ontology#",
+      "@vocab": "https://api.weather.gov/ontology#"
+    }
+  ],
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "id": "https://api.weather.gov/alerts/NWS-IDP-PROD-4449750-3702356",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "@id": "https://api.weather.gov/alerts/NWS-IDP-PROD-4449750-3702356",
+        "@type": "wx:Alert",
+        "id": "NWS-IDP-PROD-4449750-3702356",
+        "areaDesc": "Greater Lake Tahoe Area; Greater Lake Tahoe Area",
+        "geocode": {
+          "UGC": [
+            "NVZ002",
+            "CAZ072"
+          ],
+          "SAME": [
+            "032005",
+            "032031",
+            "032510",
+            "006003",
+            "006017",
+            "006057",
+            "006061"
+          ]
+        },
+        "affectedZones": [
+          "https://api.weather.gov/zones/forecast/NVZ002",
+          "https://api.weather.gov/zones/forecast/CAZ072"
+        ],
+        "references": [],
+        "sent": "2020-09-17T21:56:00-07:00",
+        "effective": "2020-09-17T21:56:00-07:00",
+        "onset": "2020-09-18T11:00:00-07:00",
+        "expires": "2020-09-18T20:00:00-07:00",
+        "ends": "2020-09-18T20:00:00-07:00",
+        "status": "Actual",
+        "messageType": "Alert",
+        "category": "Met",
+        "severity": "Moderate",
+        "certainty": "Likely",
+        "urgency": "Expected",
+        "event": "Lake Wind Advisory",
+        "sender": "w-nws.webmaster@noaa.gov",
+        "senderName": "NWS Reno NV",
+        "headline": "Lake Wind Advisory issued September 17 at 9:56PM PDT until September 18 at 8:00PM PDT by NWS Reno NV",
+        "description": "* CHANGES...Added Lake Wind Advisory Friday for Lake Tahoe.\n\n* WHAT...For the Lake Wind Advisory, southwest winds 15 to 25 mph\nwith gusts up to 45 mph expected. Waves 2 to 4 feet. For the\nDense Smoke Advisory, visibility below 4 miles at times along\nwith areas of poor air quality.\n\n* WHERE...Truckee and the Lake Tahoe Basin, and eastern Alpine\nCounty.\n\n* WHEN...For the Lake Wind Advisory, from 11 AM to 8 PM PDT\nFriday. For the Dense Smoke Advisory, until 11 AM PDT Friday.\n\n* ADDITIONAL DETAILS...Some areas especially north of Highway 50\ncould see improved air quality through tonight, although areas\nof smoke are likely to return to the Tahoe basin and Alpine\nCounty by early Friday morning.\n\n* IMPACTS...Small boats, kayaks and paddle boards will be prone to\ncapsizing and should remain off lake waters until conditions\nimprove. Areas of poor air quality.",
+        "instruction": "Check lake conditions before heading out and be prepared for a\nsudden increase in winds and wave heights. Consider postponing\nboating activities on the lake until a day with less wind.\n\nStay indoors as much as possible when smoke is present. Avoid\nstrenuous activity, especially if you are sensitive to poor air\nquality, such as the elderly, children and anyone with chronic\nillness or respiratory problems. Consider postponing outdoor\nactivities. Check airnow.gov for the latest air quality\ninformation.",
+        "response": "Execute",
+        "parameters": {
+          "NWSheadline": [
+            "DENSE SMOKE ADVISORY REMAINS IN EFFECT UNTIL 11 AM PDT FRIDAY... ...LAKE WIND ADVISORY IN EFFECT FROM 11 AM TO 8 PM PDT FRIDAY FOR LAKE TAHOE"
+          ],
+          "VTEC": [
+            "/O.NEW.KREV.LW.Y.0048.200918T1800Z-200919T0300Z/"
+          ],
+          "PIL": [
+            "REVNPWREV"
+          ],
+          "BLOCKCHANNEL": [
+            "CMAS",
+            "EAS",
+            "NWEM"
+          ],
+          "eventEndingTime": [
+            "2020-09-19T03:00:00+00:00"
+          ]
+        }
+      }
+    },
+    {
+      "id": "https://api.weather.gov/alerts/NWS-IDP-PROD-4449749-3702354",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "@id": "https://api.weather.gov/alerts/NWS-IDP-PROD-4449749-3702354",
+        "@type": "wx:Alert",
+        "id": "NWS-IDP-PROD-4449749-3702354",
+        "areaDesc": "Northern Washoe County; Lassen-Eastern Plumas-Eastern Sierra Counties; Mono; Surprise Valley California; Mineral and Southern Lyon Counties; Greater Reno-Carson City-Minden Area",
+        "geocode": {
+          "UGC": [
+            "NVZ005",
+            "CAZ071",
+            "CAZ073",
+            "CAZ070",
+            "NVZ001",
+            "NVZ003"
+          ],
+          "SAME": [
+            "032031",
+            "006035",
+            "006063",
+            "006091",
+            "006051",
+            "006049",
+            "032019",
+            "032021",
+            "032005",
+            "032029",
+            "032510"
+          ]
+        },
+        "affectedZones": [
+          "https://api.weather.gov/zones/forecast/NVZ005",
+          "https://api.weather.gov/zones/forecast/CAZ071",
+          "https://api.weather.gov/zones/forecast/CAZ073",
+          "https://api.weather.gov/zones/forecast/CAZ070",
+          "https://api.weather.gov/zones/forecast/NVZ001",
+          "https://api.weather.gov/zones/forecast/NVZ003"
+        ],
+        "references": [
+          {
+            "@id": "https://api.weather.gov/alerts/NWS-IDP-PROD-4445771-3699315",
+            "identifier": "NWS-IDP-PROD-4445771-3699315",
+            "sender": "w-nws.webmaster@noaa.gov",
+            "sent": "2020-09-15T13:46:00-07:00"
+          },
+          {
+            "@id": "https://api.weather.gov/alerts/NWS-IDP-PROD-4444399-3698208",
+            "identifier": "NWS-IDP-PROD-4444399-3698208",
+            "sender": "w-nws.webmaster@noaa.gov",
+            "sent": "2020-09-14T14:18:00-07:00"
+          },
+          {
+            "@id": "https://api.weather.gov/alerts/NWS-IDP-PROD-4449407-3702090",
+            "identifier": "NWS-IDP-PROD-4449407-3702090",
+            "sender": "w-nws.webmaster@noaa.gov",
+            "sent": "2020-09-17T16:58:00-07:00"
+          },
+          {
+            "@id": "https://api.weather.gov/alerts/NWS-IDP-PROD-4447492-3700683",
+            "identifier": "NWS-IDP-PROD-4447492-3700683",
+            "sender": "w-nws.webmaster@noaa.gov",
+            "sent": "2020-09-16T14:29:00-07:00"
+          },
+          {
+            "@id": "https://api.weather.gov/alerts/NWS-IDP-PROD-4448827-3701679",
+            "identifier": "NWS-IDP-PROD-4448827-3701679",
+            "sender": "w-nws.webmaster@noaa.gov",
+            "sent": "2020-09-17T10:56:00-07:00"
+          }
+        ],
+        "sent": "2020-09-17T21:56:00-07:00",
+        "effective": "2020-09-17T21:56:00-07:00",
+        "onset": "2020-09-17T21:56:00-07:00",
+        "expires": "2020-09-18T11:00:00-07:00",
+        "ends": "2020-09-18T11:00:00-07:00",
+        "status": "Actual",
+        "messageType": "Update",
+        "category": "Met",
+        "severity": "Moderate",
+        "certainty": "Likely",
+        "urgency": "Expected",
+        "event": "Dense Smoke Advisory",
+        "sender": "w-nws.webmaster@noaa.gov",
+        "senderName": "NWS Reno NV",
+        "headline": "Dense Smoke Advisory issued September 17 at 9:56PM PDT until September 18 at 11:00AM PDT by NWS Reno NV",
+        "description": "* CHANGES...None.\n\n* WHAT...Visibility 1 to 4 miles in dense smoke, especially in\nareas near the Creek and North Complex fires. Air quality could\nimprove for some locations tonight and Friday morning.\n\n* WHERE...Mineral and Southern Lyon Counties, Mono County,\nSurprise Valley California, Lassen-Eastern Plumas-Eastern\nSierra Counties, Greater Reno-Carson City-Minden Area and\nNorthern Washoe County.\n\n* WHEN...Until 11 AM PDT Friday.\n\n* IMPACTS...Poor to hazardous air quality, with areas of low\nvisibility due to dense smoke. Areas with the highest smoke risk\ninclude Mono and Mineral counties, southern Lyon and Douglas\ncounties, and also northeast California and far northwest\nNevada, from Susanville and Gerlach northward.",
+        "instruction": "Stay indoors as much as possible when smoke is present. Avoid\nstrenuous activity, especially if you are sensitive to poor air\nquality, such as the elderly, children and anyone with chronic\nillness or respiratory problems. Consider postponing outdoor\nactivities. Check airnow.gov for the latest air quality\ninformation.",
+        "response": "Execute",
+        "parameters": {
+          "NWSheadline": [
+            "DENSE SMOKE ADVISORY REMAINS IN EFFECT UNTIL 11 AM PDT FRIDAY"
+          ],
+          "VTEC": [
+            "/O.CON.KREV.SM.Y.0009.000000T0000Z-200918T1800Z/"
+          ],
+          "PIL": [
+            "REVNPWREV"
+          ],
+          "BLOCKCHANNEL": [
+            "CMAS",
+            "EAS",
+            "NWEM"
+          ],
+          "eventEndingTime": [
+            "2020-09-18T18:00:00+00:00"
+          ]
+        }
+      }
+    },
+    {
+      "id": "https://api.weather.gov/alerts/NWS-IDP-PROD-4449750-3702355",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "@id": "https://api.weather.gov/alerts/NWS-IDP-PROD-4449750-3702355",
+        "@type": "wx:Alert",
+        "id": "NWS-IDP-PROD-4449750-3702355",
+        "areaDesc": "Greater Lake Tahoe Area; Greater Lake Tahoe Area",
+        "geocode": {
+          "UGC": [
+            "NVZ002",
+            "CAZ072"
+          ],
+          "SAME": [
+            "032005",
+            "032031",
+            "032510",
+            "006003",
+            "006017",
+            "006057",
+            "006061"
+          ]
+        },
+        "affectedZones": [
+          "https://api.weather.gov/zones/forecast/NVZ002",
+          "https://api.weather.gov/zones/forecast/CAZ072"
+        ],
+        "references": [
+          {
+            "@id": "https://api.weather.gov/alerts/NWS-IDP-PROD-4448826-3701678",
+            "identifier": "NWS-IDP-PROD-4448826-3701678",
+            "sender": "w-nws.webmaster@noaa.gov",
+            "sent": "2020-09-17T10:56:00-07:00"
+          },
+          {
+            "@id": "https://api.weather.gov/alerts/NWS-IDP-PROD-4448826-3701677",
+            "identifier": "NWS-IDP-PROD-4448826-3701677",
+            "sender": "w-nws.webmaster@noaa.gov",
+            "sent": "2020-09-17T10:56:00-07:00"
+          },
+          {
+            "@id": "https://api.weather.gov/alerts/NWS-IDP-PROD-4445771-3699315",
+            "identifier": "NWS-IDP-PROD-4445771-3699315",
+            "sender": "w-nws.webmaster@noaa.gov",
+            "sent": "2020-09-15T13:46:00-07:00"
+          },
+          {
+            "@id": "https://api.weather.gov/alerts/NWS-IDP-PROD-4449405-3702087",
+            "identifier": "NWS-IDP-PROD-4449405-3702087",
+            "sender": "w-nws.webmaster@noaa.gov",
+            "sent": "2020-09-17T16:58:00-07:00"
+          },
+          {
+            "@id": "https://api.weather.gov/alerts/NWS-IDP-PROD-4449405-3702086",
+            "identifier": "NWS-IDP-PROD-4449405-3702086",
+            "sender": "w-nws.webmaster@noaa.gov",
+            "sent": "2020-09-17T16:58:00-07:00"
+          },
+          {
+            "@id": "https://api.weather.gov/alerts/NWS-IDP-PROD-4444399-3698208",
+            "identifier": "NWS-IDP-PROD-4444399-3698208",
+            "sender": "w-nws.webmaster@noaa.gov",
+            "sent": "2020-09-14T14:18:00-07:00"
+          },
+          {
+            "@id": "https://api.weather.gov/alerts/NWS-IDP-PROD-4447493-3700685",
+            "identifier": "NWS-IDP-PROD-4447493-3700685",
+            "sender": "w-nws.webmaster@noaa.gov",
+            "sent": "2020-09-16T14:29:00-07:00"
+          },
+          {
+            "@id": "https://api.weather.gov/alerts/NWS-IDP-PROD-4447493-3700684",
+            "identifier": "NWS-IDP-PROD-4447493-3700684",
+            "sender": "w-nws.webmaster@noaa.gov",
+            "sent": "2020-09-16T14:29:00-07:00"
+          }
+        ],
+        "sent": "2020-09-17T21:56:00-07:00",
+        "effective": "2020-09-17T21:56:00-07:00",
+        "onset": "2020-09-17T21:56:00-07:00",
+        "expires": "2020-09-18T20:00:00-07:00",
+        "ends": "2020-09-18T11:00:00-07:00",
+        "status": "Actual",
+        "messageType": "Update",
+        "category": "Met",
+        "severity": "Moderate",
+        "certainty": "Likely",
+        "urgency": "Expected",
+        "event": "Dense Smoke Advisory",
+        "sender": "w-nws.webmaster@noaa.gov",
+        "senderName": "NWS Reno NV",
+        "headline": "Dense Smoke Advisory issued September 17 at 9:56PM PDT until September 18 at 11:00AM PDT by NWS Reno NV",
+        "description": "* CHANGES...Added Lake Wind Advisory Friday for Lake Tahoe.\n\n* WHAT...For the Lake Wind Advisory, southwest winds 15 to 25 mph\nwith gusts up to 45 mph expected. Waves 2 to 4 feet. For the\nDense Smoke Advisory, visibility below 4 miles at times along\nwith areas of poor air quality.\n\n* WHERE...Truckee and the Lake Tahoe Basin, and eastern Alpine\nCounty.\n\n* WHEN...For the Lake Wind Advisory, from 11 AM to 8 PM PDT\nFriday. For the Dense Smoke Advisory, until 11 AM PDT Friday.\n\n* ADDITIONAL DETAILS...Some areas especially north of Highway 50\ncould see improved air quality through tonight, although areas\nof smoke are likely to return to the Tahoe basin and Alpine\nCounty by early Friday morning.\n\n* IMPACTS...Small boats, kayaks and paddle boards will be prone to\ncapsizing and should remain off lake waters until conditions\nimprove. Areas of poor air quality.",
+        "instruction": "Check lake conditions before heading out and be prepared for a\nsudden increase in winds and wave heights. Consider postponing\nboating activities on the lake until a day with less wind.\n\nStay indoors as much as possible when smoke is present. Avoid\nstrenuous activity, especially if you are sensitive to poor air\nquality, such as the elderly, children and anyone with chronic\nillness or respiratory problems. Consider postponing outdoor\nactivities. Check airnow.gov for the latest air quality\ninformation.",
+        "response": "Execute",
+        "parameters": {
+          "NWSheadline": [
+            "DENSE SMOKE ADVISORY REMAINS IN EFFECT UNTIL 11 AM PDT FRIDAY... ...LAKE WIND ADVISORY IN EFFECT FROM 11 AM TO 8 PM PDT FRIDAY FOR LAKE TAHOE"
+          ],
+          "VTEC": [
+            "/O.CON.KREV.SM.Y.0009.000000T0000Z-200918T1800Z/"
+          ],
+          "PIL": [
+            "REVNPWREV"
+          ],
+          "BLOCKCHANNEL": [
+            "CMAS",
+            "EAS",
+            "NWEM"
+          ],
+          "eventEndingTime": [
+            "2020-09-18T18:00:00+00:00"
+          ]
+        }
+      }
+    },
+    {
+      "id": "https://api.weather.gov/alerts/NWS-IDP-PROD-4449727-3702337",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "@id": "https://api.weather.gov/alerts/NWS-IDP-PROD-4449727-3702337",
+        "@type": "wx:Alert",
+        "id": "NWS-IDP-PROD-4449727-3702337",
+        "areaDesc": "West Humboldt Basin - Pershing County; Eastern Lassen County; Lahontan Basin - Churchill and Eastern Mineral Counties; Northern Washoe County; Surprise Valley California",
+        "geocode": {
+          "UGC": [
+            "NVZ423",
+            "CAZ278",
+            "NVZ429",
+            "NVZ458",
+            "CAZ270"
+          ],
+          "SAME": [
+            "032001",
+            "032027",
+            "006035",
+            "032019",
+            "032031",
+            "032021",
+            "006049"
+          ]
+        },
+        "affectedZones": [
+          "https://api.weather.gov/zones/fire/NVZ423",
+          "https://api.weather.gov/zones/fire/CAZ278",
+          "https://api.weather.gov/zones/fire/NVZ429",
+          "https://api.weather.gov/zones/fire/NVZ458",
+          "https://api.weather.gov/zones/fire/CAZ270"
+        ],
+        "references": [
+          {
+            "@id": "https://api.weather.gov/alerts/NWS-IDP-PROD-4449713-3702323",
+            "identifier": "NWS-IDP-PROD-4449713-3702323",
+            "sender": "w-nws.webmaster@noaa.gov",
+            "sent": "2020-09-17T20:09:00-07:00"
+          },
+          {
+            "@id": "https://api.weather.gov/alerts/NWS-IDP-PROD-4449711-3702321",
+            "identifier": "NWS-IDP-PROD-4449711-3702321",
+            "sender": "w-nws.webmaster@noaa.gov",
+            "sent": "2020-09-17T20:09:00-07:00"
+          },
+          {
+            "@id": "https://api.weather.gov/alerts/NWS-IDP-PROD-4449711-3702320",
+            "identifier": "NWS-IDP-PROD-4449711-3702320",
+            "sender": "w-nws.webmaster@noaa.gov",
+            "sent": "2020-09-17T20:09:00-07:00"
+          },
+          {
+            "@id": "https://api.weather.gov/alerts/NWS-IDP-PROD-4449266-3701996",
+            "identifier": "NWS-IDP-PROD-4449266-3701996",
+            "sender": "w-nws.webmaster@noaa.gov",
+            "sent": "2020-09-17T14:33:00-07:00"
+          },
+          {
+            "@id": "https://api.weather.gov/alerts/NWS-IDP-PROD-4449266-3701995",
+            "identifier": "NWS-IDP-PROD-4449266-3701995",
+            "sender": "w-nws.webmaster@noaa.gov",
+            "sent": "2020-09-17T14:33:00-07:00"
+          },
+          {
+            "@id": "https://api.weather.gov/alerts/NWS-IDP-PROD-4447536-3700716",
+            "identifier": "NWS-IDP-PROD-4447536-3700716",
+            "sender": "w-nws.webmaster@noaa.gov",
+            "sent": "2020-09-16T15:12:00-07:00"
+          },
+          {
+            "@id": "https://api.weather.gov/alerts/NWS-IDP-PROD-4447536-3700715",
+            "identifier": "NWS-IDP-PROD-4447536-3700715",
+            "sender": "w-nws.webmaster@noaa.gov",
+            "sent": "2020-09-16T15:12:00-07:00"
+          },
+          {
+            "@id": "https://api.weather.gov/alerts/NWS-IDP-PROD-4447536-3700714",
+            "identifier": "NWS-IDP-PROD-4447536-3700714",
+            "sender": "w-nws.webmaster@noaa.gov",
+            "sent": "2020-09-16T15:12:00-07:00"
+          },
+          {
+            "@id": "https://api.weather.gov/alerts/NWS-IDP-PROD-4449268-3701998",
+            "identifier": "NWS-IDP-PROD-4449268-3701998",
+            "sender": "w-nws.webmaster@noaa.gov",
+            "sent": "2020-09-17T14:33:00-07:00"
+          },
+          {
+            "@id": "https://api.weather.gov/alerts/NWS-IDP-PROD-4447537-3700718",
+            "identifier": "NWS-IDP-PROD-4447537-3700718",
+            "sender": "w-nws.webmaster@noaa.gov",
+            "sent": "2020-09-16T15:12:00-07:00"
+          },
+          {
+            "@id": "https://api.weather.gov/alerts/NWS-IDP-PROD-4447537-3700717",
+            "identifier": "NWS-IDP-PROD-4447537-3700717",
+            "sender": "w-nws.webmaster@noaa.gov",
+            "sent": "2020-09-16T15:12:00-07:00"
+          }
+        ],
+        "sent": "2020-09-17T20:46:00-07:00",
+        "effective": "2020-09-17T20:46:00-07:00",
+        "onset": "2020-09-18T10:00:00-07:00",
+        "expires": "2020-09-18T23:00:00-07:00",
+        "ends": "2020-09-18T23:00:00-07:00",
+        "status": "Actual",
+        "messageType": "Update",
+        "category": "Met",
+        "severity": "Severe",
+        "certainty": "Likely",
+        "urgency": "Expected",
+        "event": "Red Flag Warning",
+        "sender": "w-nws.webmaster@noaa.gov",
+        "senderName": "NWS Reno NV",
+        "headline": "Red Flag Warning issued September 17 at 8:46PM PDT until September 18 at 11:00PM PDT by NWS Reno NV",
+        "description": "* CHANGES...None.\n\n* Affected Area...Fire Zone 270 Surprise Valley California, Fire\nZone 278 Eastern Lassen County, Fire Zone 423 West Humboldt\nBasin in Pershing County, Fire Zone 429 Lahontan Basin\nincluding Churchill and Eastern Mineral Counties and Fire Zone\n458 Northern Washoe County.\n\n* Winds...Southwest winds 15 to 25 mph with gusts to 40 mph.\nRidge tops could gust as high as 50 mph.\n\n* Humidity...As low as 10 to 20% Friday afternoon.\n\n* Duration...4 to 9 hours of critical conditions on Friday.\n\n* Impacts...The combination of gusty winds and low humidity can\ncause fire to rapidly grow in size and intensity before first\nresponders can contain them.",
+        "instruction": "Avoid outdoor activities that can cause a spark near dry\nvegetation, such as yard work, target shooting, or campfires.\nFollow local fire restrictions. Check weather.gov/reno for\nupdates and livingwithfire.info for preparedness tips.",
+        "response": "Prepare",
+        "parameters": {
+          "NWSheadline": [
+            "RED FLAG WARNING REMAINS IN EFFECT FROM 10 AM TO 11 PM PDT FRIDAY FOR GUSTY WINDS AND LOW HUMIDITY FOR THE SURPRISE VALLEY, EASTERN LASSEN COUNTY, NORTHERN WASHOE COUNTY, WEST HUMBOLDT BASIN AND LAHONTAN BASIN"
+          ],
+          "VTEC": [
+            "/O.CON.KREV.FW.W.0026.200918T1700Z-200919T0600Z/"
+          ],
+          "PIL": [
+            "REVRFWREV"
+          ],
+          "BLOCKCHANNEL": [
+            "CMAS",
+            "EAS",
+            "NWEM"
+          ],
+          "eventEndingTime": [
+            "2020-09-19T06:00:00+00:00"
+          ]
+        }
+      }
+    },
+    {
+      "id": "https://api.weather.gov/alerts/NWS-IDP-PROD-4449725-3702335",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "@id": "https://api.weather.gov/alerts/NWS-IDP-PROD-4449725-3702335",
+        "@type": "wx:Alert",
+        "id": "NWS-IDP-PROD-4449725-3702335",
+        "areaDesc": "Northern Sierra Front - Carson City/Douglas/Storey/Southern Washoe/Eastern Lyon/Far Southern Lassen Counties; Greater Lake Tahoe; Western Lassen/Eastern Plumas/Eastern Sierra/Eastern Nevada Counties",
+        "geocode": {
+          "UGC": [
+            "NVZ420",
+            "CAZ272",
+            "CAZ271"
+          ],
+          "SAME": [
+            "006035",
+            "032029",
+            "032510",
+            "032019",
+            "006091",
+            "032031",
+            "032005",
+            "006003",
+            "006057",
+            "006017",
+            "006061",
+            "006063"
+          ]
+        },
+        "affectedZones": [
+          "https://api.weather.gov/zones/fire/NVZ420",
+          "https://api.weather.gov/zones/fire/CAZ272",
+          "https://api.weather.gov/zones/fire/CAZ271"
+        ],
+        "references": [
+          {
+            "@id": "https://api.weather.gov/alerts/NWS-IDP-PROD-4449269-3701999",
+            "identifier": "NWS-IDP-PROD-4449269-3701999",
+            "sender": "w-nws.webmaster@noaa.gov",
+            "sent": "2020-09-17T14:33:00-07:00"
+          },
+          {
+            "@id": "https://api.weather.gov/alerts/NWS-IDP-PROD-4449712-3702322",
+            "identifier": "NWS-IDP-PROD-4449712-3702322",
+            "sender": "w-nws.webmaster@noaa.gov",
+            "sent": "2020-09-17T20:09:00-07:00"
+          },
+          {
+            "@id": "https://api.weather.gov/alerts/NWS-IDP-PROD-4447539-3700722",
+            "identifier": "NWS-IDP-PROD-4447539-3700722",
+            "sender": "w-nws.webmaster@noaa.gov",
+            "sent": "2020-09-16T15:12:00-07:00"
+          },
+          {
+            "@id": "https://api.weather.gov/alerts/NWS-IDP-PROD-4447539-3700721",
+            "identifier": "NWS-IDP-PROD-4447539-3700721",
+            "sender": "w-nws.webmaster@noaa.gov",
+            "sent": "2020-09-16T15:12:00-07:00"
+          }
+        ],
+        "sent": "2020-09-17T20:46:00-07:00",
+        "effective": "2020-09-17T20:46:00-07:00",
+        "onset": "2020-09-17T20:46:00-07:00",
+        "expires": "2020-09-18T23:00:00-07:00",
+        "ends": "2020-09-18T23:00:00-07:00",
+        "status": "Actual",
+        "messageType": "Update",
+        "category": "Met",
+        "severity": "Severe",
+        "certainty": "Likely",
+        "urgency": "Expected",
+        "event": "Red Flag Warning",
+        "sender": "w-nws.webmaster@noaa.gov",
+        "senderName": "NWS Reno NV",
+        "headline": "Red Flag Warning issued September 17 at 8:46PM PDT until September 18 at 11:00PM PDT by NWS Reno NV",
+        "description": "* CHANGES...None.\n\n* Affected Area...Fire Zone 271 Western Lassen, Eastern Plumas,\nEastern Sierra, and Eastern Nevada Counties, Fire Zone 272\nGreater Lake Tahoe Area, Fire Zone 420 Northern Sierra Front\nincluding Carson City, Douglas, Storey, Southern Washoe,\nWestern Lyon and and Far Southern Lassen Counties.\n\n* Winds...West to southwest 15 to 25 mph with gusts up to 40 mph.\nRidge winds up to 70 mph. Winds in valleys may temporarily\nweaken tonight into Friday morning.\n\n* Humidity...As low as 15 to 30% Friday afternoon.\n\n* Duration...4 to 9 hours of critical conditions during the\nafternoon. Critical conditions will occur through the entirety\nof the warned period for ridges.\n\n* Impacts...The combination of gusty winds and low humidity can\ncause fire to rapidly grow in size and intensity before first\nresponders can contain them.",
+        "instruction": "Avoid outdoor activities that can cause a spark near dry\nvegetation, such as yard work, target shooting, or campfires.\nFollow local fire restrictions. Check weather.gov/reno for\nupdates and livingwithfire.info for preparedness tips.",
+        "response": "Prepare",
+        "parameters": {
+          "NWSheadline": [
+            "RED FLAG WARNING REMAINS IN EFFECT UNTIL 11 PM PDT FRIDAY FOR GUSTY WINDS AND LOW HUMIDITY FOR NORTHEAST CA, THE LAKE TAHOE BASIN, AND THE NORTHERN SIERRA FRONT"
+          ],
+          "VTEC": [
+            "/O.CON.KREV.FW.W.0025.000000T0000Z-200919T0600Z/"
+          ],
+          "PIL": [
+            "REVRFWREV"
+          ],
+          "BLOCKCHANNEL": [
+            "CMAS",
+            "EAS",
+            "NWEM"
+          ],
+          "eventEndingTime": [
+            "2020-09-19T06:00:00+00:00"
+          ]
+        }
+      }
+    },
+    {
+      "id": "https://api.weather.gov/alerts/NWS-IDP-PROD-4449726-3702336",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "@id": "https://api.weather.gov/alerts/NWS-IDP-PROD-4449726-3702336",
+        "@type": "wx:Alert",
+        "id": "NWS-IDP-PROD-4449726-3702336",
+        "areaDesc": "Southern Sierra Front - Alpine/Northern Mono/Southern Lyon/Western Mineral Counties; Southern Mono County",
+        "geocode": {
+          "UGC": [
+            "NVZ421",
+            "CAZ274"
+          ],
+          "SAME": [
+            "006003",
+            "032021",
+            "032005",
+            "006051",
+            "032019",
+            "006039"
+          ]
+        },
+        "affectedZones": [
+          "https://api.weather.gov/zones/fire/NVZ421",
+          "https://api.weather.gov/zones/fire/CAZ274"
+        ],
+        "references": [
+          {
+            "@id": "https://api.weather.gov/alerts/NWS-IDP-PROD-4447538-3700720",
+            "identifier": "NWS-IDP-PROD-4447538-3700720",
+            "sender": "w-nws.webmaster@noaa.gov",
+            "sent": "2020-09-16T15:12:00-07:00"
+          },
+          {
+            "@id": "https://api.weather.gov/alerts/NWS-IDP-PROD-4447538-3700719",
+            "identifier": "NWS-IDP-PROD-4447538-3700719",
+            "sender": "w-nws.webmaster@noaa.gov",
+            "sent": "2020-09-16T15:12:00-07:00"
+          },
+          {
+            "@id": "https://api.weather.gov/alerts/NWS-IDP-PROD-4449267-3701997",
+            "identifier": "NWS-IDP-PROD-4449267-3701997",
+            "sender": "w-nws.webmaster@noaa.gov",
+            "sent": "2020-09-17T14:33:00-07:00"
+          },
+          {
+            "@id": "https://api.weather.gov/alerts/NWS-IDP-PROD-4449714-3702324",
+            "identifier": "NWS-IDP-PROD-4449714-3702324",
+            "sender": "w-nws.webmaster@noaa.gov",
+            "sent": "2020-09-17T20:09:00-07:00"
+          }
+        ],
+        "sent": "2020-09-17T20:46:00-07:00",
+        "effective": "2020-09-17T20:46:00-07:00",
+        "onset": "2020-09-17T20:46:00-07:00",
+        "expires": "2020-09-18T23:00:00-07:00",
+        "ends": "2020-09-19T02:00:00-07:00",
+        "status": "Actual",
+        "messageType": "Update",
+        "category": "Met",
+        "severity": "Severe",
+        "certainty": "Likely",
+        "urgency": "Expected",
+        "event": "Red Flag Warning",
+        "sender": "w-nws.webmaster@noaa.gov",
+        "senderName": "NWS Reno NV",
+        "headline": "Red Flag Warning issued September 17 at 8:46PM PDT until September 19 at 2:00AM PDT by NWS Reno NV",
+        "description": "* CHANGES...None.\n\n* Affected Area...Fire Zone 274 Southern Mono County, Fire Zone\n421 Southern Sierra Front including Alpine, Northern Mono,\nSouthern Lyon and and Western Mineral Counties.\n\n* Winds...South to southwest winds 15 to 25 mph with gusts up to\n40 mph possible during the afternoon. Ridge winds up to 80 mph.\nWinds in valleys may temporarily weaken tonight and early\nFriday morning.\n\n* Humidity...As low as 10 to 20% Friday afternoon.\n\n* Duration...Valleys 4 to 9 hours of critical conditions Friday\nafternoon and evening. Ridge locations will see critical\nconditions through early Saturday morning.\n\n* Impacts...The combination of gusty winds and low humidity can\ncause fire to rapidly grow in size and intensity before first\nresponders can contain them.",
+        "instruction": "Avoid outdoor activities that can cause a spark near dry\nvegetation, such as yard work, target shooting, or campfires.\nFollow local fire restrictions. Check weather.gov/reno for\nupdates and livingwithfire.info for preparedness tips.",
+        "response": "Prepare",
+        "parameters": {
+          "NWSheadline": [
+            "RED FLAG WARNING REMAINS IN EFFECT UNTIL 2 AM PDT SATURDAY FOR GUSTY WINDS AND LOW HUMIDITY FOR THE SOUTHERN SIERRA FRONT, THE EASTERN SIERRA, AND WESTERN MINERAL COUNTY"
+          ],
+          "VTEC": [
+            "/O.CON.KREV.FW.W.0025.000000T0000Z-200919T0900Z/"
+          ],
+          "PIL": [
+            "REVRFWREV"
+          ],
+          "BLOCKCHANNEL": [
+            "CMAS",
+            "EAS",
+            "NWEM"
+          ],
+          "eventEndingTime": [
+            "2020-09-19T09:00:00+00:00"
+          ]
+        }
+      }
+    },
+    {
+      "id": "https://api.weather.gov/alerts/NWS-IDP-PROD-4449422",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "@id": "https://api.weather.gov/alerts/NWS-IDP-PROD-4449422",
+        "@type": "wx:Alert",
+        "id": "NWS-IDP-PROD-4449422",
+        "areaDesc": "Mariposa, CA; Tuolumne, CA",
+        "geocode": {
+          "UGC": [
+            "CAC043",
+            "CAC109"
+          ],
+          "SAME": [
+            "006043",
+            "006109"
+          ]
+        },
+        "affectedZones": [
+          "https://api.weather.gov/zones/county/CAC043",
+          "https://api.weather.gov/zones/county/CAC109"
+        ],
+        "references": [],
+        "sent": "2020-09-17T17:16:00-07:00",
+        "effective": "2020-09-17T17:16:00-07:00",
+        "onset": "2020-09-17T17:16:00-07:00",
+        "expires": "2020-09-18T13:00:00-07:00",
+        "ends": null,
+        "status": "Actual",
+        "messageType": "Alert",
+        "category": "Met",
+        "severity": "Unknown",
+        "certainty": "Unknown",
+        "urgency": "Unknown",
+        "event": "Air Quality Alert",
+        "sender": "w-nws.webmaster@noaa.gov",
+        "senderName": "NWS Hanford CA",
+        "headline": "Air Quality Alert issued September 17 at 5:16PM PDT by NWS Hanford CA",
+        "description": "The Mariposa County and Tuolumne County Air Pollution Control\nDistricts have continued the Air Quality Alert due to smoke\nimpacts from surrounding wildfires for Mariposa and Tuolumne\nCounties. The Air Quality Alert is in effect until the fires are\nextinguished.\n\nExposure to particle pollution can cause serious health problems,\naggravated lung disease, cause asthma attacks and acute\nbronchitis, and increase risk of respiratory infections. Residents\nare advised to use caution as conditions warrant, People with\nheart and lung diseases should follow their doctor's advice fore\ndealing with episodes of unhealthy air quality. Additionally,\nolder adults and children should avoid prolonged exposure,\nstrenuous activities or heavy exertion, as conditions dictate.",
+        "instruction": null,
+        "response": "Monitor",
+        "parameters": {
+          "PIL": [
+            "HNXAQAHNX"
+          ],
+          "BLOCKCHANNEL": [
+            "CMAS",
+            "EAS",
+            "NWEM"
+          ]
+        }
+      }
+    },
+    {
+      "id": "https://api.weather.gov/alerts/NWS-IDP-PROD-4449423",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "@id": "https://api.weather.gov/alerts/NWS-IDP-PROD-4449423",
+        "@type": "wx:Alert",
+        "id": "NWS-IDP-PROD-4449423",
+        "areaDesc": "Fresno, CA; Tulare, CA; Kings, CA; Stanislaus, CA; San Joaquin, CA; Merced, CA; Madera, CA",
+        "geocode": {
+          "UGC": [
+            "CAC019",
+            "CAC107",
+            "CAC031",
+            "CAC099",
+            "CAC077",
+            "CAC047",
+            "CAC039"
+          ],
+          "SAME": [
+            "006019",
+            "006107",
+            "006031",
+            "006099",
+            "006077",
+            "006047",
+            "006039"
+          ]
+        },
+        "affectedZones": [
+          "https://api.weather.gov/zones/county/CAC019",
+          "https://api.weather.gov/zones/county/CAC107",
+          "https://api.weather.gov/zones/county/CAC031",
+          "https://api.weather.gov/zones/county/CAC099",
+          "https://api.weather.gov/zones/county/CAC077",
+          "https://api.weather.gov/zones/county/CAC047",
+          "https://api.weather.gov/zones/county/CAC039"
+        ],
+        "references": [],
+        "sent": "2020-09-17T17:16:00-07:00",
+        "effective": "2020-09-17T17:16:00-07:00",
+        "onset": "2020-09-17T17:16:00-07:00",
+        "expires": "2020-09-18T13:00:00-07:00",
+        "ends": null,
+        "status": "Actual",
+        "messageType": "Alert",
+        "category": "Met",
+        "severity": "Unknown",
+        "certainty": "Unknown",
+        "urgency": "Unknown",
+        "event": "Air Quality Alert",
+        "sender": "w-nws.webmaster@noaa.gov",
+        "senderName": "NWS Hanford CA",
+        "headline": "Air Quality Alert issued September 17 at 5:16PM PDT by NWS Hanford CA",
+        "description": "The San Joaquin Valley Air Pollution Control District is\nextending the Air Quality Alert issued on September 9, 2020, due\nto smoke impacts from the Creek Fire, SQF Complex, and other\nwildfires throughout California for San Joaquin, Stanislaus,\nMerced, Madera, Fresno, Kings, Tulare, and Valley portion of Kern\nCounty.\n\nThis Air Quality Alert is in effect until the fires are\nextinguished.\n\nExposure to particle pollution can cause serious health problems,\naggravate lung disease, cause asthma attacks and acute\nbronchitis, and increase risk of respiratory infections.\n\nResidents are advised to use caution as conditions warrant.\nPeople with heart or lung diseases should follow their doctor's\nadvice for dealing with episodes of unhealthy air quality.\n\nAdditionally, older adults and children should avoid prolonged\nexposure, strenuous activities or heavy exertion, as conditions\ndictate.\n\nFor additional information, call your local San Joaquin Valley\nAir District office. Modesto 209-557-6400, Fresno 559-230-6000,\nBakersfield 661-392-5500\n\nResidents can also follow air quality conditions by downloading\nthe free Valley Air app, available in the Apple store or Google\nPlay.",
+        "instruction": null,
+        "response": "Monitor",
+        "parameters": {
+          "PIL": [
+            "HNXAQAHNX"
+          ],
+          "BLOCKCHANNEL": [
+            "CMAS",
+            "EAS",
+            "NWEM"
+          ]
+        }
+      }
+    },
+    {
+      "id": "https://api.weather.gov/alerts/NWS-IDP-PROD-4449421",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "@id": "https://api.weather.gov/alerts/NWS-IDP-PROD-4449421",
+        "@type": "wx:Alert",
+        "id": "NWS-IDP-PROD-4449421",
+        "areaDesc": "Kern, CA",
+        "geocode": {
+          "UGC": [
+            "CAC029"
+          ],
+          "SAME": [
+            "006029"
+          ]
+        },
+        "affectedZones": [
+          "https://api.weather.gov/zones/county/CAC029"
+        ],
+        "references": [],
+        "sent": "2020-09-17T17:16:00-07:00",
+        "effective": "2020-09-17T17:16:00-07:00",
+        "onset": "2020-09-17T17:16:00-07:00",
+        "expires": "2020-09-18T13:00:00-07:00",
+        "ends": null,
+        "status": "Actual",
+        "messageType": "Alert",
+        "category": "Met",
+        "severity": "Unknown",
+        "certainty": "Unknown",
+        "urgency": "Unknown",
+        "event": "Air Quality Alert",
+        "sender": "w-nws.webmaster@noaa.gov",
+        "senderName": "NWS Hanford CA",
+        "headline": "Air Quality Alert issued September 17 at 5:16PM PDT by NWS Hanford CA",
+        "description": "The San Joaquin Valley Air Pollution Control District is\nextending the Air Quality Alert issued on September 9, 2020, due\nto smoke impacts from the Creek Fire, SQF Complex, and other\nwildfires throughout California for the Valley portion of Kern\nCounty.\n\nThis Air Quality Alert is in effect until the fires are\nextinguished.\n\nExposure to particle pollution can cause serious health problems,\naggravate lung disease, cause asthma attacks and acute\nbronchitis, and increase risk of respiratory infections.\n\nResidents are advised to use caution as conditions warrant.\nPeople with heart or lung diseases should follow their doctor's\nadvice for dealing with episodes of unhealthy air quality.\n\nAdditionally, older adults and children should avoid prolonged\nexposure, strenuous activities or heavy exertion, as conditions\ndictate.\n\nFor additional information, call your local San Joaquin Valley\nAir District office. Modesto 209-557-6400, Fresno 559-230-6000,\nBakersfield 661-392-5500\n\nResidents can also follow air quality conditions by downloading\nthe free Valley Air app, available in the Apple store or Google\nPlay.\n\nThe Eastern Kern Air Pollution Control District is extending the\nAir Quality Alert, due to smoke impacts until further notice. This\ncovers Lake Isabella south to Tehachapi and points east to\nRosamond, Boron and Ridgecrest.\n\nThis Air Quality Alert is in effect until the fires are\nextinguished.",
+        "instruction": null,
+        "response": "Monitor",
+        "parameters": {
+          "PIL": [
+            "HNXAQAHNX"
+          ],
+          "BLOCKCHANNEL": [
+            "CMAS",
+            "EAS",
+            "NWEM"
+          ]
+        }
+      }
+    },
+    {
+      "id": "https://api.weather.gov/alerts/NWS-IDP-PROD-4448745",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "@id": "https://api.weather.gov/alerts/NWS-IDP-PROD-4448745",
+        "@type": "wx:Alert",
+        "id": "NWS-IDP-PROD-4448745",
+        "areaDesc": "San Luis Obispo County Interior Valleys; San Luis Obispo County Central Coast; San Luis Obispo County Mountains",
+        "geocode": {
+          "UGC": [
+            "CAZ037",
+            "CAZ034",
+            "CAZ051"
+          ],
+          "SAME": [
+            "006079"
+          ]
+        },
+        "affectedZones": [
+          "https://api.weather.gov/zones/forecast/CAZ037",
+          "https://api.weather.gov/zones/forecast/CAZ034",
+          "https://api.weather.gov/zones/forecast/CAZ051"
+        ],
+        "references": [],
+        "sent": "2020-09-17T09:16:00-07:00",
+        "effective": "2020-09-17T09:16:00-07:00",
+        "onset": "2020-09-17T09:16:00-07:00",
+        "expires": "2020-09-18T11:00:00-07:00",
+        "ends": null,
+        "status": "Actual",
+        "messageType": "Alert",
+        "category": "Met",
+        "severity": "Unknown",
+        "certainty": "Unknown",
+        "urgency": "Unknown",
+        "event": "Air Quality Alert",
+        "sender": "w-nws.webmaster@noaa.gov",
+        "senderName": "NWS Los Angeles/Oxnard CA",
+        "headline": "Air Quality Alert issued September 17 at 9:16AM PDT by NWS Los Angeles/Oxnard CA",
+        "description": "The San Luis Obispo County Air Pollution Control District has issued\nan air quality alert due to smoke from wildfires.\n\nExposure to air pollution can cause serious health problems,\naggravate lung disease, cause asthma attacks and acute bronchitis,\nand increase risk of respiratory infections.\n\nResidents are advised to use caution as conditions warrant. People\nwith heart or lung disease should follow their doctors advice for\ndealing with episodes of smoke.\n\nAdditionally, older adults and children should avoid prolonged\nexposure, strenuous activity or heavy exertion, as conditions\ndictate.\n\nFor the latest air quality forecasts and information, visit the San\nLuis Obispo County Air Pollution Control District website at\nwww.slocleanair.org. or call 805 781 5912",
+        "instruction": null,
+        "response": "Monitor",
+        "parameters": {
+          "NWSheadline": [
+            "AIR QUALITY ALERT IN EFFECT UNTIL 11 AM PDT FRIDAY"
+          ],
+          "PIL": [
+            "LOXAQALOX"
+          ],
+          "BLOCKCHANNEL": [
+            "CMAS",
+            "EAS",
+            "NWEM"
+          ]
+        }
+      }
+    },
+    {
+      "id": "https://api.weather.gov/alerts/NWS-IDP-PROD-4448523",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "@id": "https://api.weather.gov/alerts/NWS-IDP-PROD-4448523",
+        "@type": "wx:Alert",
+        "id": "NWS-IDP-PROD-4448523",
+        "areaDesc": "Ventura County Coastal Valleys; Ventura County Mountains; Ventura County Interior Valleys; Ventura County Coast",
+        "geocode": {
+          "UGC": [
+            "CAZ045",
+            "CAZ053",
+            "CAZ044",
+            "CAZ040"
+          ],
+          "SAME": [
+            "006111"
+          ]
+        },
+        "affectedZones": [
+          "https://api.weather.gov/zones/forecast/CAZ045",
+          "https://api.weather.gov/zones/forecast/CAZ053",
+          "https://api.weather.gov/zones/forecast/CAZ044",
+          "https://api.weather.gov/zones/forecast/CAZ040"
+        ],
+        "references": [],
+        "sent": "2020-09-17T07:06:00-07:00",
+        "effective": "2020-09-17T07:06:00-07:00",
+        "onset": "2020-09-17T07:06:00-07:00",
+        "expires": "2020-09-18T11:00:00-07:00",
+        "ends": null,
+        "status": "Actual",
+        "messageType": "Alert",
+        "category": "Met",
+        "severity": "Unknown",
+        "certainty": "Unknown",
+        "urgency": "Unknown",
+        "event": "Air Quality Alert",
+        "sender": "w-nws.webmaster@noaa.gov",
+        "senderName": "NWS Los Angeles/Oxnard CA",
+        "headline": "Air Quality Alert issued September 17 at 7:06AM PDT by NWS Los Angeles/Oxnard CA",
+        "description": "The Ventura County Air Pollution Control District has issued an air\nquality alert due to increased particulate matter from wildfire smoke\nthroughout Ventura County. This alert is in effect until 9 AM PDT\nThursday.\n\nLocalized air quality could fluctuate depending on wind conditions.\nParticulate matter can vary hour by hour and change frequently; at times\nproducing unhealthy air quality in Ventura County.\n\nForecast AQI colors are meant to be as representative as possible for\nthe 24-hour day. Air quality may fluctuate and is likely to be better\nor worse than is indicated for the full day.\n\nExposure to particle pollution can cause serious health problems,\naggravate lung disease, cause asthma attacks and acute bronchitis,\nand increase risk of respiratory infections. Residents are advised to\nuse caution as conditions warrant. People with heart or lung diseases\nshould follow their doctors advice for dealing with episodes of\nunhealthy air quality. Additionally, people with respiratory or heart\ndisease, older adults, and children should avoid prolonged exposure,\nstrenuous activities or heavy exertion as conditions dictate.\n\nFor additional information, call the Ventura County Air Pollution\nControl District at 805.662.6960 (Monday-Friday), visit vcapcd.org,\nor follow VCAPCD on Twitter (@vcapcd).",
+        "instruction": null,
+        "response": "Monitor",
+        "parameters": {
+          "NWSheadline": [
+            "AIR QUALITY ALERT IN EFFECT UNTIL 9 AM PDT THIS MORNING"
+          ],
+          "PIL": [
+            "LOXAQALOX"
+          ],
+          "BLOCKCHANNEL": [
+            "CMAS",
+            "EAS",
+            "NWEM"
+          ]
+        }
+      }
+    },
+    {
+      "id": "https://api.weather.gov/alerts/NWS-IDP-PROD-4448524",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "@id": "https://api.weather.gov/alerts/NWS-IDP-PROD-4448524",
+        "@type": "wx:Alert",
+        "id": "NWS-IDP-PROD-4448524",
+        "areaDesc": "San Luis Obispo County Interior Valleys; San Luis Obispo County Central Coast; San Luis Obispo County Mountains",
+        "geocode": {
+          "UGC": [
+            "CAZ037",
+            "CAZ034",
+            "CAZ051"
+          ],
+          "SAME": [
+            "006079"
+          ]
+        },
+        "affectedZones": [
+          "https://api.weather.gov/zones/forecast/CAZ037",
+          "https://api.weather.gov/zones/forecast/CAZ034",
+          "https://api.weather.gov/zones/forecast/CAZ051"
+        ],
+        "references": [],
+        "sent": "2020-09-17T07:06:00-07:00",
+        "effective": "2020-09-17T07:06:00-07:00",
+        "onset": "2020-09-17T07:06:00-07:00",
+        "expires": "2020-09-18T11:00:00-07:00",
+        "ends": null,
+        "status": "Actual",
+        "messageType": "Alert",
+        "category": "Met",
+        "severity": "Unknown",
+        "certainty": "Unknown",
+        "urgency": "Unknown",
+        "event": "Air Quality Alert",
+        "sender": "w-nws.webmaster@noaa.gov",
+        "senderName": "NWS Los Angeles/Oxnard CA",
+        "headline": "Air Quality Alert issued September 17 at 7:06AM PDT by NWS Los Angeles/Oxnard CA",
+        "description": "The San Luis Obispo County Air Pollution Control District has issued\nan air quality alert due to smoke from wildfires.\n\nExposure to air pollution can cause serious health problems,\naggravate lung disease, cause asthma attacks and acute bronchitis,\nand increase risk of respiratory infections.\n\nResidents are advised to use caution as conditions warrant. People\nwith heart or lung disease should follow their doctors advice for\ndealing with episodes of smoke.\n\nAdditionally, older adults and children should avoid prolonged\nexposure, strenuous activity or heavy exertion, as conditions\ndictate.\n\nFor the latest air quality forecasts and information, visit the San\nLuis Obispo County Air Pollution Control District website at\nwww.slocleanair.org. or call 805 781 5912",
+        "instruction": null,
+        "response": "Monitor",
+        "parameters": {
+          "NWSheadline": [
+            "AIR QUALITY ALERT IN EFFECT UNTIL 11 AM PDT FRIDAY MORNING"
+          ],
+          "PIL": [
+            "LOXAQALOX"
+          ],
+          "BLOCKCHANNEL": [
+            "CMAS",
+            "EAS",
+            "NWEM"
+          ]
+        }
+      }
+    }
+  ],
+  "title": "current watches, warnings, and advisories for California",
+  "updated": "2020-09-18T04:56:59+00:00"
+}
