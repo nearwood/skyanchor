@@ -223,13 +223,13 @@ export default function App() {
       </AppBar>
       {forecastState !== ApiState.loaded && <LinearProgress variant="determinate" value={loadingProgress()} />}
       <Grid container spacing={2}>
-        <Grid item xs={12} md={6} lg={2}>
+        {process.env.NODE_ENV !== 'production' && <Grid item xs={12} md={6} lg={2}>
           <div>Geo: {geolocationState}</div>
           <div>Grid: {locationState}</div>
           <div>Forecast: {forecastState}</div>
           <div>Hourly: {hourlyState}</div>
           <div>Alerts: {alertsState}</div>
-        </Grid>
+        </Grid>}
         {Array.isArray(forecast) && forecast.map(period =>
           <Grid item xs={12} md={6} lg={2} key={`${period.number}_${period.name}`}>
             <WeatherCard period={period} hourlyData={getHourlySubset(hourlyForecast, period)} />
