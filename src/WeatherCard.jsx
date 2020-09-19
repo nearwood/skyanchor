@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Avatar from '@material-ui/core/Avatar';
 import Card from '@material-ui/core/Card';
@@ -11,7 +11,6 @@ import HourlyReport from './HourlyReport';
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    // maxWidth: 512
   },
   avatar: {
     width: theme.spacing(8),
@@ -22,6 +21,8 @@ const useStyles = makeStyles((theme) => ({
 export default function WeatherCard(props) { //TODO prop-types
   const { period, hourlyData } = props;
 
+  const [showHourly, setShowHourly] = useState(false);
+
   const classes = useStyles();
 
   const convertDate = (utcString) => {
@@ -31,7 +32,7 @@ export default function WeatherCard(props) { //TODO prop-types
 
   return (
     <Card className={classes.root}>
-      <CardActionArea>
+      <CardActionArea onClick={() => setShowHourly(!showHourly)}>
         <CardHeader
           avatar={<Avatar src={period.icon} variant="square" aria-label="weather icon" className={classes.avatar} />}
           title={period.name}
@@ -41,8 +42,12 @@ export default function WeatherCard(props) { //TODO prop-types
           <span>{period.temperature} °{period.temperatureUnit}</span><div>{period.shortForecast}</div>
         </CardContent>
       </CardActionArea>
-      <Divider variant="middle" />
-      <HourlyReport data={hourlyData}/>
+      {showHourly &&
+        <>
+          <Divider variant="middle" />
+          <HourlyReport data={hourlyData} />
+        </>
+      }
     </Card>
   );
 }
@@ -58,10 +63,10 @@ export function WeatherCardSkeleton() {
         subheader={<Skeleton animation="wave" height={10} width="40%" />}
       />
       <CardContent>
-          <React.Fragment>
-            <Skeleton animation="wave" height={10} style={{ marginBottom: 6 }} />
-            <Skeleton animation="wave" height={10} width="80%" />
-          </React.Fragment>
+        <React.Fragment>
+          <Skeleton animation="wave" height={10} style={{ marginBottom: 6 }} />
+          <Skeleton animation="wave" height={10} width="80%" />
+        </React.Fragment>
       </CardContent>
     </Card>
   );
