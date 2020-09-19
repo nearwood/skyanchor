@@ -58,7 +58,7 @@ export function WeatherCardSkeleton() {
   return (
     <Card className={classes.card}>
       <CardHeader
-        avatar={<Skeleton animation="wave" variant="square" className={classes.avatar} />}
+        avatar={<Skeleton animation="wave" variant="rect" className={classes.avatar} />}
         title={<Skeleton animation="wave" height={10} width="80%" style={{ marginBottom: 6 }} />}
         subheader={<Skeleton animation="wave" height={10} width="40%" />}
       />
