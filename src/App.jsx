@@ -6,6 +6,7 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
+import Badge from '@material-ui/core/Badge';
 
 // import CloudIcon from '@material-ui/icons/Cloud';
 // import ScheduleIcon from '@material-ui/icons/Schedule';
@@ -13,6 +14,7 @@ import NotificationImportantIcon from '@material-ui/icons/NotificationImportant'
 import './App.css';
 
 import WeatherCard from './WeatherCard';
+import Alerts from './Alerts';
 
 const useStyles = makeStyles((theme) => ({
   appBar: {
@@ -26,7 +28,7 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
   },
   menuButton: {
-    
+
   }
 }));
 
@@ -61,6 +63,8 @@ export default function App() {
   const [hourlyForecast, setHourlyForecast] = useState(null);
   const [alertsURL, setAlertsURL] = useState(null);
   const [alerts, setAlerts] = useState(null);
+
+  const [showAlerts, setShowAlerts] = useState(false);
 
   const classes = useStyles();
 
@@ -174,7 +178,7 @@ export default function App() {
     async function fetchData() {
       try {
         const response = await fetch(alertsURL).then(results => results.json());
-        setAlerts(response?.properties?.features);
+        setAlerts(response?.features);
         setAlertsState(ApiState.loaded);
       } catch (err) {
         console.error(err);
@@ -195,18 +199,27 @@ export default function App() {
     return value;
   };
 
+  const alertCount = Array.isArray(alerts) ? alerts.length : 0;
+
   return (
-    <div className="App" style={{padding: 10}}>
+    <div className="App" style={{ padding: 10 }}>
       <AppBar position="static" className={classes.appBar}>
-      <Toolbar>
-        <Typography variant="h6" noWrap className={classes.title}>
-        <span role="img" aria-label="Skyanchor logo">🌩️</span>
-        {cityState}
-        </Typography>
-          <IconButton edge="end" className={classes.menuButton} color="inherit" aria-label="alerts">
-            <NotificationImportantIcon />
+        <Toolbar>
+          <Typography variant="h6" noWrap className={classes.title}>
+            <span role="img" aria-label="Skyanchor logo">🌩️</span>
+            {cityState}
+          </Typography>
+          <IconButton edge="end" className={classes.menuButton} disabled={alertCount === 0}
+            color="inherit" aria-label="alerts" onClick={() => setShowAlerts(true)}>
+            {alertCount > 0 ?
+              <Badge badgeContent={alertCount} color="error">
+              <NotificationImportantIcon />
+              </Badge>
+              : 
+              <NotificationImportantIcon />
+            }
           </IconButton>
-          </Toolbar>
+        </Toolbar>
       </AppBar>
       {forecastState !== ApiState.loaded && <LinearProgress variant="determinate" value={loadingProgress()} />}
       <Grid container spacing={2}>
@@ -222,6 +235,7 @@ export default function App() {
             <WeatherCard period={period} hourlyData={getHourlySubset(hourlyForecast, period)} />
           </Grid>)}
       </Grid>
+      <Alerts data={alerts} open={showAlerts} onClose={() => setShowAlerts(false)} />
       {/* <span>{versionString}</span><span>Created by <a href="https://twitter.com/nearwood">@nearwood</a>.</span><span><a href="https://github.com/nearwood/skyanchor"><img alt="Github logo" height="32" width="32" src="https://cdn.jsdelivr.net/npm/simple-icons@v3/icons/github.svg" /></a></span> */}
     </div>
   );

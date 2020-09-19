@@ -1,49 +1,51 @@
-import React, { useState } from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import Paper from '@material-ui/core/Paper';
-import Table from '@material-ui/core/Table';
-import TableContainer from '@material-ui/core/TableContainer';
-import TableBody from '@material-ui/core/TableBody';
-import TableCell from '@material-ui/core/TableCell';
-import TableHead from '@material-ui/core/TableHead';
-import TableRow from '@material-ui/core/TableRow';
+import React from 'react';
+import Button from '@material-ui/core/Button';
+import Dialog from '@material-ui/core/Dialog';
+import DialogActions from '@material-ui/core/DialogActions';
+import DialogContent from '@material-ui/core/DialogContent';
+// import DialogContentText from '@material-ui/core/DialogContentText';
+import DialogTitle from '@material-ui/core/DialogTitle';
+import { makeStyles, useTheme } from '@material-ui/core/styles';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
 
 const useStyles = makeStyles((theme) => ({
-  root: {
-    maxWidth: 345,
+  noWrap: {
+    whiteSpace: 'nowrap'
   }
 }));
 
 export default function Alerts(props) { //TODO prop-types
-  //const { hourlyForecast } = props;
-  const alerts = [];
-
+  const { open, onClose, data } = props;
+  const theme = useTheme();
+  const fullScreen = useMediaQuery(theme.breakpoints.down('sm'));
   const classes = useStyles();
 
+  let alerts = <div>No active alerts</div>;
+
+  if (Array.isArray(data) && data.length > 0) { //TODO prop-types with hooks?
+    alerts = data.map(alert =>
+      <div key={alert.id}>
+        <div>{alert.areaDesc}</div>
+        <div className={classes.noWrap}>{alert.category}</div>
+        <div className={classes.noWrap}>{alert.severity}</div>
+        <div>{alert.event}</div>
+        <div>{alert.headline}</div>
+        <div>Effective: {alert.effective}</div>
+        <div>Expires: {alert.expires}</div>
+      </div>);
+  }
+
   return (
-        <TableContainer component={Paper}>
-          <Table className={classes.table} size="small" aria-label="a dense table">
-            <TableHead>
-              <TableRow>
-                <TableCell>Time</TableCell>
-                <TableCell align="right">Day?</TableCell>
-                <TableCell align="right">Temperature</TableCell>
-                <TableCell align="right">Wind</TableCell>
-              </TableRow>
-            </TableHead>
-            <TableBody>
-              {alerts.map((alert) => (
-                <TableRow key={alert.name}>
-                  <TableCell component="th" scope="row">
-                    {alert.startTime}
-                  </TableCell>
-                  <TableCell align="right">{alert.isDaytime ? 'day' : 'night'}</TableCell>
-                  <TableCell align="right">{alert.temperature} °{alert.temperatureUnit}</TableCell>
-                  <TableCell align="right">{alert.windSpeed} {alert.windDirection}</TableCell>
-                </TableRow>
-              ))}
-            </TableBody>
-          </Table>
-        </TableContainer>
+    <Dialog fullScreen={fullScreen} open={open} aria-labelledby="alert-dialog-title">
+        <DialogTitle id="alert-dialog-title">Weather Alerts</DialogTitle>
+        <DialogContent>
+            {alerts}
+        </DialogContent>
+        <DialogActions>
+          <Button autoFocus onClick={onClose} color="primary">
+            Close
+          </Button>
+        </DialogActions>
+      </Dialog>
   );
 }
