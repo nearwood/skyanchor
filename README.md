@@ -55,3 +55,14 @@ Bootstrapped with create-react-app. See [CRA.md](./CRA.md) for instructions.
 - Turn linter up to 11
 - Check API status: GET https://api.weather.gov/
 - Mobile: Bottom nav, Desktop: side nav
+
+# Future
+
+## Performance
+- Virtualize hourly list
+- Consider MUI's hidden strategy
+- Reduce calculations made within rendering
+
+## API
+- Decouple from NOAA weather and add intermediary layer
+- 
