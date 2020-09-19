@@ -25,13 +25,12 @@ export default function Alerts(props) { //TODO prop-types
   if (Array.isArray(data) && data.length > 0) { //TODO prop-types with hooks?
     alerts = data.map(alert =>
       <div key={alert.id}>
-        <div>{alert.areaDesc}</div>
-        <div className={classes.noWrap}>{alert.category}</div>
-        <div className={classes.noWrap}>{alert.severity}</div>
-        <div>{alert.event}</div>
-        <div>{alert.headline}</div>
-        <div>Effective: {alert.effective}</div>
-        <div>Expires: {alert.expires}</div>
+        <div>{alert.properties.areaDesc}</div>
+        <div className={classes.noWrap}>{alert.properties.severity}</div>
+        <div>{alert.properties.event}</div>
+        <div>{alert.properties.headline}</div>
+        <div>Effective: {alert.properties.effective}</div>
+        <div>Expires: {alert.properties.expires}</div>
       </div>);
   }
 
