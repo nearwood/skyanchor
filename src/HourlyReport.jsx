@@ -24,7 +24,7 @@ export default function HourlyReport(props) { //TODO prop-types
   const classes = useStyles();
 
   return (
-    <Table className={classes.table} size="small" aria-label="a dense table">
+    <Table size="small" aria-label="hourly weather table">
       <TableHead>
         <TableRow>
           <TableCell>Time</TableCell>
