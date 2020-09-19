@@ -10,7 +10,7 @@ import HourlyReport from './HourlyReport';
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    maxWidth: 512
+    // maxWidth: 512
   },
   avatar: {
     width: theme.spacing(8),

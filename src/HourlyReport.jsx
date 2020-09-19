@@ -28,7 +28,7 @@ export default function HourlyReport(props) { //TODO prop-types
       <TableHead>
         <TableRow>
           <TableCell>Time</TableCell>
-          <TableCell align="right"></TableCell>
+          <TableCell align="right">Forecast</TableCell>
           <TableCell align="right">Temperature</TableCell>
           <TableCell align="right">Wind</TableCell>
         </TableRow>

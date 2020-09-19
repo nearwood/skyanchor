@@ -1,15 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
-import LinearProgress from '@material-ui/core/LinearProgress';
+// import LinearProgress from '@material-ui/core/LinearProgress';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
 import Badge from '@material-ui/core/Badge';
+import CircularProgress from '@material-ui/core/CircularProgress';
 
-// import CloudIcon from '@material-ui/icons/Cloud';
-// import ScheduleIcon from '@material-ui/icons/Schedule';
 import NotificationImportantIcon from '@material-ui/icons/NotificationImportant';
 import './App.css';
 
@@ -24,11 +23,14 @@ const useStyles = makeStyles((theme) => ({
     },
     marginBottom: theme.spacing(1),
   },
+  toolbar: {
+    position: 'relative'
+  },
   title: {
     flexGrow: 1,
   },
-  menuButton: {
-
+  progress: {
+    color: 'gold'
   }
 }));
 
@@ -53,6 +55,7 @@ export default function App() {
   const [forecastState, setForecastState] = useState(ApiState.initial);
   const [hourlyState, setHourlyState] = useState(ApiState.initial);
   const [alertsState, setAlertsState] = useState(ApiState.initial);
+  const appStatusMap = [geolocationState, locationState, forecastState, hourlyState, alertsState];
 
   const [latitude, setLatitude] = useState(null);
   const [longitude, setLongitude] = useState(null);
@@ -192,36 +195,38 @@ export default function App() {
     }
   }, [alertsURL]);
 
-  const loadingProgress = () => {
-    const map = [geolocationState, locationState, forecastState, hourlyState, alertsState];
-    const increment = Math.round(100 / map.length);
-    const value = map.reduce((total, value) => total + (value === ApiState.loaded ? increment : 0), 0);
-    return value;
-  };
+  // const loadingProgress = () => {
+  //   const increment = Math.round(100 / appStatusMap.length);
+  //   const value = appStatusMap.reduce((total, value) => total + (value === ApiState.loaded ? increment : 0), 0);
+  //   return value;
+  // };
+
+  const loadingComplete = appStatusMap.every(state => state === ApiState.loaded);
 
   const alertCount = Array.isArray(alerts) ? alerts.length : 0;
 
   return (
     <div className="App" style={{ padding: 10 }}>
       <AppBar position="static" className={classes.appBar}>
-        <Toolbar>
+        <Toolbar className={classes.toolbar}>
           <Typography variant="h6" noWrap className={classes.title}>
             <span role="img" aria-label="Skyanchor logo">🌩️</span>
             {cityState}
           </Typography>
-          <IconButton edge="end" className={classes.menuButton} disabled={alertCount === 0}
+          {!loadingComplete && <CircularProgress className={classes.progress} />}
+          {loadingComplete && <IconButton edge="end" className={classes.menuButton} disabled={alertCount === 0}
             color="inherit" aria-label="alerts" onClick={() => setShowAlerts(true)}>
             {alertCount > 0 ?
               <Badge badgeContent={alertCount} color="error">
-              <NotificationImportantIcon />
+                <NotificationImportantIcon />
               </Badge>
               : 
               <NotificationImportantIcon />
             }
-          </IconButton>
+          </IconButton>}
         </Toolbar>
       </AppBar>
-      {forecastState !== ApiState.loaded && <LinearProgress variant="determinate" value={loadingProgress()} />}
+      {/* {!loadingComplete && <LinearProgress variant="determinate" value={loadingProgress()}/>} */}
       <Grid container spacing={2}>
         {process.env.NODE_ENV !== 'production' && <Grid item xs={12} md={6} lg={2}>
           <div>Geo: {geolocationState}</div>
