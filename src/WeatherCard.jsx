@@ -5,7 +5,8 @@ import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
 import CardHeader from '@material-ui/core/CardHeader';
 import CardContent from '@material-ui/core/CardContent';
-// import Divider from '@material-ui/core/Divider';
+import Divider from '@material-ui/core/Divider';
+import HourlyReport from './HourlyReport';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -18,7 +19,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function WeatherCard(props) { //TODO prop-types
-  const { period } = props;
+  const { period, hourlyData } = props;
 
   const classes = useStyles();
 
@@ -38,8 +39,9 @@ export default function WeatherCard(props) { //TODO prop-types
         <CardContent>
           <span>{period.temperature} °{period.temperatureUnit}</span><div>{period.shortForecast}</div>
         </CardContent>
-        {/* <Divider variant="middle" /> */}
       </CardActionArea>
+      <Divider variant="middle" />
+      <HourlyReport data={hourlyData}/>
     </Card>
   );
 }

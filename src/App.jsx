@@ -104,7 +104,6 @@ export default function App() {
         //State
         //setAlertsURL(`https://api.weather.gov/alerts/active?status=actual&message_type=alert,update,cancel&area=CA`);
         //API allows county value for zone, but location response only has that as part of a URL
-        //https://api.weather.gov/alerts/active?status=actual&point=30.4042%2C-91.1431
         const latLonPoint = `${latitude},${longitude}`;
         setAlertsURL(`https://api.weather.gov/alerts/active?status=actual&message_type=alert,update,cancel&point=${encodeURIComponent(latLonPoint)}`);
         setLocationState(ApiState.loaded);
@@ -138,11 +137,24 @@ export default function App() {
     }
   }, [forecastURL]);
 
+  const getHourlySubset = (hourlyData, period) => {
+    if (!Array.isArray(hourlyData) || !period) {
+      return [];
+    }
+
+    const start = new Date(period.startTime);
+    const end = new Date(period.endTime);
+    return hourlyData.filter(hour => {
+      const hourStart = new Date(hour.startTime);
+      const hourEnd = new Date(hour.endTime);
+      return (hourStart >= start && hourEnd <= end);
+    });
+  };
+
   useEffect(() => {
     async function fetchData() {
       try {
         const response = await fetch(hourlyURL).then(results => results.json());
-        console.log(response);
         setHourlyForecast(response?.properties?.periods);
         setHourlyState(ApiState.loaded);
       } catch (err) {
@@ -162,7 +174,6 @@ export default function App() {
     async function fetchData() {
       try {
         const response = await fetch(alertsURL).then(results => results.json());
-        console.log(response);
         setAlerts(response?.properties?.features);
         setAlertsState(ApiState.loaded);
       } catch (err) {
@@ -181,7 +192,6 @@ export default function App() {
     const map = [geolocationState, locationState, forecastState, hourlyState, alertsState];
     const increment = Math.round(100 / map.length);
     const value = map.reduce((total, value) => total + (value === ApiState.loaded ? increment : 0), 0);
-    console.log(value);
     return value;
   };
 
@@ -209,7 +219,7 @@ export default function App() {
         </Grid>
         {Array.isArray(forecast) && forecast.map(period =>
           <Grid item xs={12} md={6} lg={2} key={`${period.number}_${period.name}`}>
-            <WeatherCard period={period} />
+            <WeatherCard period={period} hourlyData={getHourlySubset(hourlyForecast, period)} />
           </Grid>)}
       </Grid>
       {/* <span>{versionString}</span><span>Created by <a href="https://twitter.com/nearwood">@nearwood</a>.</span><span><a href="https://github.com/nearwood/skyanchor"><img alt="Github logo" height="32" width="32" src="https://cdn.jsdelivr.net/npm/simple-icons@v3/icons/github.svg" /></a></span> */}
