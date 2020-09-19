@@ -6,6 +6,7 @@ import CardActionArea from '@material-ui/core/CardActionArea';
 import CardHeader from '@material-ui/core/CardHeader';
 import CardContent from '@material-ui/core/CardContent';
 import Divider from '@material-ui/core/Divider';
+import Skeleton from '@material-ui/lab/Skeleton';
 import HourlyReport from './HourlyReport';
 
 const useStyles = makeStyles((theme) => ({
@@ -46,7 +47,25 @@ export default function WeatherCard(props) { //TODO prop-types
   );
 }
 
+export function WeatherCardSkeleton() {
+  const classes = useStyles();
 
+  return (
+    <Card className={classes.card}>
+      <CardHeader
+        avatar={<Skeleton animation="wave" variant="square" className={classes.avatar} />}
+        title={<Skeleton animation="wave" height={10} width="80%" style={{ marginBottom: 6 }} />}
+        subheader={<Skeleton animation="wave" height={10} width="40%" />}
+      />
+      <CardContent>
+          <React.Fragment>
+            <Skeleton animation="wave" height={10} style={{ marginBottom: 6 }} />
+            <Skeleton animation="wave" height={10} width="80%" />
+          </React.Fragment>
+      </CardContent>
+    </Card>
+  );
+}
 /*
 properties:
 elevation: {value: 441.96, unitCode: "unit:m"}

@@ -8,11 +8,10 @@ import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
 import Badge from '@material-ui/core/Badge';
 import CircularProgress from '@material-ui/core/CircularProgress';
-
 import NotificationImportantIcon from '@material-ui/icons/NotificationImportant';
 import './App.css';
 
-import WeatherCard from './WeatherCard';
+import WeatherCard, { WeatherCardSkeleton } from './WeatherCard';
 import Alerts from './Alerts';
 
 const useStyles = makeStyles((theme) => ({
@@ -48,6 +47,7 @@ const ApiState = {
   error: 'error',
   loaded: 'loaded'
 };
+
 
 export default function App() {
   const [geolocationState, setGeolocationState] = useState(ApiState.initial);
@@ -195,11 +195,7 @@ export default function App() {
     }
   }, [alertsURL]);
 
-  // const loadingProgress = () => {
-  //   const increment = Math.round(100 / appStatusMap.length);
-  //   const value = appStatusMap.reduce((total, value) => total + (value === ApiState.loaded ? increment : 0), 0);
-  //   return value;
-  // };
+
 
   const loadingComplete = appStatusMap.every(state => state === ApiState.loaded);
 
@@ -220,7 +216,7 @@ export default function App() {
               <Badge badgeContent={alertCount} color="error">
                 <NotificationImportantIcon />
               </Badge>
-              : 
+              :
               <NotificationImportantIcon />
             }
           </IconButton>}
@@ -235,10 +231,32 @@ export default function App() {
           <div>Hourly: {hourlyState}</div>
           <div>Alerts: {alertsState}</div>
         </Grid>}
-        {Array.isArray(forecast) && forecast.map(period =>
+        {Array.isArray(forecast) ? forecast.map(period =>
           <Grid item xs={12} md={6} lg={2} key={`${period.number}_${period.name}`}>
             <WeatherCard period={period} hourlyData={getHourlySubset(hourlyForecast, period)} />
-          </Grid>)}
+          </Grid>)
+          :
+          <>
+          <Grid item xs={12} md={6} lg={2}>
+            <WeatherCardSkeleton />
+          </Grid>
+          <Grid item xs={12} md={6} lg={2}>
+            <WeatherCardSkeleton />
+          </Grid>
+          <Grid item xs={12} md={6} lg={2}>
+            <WeatherCardSkeleton />
+          </Grid>
+          <Grid item xs={12} md={6} lg={2}>
+            <WeatherCardSkeleton />
+          </Grid>
+          <Grid item xs={12} md={6} lg={2}>
+            <WeatherCardSkeleton />
+          </Grid>
+          <Grid item xs={12} md={6} lg={2}>
+            <WeatherCardSkeleton />
+          </Grid>
+          </>
+        }
       </Grid>
       <Alerts data={alerts} open={showAlerts} onClose={() => setShowAlerts(false)} />
       {/* <span>{versionString}</span><span>Created by <a href="https://twitter.com/nearwood">@nearwood</a>.</span><span><a href="https://github.com/nearwood/skyanchor"><img alt="Github logo" height="32" width="32" src="https://cdn.jsdelivr.net/npm/simple-icons@v3/icons/github.svg" /></a></span> */}
