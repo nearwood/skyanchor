@@ -231,7 +231,7 @@ export default function App() {
       <AppBar position="static" className={classes.appBar}>
         <Toolbar className={classes.toolbar}>
           <Typography variant="h6" noWrap className={classes.title}>
-            <span role="img" aria-label="Skyanchor logo">🌩️</span>
+            <span role="img" aria-label="Skyanchor mobile logo">🌩️</span>
             {cityState}
           </Typography>
           {showLoadingIndicator && <CircularProgress className={classes.progress} />}
@@ -251,10 +251,10 @@ export default function App() {
         <Drawer className={classes.drawer} variant="permanent" anchor="left">
           <List component="nav" aria-label="weather location and options" className={classes.list}>
             <ListItem className={classes.listHeader}>
-              <ListItemIcon><span role="img" aria-label="Skyanchor logo">🌩️</span>{showLoadingIndicator && <CircularProgress size="1em" className={classes.progress} />}</ListItemIcon>
+              <ListItemIcon><span role="img" aria-label="Skyanchor desktop logo">🌩️</span>{showLoadingIndicator && <CircularProgress size={20} className={classes.progress} />}</ListItemIcon>
               <ListItemText primary={cityState} />
             </ListItem>
-            <ListItem button onClick={() => setShowAlerts(true)}>
+            <ListItem button disabled={alertCount === 0} onClick={() => setShowAlerts(true)}>
               <ListItemIcon>
                 {alertCount > 0 ?
                   <Badge badgeContent={alertCount} color="error">
