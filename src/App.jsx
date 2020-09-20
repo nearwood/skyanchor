@@ -14,6 +14,8 @@ import './App.css';
 import WeatherCard, { WeatherCardSkeleton } from './WeatherCard';
 import Alerts from './Alerts';
 
+//import alertData from './exampleData/alerts';
+
 const useStyles = makeStyles((theme) => ({
   appBar: {
     display: 'none',
