@@ -23,6 +23,9 @@ const useStyles = makeStyles((theme) => ({
   },
   divider: {
     margin: '4px 0'
+  },
+  card: {
+    margin: theme.spacing(1)
   }
 }));
 
@@ -40,7 +43,7 @@ export default function WeatherCard(props) {
   };
 
   return (
-    <Card>
+    <Card className={classes.card}>
       <CardActionArea onClick={() => hourlyData.length > 0 ? setShowHourly(!showHourly) : void 0}>
         <CardHeader
           avatar={<Avatar src={period.icon} variant="square" aria-label="weather icon" className={classes.avatar} />}

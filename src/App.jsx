@@ -1,14 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
+import Drawer from '@material-ui/core/Drawer';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
 import Badge from '@material-ui/core/Badge';
+import Divider from '@material-ui/core/Divider';
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemIcon from '@material-ui/core/ListItemIcon';
+import ListItemText from '@material-ui/core/ListItemText';
 import CircularProgress from '@material-ui/core/CircularProgress';
-import NotificationImportantIcon from '@material-ui/icons/NotificationImportant';
 import Alert from '@material-ui/lab/Alert';
+import NotificationImportantIcon from '@material-ui/icons/NotificationImportant';
 import './App.css';
 
 import WeatherCard, { WeatherCardSkeleton } from './WeatherCard';
@@ -20,9 +26,16 @@ const useStyles = makeStyles((theme) => ({
   appBar: {
     display: 'none',
     [theme.breakpoints.down('sm')]: {
-      display: 'block',
+      display: 'block'
     },
-    marginBottom: theme.spacing(1),
+    marginBottom: theme.spacing(1)
+  },
+  drawer: {
+    width: 200,
+    display: 'none',
+    [theme.breakpoints.up('md')]: {
+      display: 'inline-block'
+    }
   },
   toolbar: {
     position: 'relative'
@@ -193,6 +206,8 @@ export default function App() {
       }
     }, [alertsURL]);
 
+  /** Simple way to determine whether loading is "complete". A more thorough method would have to account
+   * for the API call dependencies. */
   const loadingComplete = appStatusMap.every(state => state === ApiState.loaded);
 
   const alertCount = Array.isArray(alerts) ? alerts.length : 0;
@@ -220,7 +235,16 @@ export default function App() {
           </IconButton>
         </Toolbar>
       </AppBar>
-      <Grid container spacing={2} direction="column" justify="space-evenly">
+      <Drawer className={classes.drawer} variant="permanent" anchor="left">
+        <List>
+          <ListItem button>
+            <ListItemIcon></ListItemIcon>
+            <ListItemText primary={"Alerts"} />
+          </ListItem>
+        </List>
+        <Divider />
+      </Drawer>
+      <Grid container direction="column" justify="space-evenly">
         {errors.length > 0 && <Grid item xs={12}>
           {errors.map((error, i) => <Alert key={i} variant="filled" severity="error">{error}</Alert>)}
         </Grid>}
