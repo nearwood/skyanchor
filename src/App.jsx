@@ -23,6 +23,8 @@ import WeatherAlerts from './WeatherAlerts';
 //import alertData from './exampleData/alerts';
 
 const useStyles = makeStyles((theme) => ({
+  root: {
+  },
   appBar: {
     display: 'none',
     [theme.breakpoints.down('sm')]: {
@@ -215,7 +217,7 @@ export default function App() {
   const showLoadingIndicator = errors.length === 0 && warnings.length === 0 && !loadingComplete;
 
   return (
-    <div>
+    <div className={classes.root}>
       <AppBar position="static" className={classes.appBar}>
         <Toolbar className={classes.toolbar}>
           <Typography variant="h6" noWrap className={classes.title}>
@@ -244,15 +246,15 @@ export default function App() {
         </List>
         <Divider />
       </Drawer>
-      <Grid container direction="column" justify="space-evenly">
-        {errors.length > 0 && <Grid item xs={12}>
+      <Grid container direction="column">
+        {errors.length > 0 && <Grid item xs={12} md={6}>
           {errors.map((error, i) => <Alert key={i} variant="filled" severity="error">{error}</Alert>)}
         </Grid>}
-        {warnings.length > 0 && <Grid item xs={12}>
+        {warnings.length > 0 && <Grid item xs={12} md={6}>
           {warnings.map((warning, i) => <Alert key={i} variant="filled" severity="warning">{warning}</Alert>)}
         </Grid>}
         {Array.isArray(forecast) ? forecast.map(period =>
-          <Grid item xs={12} key={`${period.number}_${period.name}`}>
+          <Grid item xs={12} md={6} key={`${period.number}_${period.name}`}>
             <WeatherCard period={period} hourlyData={getHourlySubset(hourlyForecast, period)} />
           </Grid>)
           :
