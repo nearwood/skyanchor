@@ -12,6 +12,11 @@ const useStyles = makeStyles((theme) => ({
   },
   noWrap: {
     whiteSpace: 'nowrap'
+  },
+  extraData: {
+    [theme.breakpoints.down('xs')]: {
+      display: 'none'
+    }
   }
 }));
 
@@ -30,7 +35,7 @@ export default function HourlyReport(props) {
           <TableCell>Time</TableCell>
           <TableCell align="right">Forecast</TableCell>
           <TableCell align="right">Temperature</TableCell>
-          <TableCell align="right">Wind</TableCell>
+          <TableCell align="right" className={classes.extraData}>Wind</TableCell>
         </TableRow>
       </TableHead>
       <TableBody>
@@ -39,7 +44,7 @@ export default function HourlyReport(props) {
             <TableCell component="th" scope="row">{getHour(hour.startTime)}:00</TableCell>
             <TableCell align="right">{hour.shortForecast}</TableCell>
             <TableCell align="right" className={classes.noWrap}>{hour.temperature} °{hour.temperatureUnit}</TableCell>
-            <TableCell align="right" className={classes.noWrap}>{hour.windSpeed} {hour.windDirection}</TableCell>
+            <TableCell align="right" className={`${classes.noWrap} ${classes.extraData}`}>{hour.windSpeed} {hour.windDirection}</TableCell>
           </TableRow>
         ))}
       </TableBody>

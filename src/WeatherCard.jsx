@@ -5,16 +5,24 @@ import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
 import CardHeader from '@material-ui/core/CardHeader';
 import CardContent from '@material-ui/core/CardContent';
+import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
 import Skeleton from '@material-ui/lab/Skeleton';
 import HourlyReport from './HourlyReport';
 
 const useStyles = makeStyles((theme) => ({
-  root: {
+  forecast: {
+    fontSize: '1.2em'
+  },
+  nowrap: {
+    whiteSpace: 'nowrap'
   },
   avatar: {
     width: theme.spacing(8),
     height: theme.spacing(8),
+  },
+  divider: {
+    margin: '4px 0'
   }
 }));
 
@@ -32,18 +40,18 @@ export default function WeatherCard(props) {
   };
 
   return (
-    <Card className={classes.root}>
-      <CardActionArea onClick={() => setShowHourly(!showHourly)}>
+    <Card>
+      <CardActionArea onClick={() => hourlyData.length > 0 ? setShowHourly(!showHourly) : void 0}>
         <CardHeader
           avatar={<Avatar src={period.icon} variant="square" aria-label="weather icon" className={classes.avatar} />}
-          title={<><span>{period.name}</span> - <span>{period.temperature} °{period.temperatureUnit}</span> - <span>{period.shortForecast}</span></>}
+          title={<span className={classes.forecast}><span className={classes.nowrap}>{period.name}</span> - <span className={classes.nowrap}>{period.temperature} °{period.temperatureUnit}</span> - <span>{period.shortForecast}</span></span>}
           subheader={convertDate(period.startTime)}
         />
       </CardActionArea>
       {showHourly &&
         <CardContent>
-          <span>{period.detailedForecast}</span>
-          <Divider variant="middle" />
+          <Typography variant="body2" color="textSecondary" component="p"> {period.detailedForecast} </Typography>
+          <Divider variant="middle" className={classes.divider} />
           <HourlyReport data={hourlyData} />
         </CardContent>
       }
@@ -59,8 +67,8 @@ export function WeatherCardSkeleton() {
     <Card className={classes.card}>
       <CardHeader
         avatar={<Skeleton animation="wave" variant="rect" className={classes.avatar} />}
-        title={<Skeleton animation="wave" height={10} width="50%" style={{ marginBottom: 6 }} />}
-        subheader={<Skeleton animation="wave" height={10} width="15%" />}
+        title={<Skeleton animation="wave" height={24} width="66%" style={{ marginBottom: 6 }} />}
+        subheader={<Skeleton animation="wave" height={10} width="25%" />}
       />
     </Card>
   );
