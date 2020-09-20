@@ -8,10 +8,11 @@ import IconButton from '@material-ui/core/IconButton';
 import Badge from '@material-ui/core/Badge';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import NotificationImportantIcon from '@material-ui/icons/NotificationImportant';
+import Alert from '@material-ui/lab/Alert';
 import './App.css';
 
 import WeatherCard, { WeatherCardSkeleton } from './WeatherCard';
-import Alerts from './Alerts';
+import WeatherAlerts from './WeatherAlerts';
 
 //import alertData from './exampleData/alerts';
 
@@ -51,10 +52,13 @@ export default function App() {
   const [alertsState, setAlertsState] = useState(ApiState.initial);
   const appStatusMap = [geolocationState, locationState, forecastState, hourlyState, alertsState];
 
+  const [errors, setErrors] = useState([]);
+  const [warnings, setWarnings] = useState([]);
+
   //Data results from various API calls
   const [latitude, setLatitude] = useState(null);
   const [longitude, setLongitude] = useState(null);
-  const [cityState, setCityState] = useState("Loading...");
+  const [cityState, setCityState] = useState("");
   const [forecastURL, setForecastURL] = useState(null);
   const [forecast, setForecast] = useState(null);
   const [hourlyURL, setHourlyURL] = useState(null);
@@ -71,7 +75,7 @@ export default function App() {
     /** Obtains the devices location, if possible. */
     function getLocation() {
       if (!navigator.geolocation) {
-        //TODO: Maybe a notification of some type.
+        setErrors(errors => [...errors, "Geolocation not supported in this browser."]);
         setGeolocationState(ApiState.error);
       } else {
         function success(data) {
@@ -82,6 +86,8 @@ export default function App() {
 
         function failure(error) {
           console.error(error);
+          setErrors(errors => [...errors, "Could not obtain device position."]);
+          setForecast([]);
           setGeolocationState(ApiState.error);
         }
 
@@ -108,7 +114,9 @@ export default function App() {
           setAlertsURL(`https://api.weather.gov/alerts/active?status=actual&message_type=alert,update,cancel&point=${encodeURIComponent(latLonPoint)}`);
           setLocationState(ApiState.loaded);
         } catch (err) {
+          setErrors(errors => [...errors, "Could not obtain NOAA grid point."]);
           console.error(err);
+          setForecast([]);
           setLocationState(ApiState.error);
         }
       }
@@ -128,7 +136,9 @@ export default function App() {
           setForecast(response?.properties?.periods);
           setForecastState(ApiState.loaded);
         } catch (err) {
+          setErrors(errors => [...errors, "Could not obtain NOAA forecast."]);
           console.error(err);
+          setForecast([]);
           setForecastState(ApiState.error);
         }
       }
@@ -139,52 +149,55 @@ export default function App() {
       }
     }, [forecastURL]);
 
-  
+
   useEffect(
     /** Obtains hourly forecast data for the current location. */
     function getHourlyForecast() {
-    async function fetchData() {
-      try {
-        const response = await fetch(hourlyURL).then(results => results.json());
-        setHourlyForecast(response?.properties?.periods);
-        setHourlyState(ApiState.loaded);
-      } catch (err) {
-        console.error(err);
-        setHourlyState(ApiState.error);
+      async function fetchData() {
+        try {
+          const response = await fetch(hourlyURL).then(results => results.json());
+          setHourlyForecast(response?.properties?.periods);
+          setHourlyState(ApiState.loaded);
+        } catch (err) {
+          setWarnings(warnings => [...warnings, "Could not obtain NOAA hourly forecast."]);
+          console.error(err);
+          setHourlyState(ApiState.error);
+        }
       }
-    }
 
-    if (hourlyURL) {
-      setHourlyState(ApiState.loading);
-      fetchData();
-    }
-  }, [hourlyURL]);
+      if (hourlyURL) {
+        setHourlyState(ApiState.loading);
+        fetchData();
+      }
+    }, [hourlyURL]);
 
 
   useEffect(
     /** Obtains weather alert/advisory data for the current location. */
     function getWeatherAlerts() {
-    async function fetchData() {
-      try {
-        const response = await fetch(alertsURL).then(results => results.json());
-        setAlerts(response?.features);
-        setAlertsState(ApiState.loaded);
-      } catch (err) {
-        console.error(err);
-        setAlertsState(ApiState.error);
+      async function fetchData() {
+        try {
+          const response = await fetch(alertsURL).then(results => results.json());
+          setAlerts(response?.features);
+          setAlertsState(ApiState.loaded);
+        } catch (err) {
+          setWarnings(warnings => [...warnings, "Could not obtain NOAA weather alerts."]);
+          console.error(err);
+          setAlertsState(ApiState.error);
+        }
       }
-    }
 
-    if (alertsURL) {
-      setAlertsState(ApiState.loading);
-      fetchData();
-    }
-  }, [alertsURL]);
-
+      if (alertsURL) {
+        setAlertsState(ApiState.loading);
+        fetchData();
+      }
+    }, [alertsURL]);
 
   const loadingComplete = appStatusMap.every(state => state === ApiState.loaded);
 
   const alertCount = Array.isArray(alerts) ? alerts.length : 0;
+
+  const showLoadingIndicator = errors.length === 0 && warnings.length === 0 && !loadingComplete;
 
   return (
     <div>
@@ -194,7 +207,7 @@ export default function App() {
             <span role="img" aria-label="Skyanchor logo">🌩️</span>
             {cityState}
           </Typography>
-          {!loadingComplete && <CircularProgress className={classes.progress} />}
+          {showLoadingIndicator && <CircularProgress className={classes.progress} />}
           <IconButton edge="end" className={classes.menuButton} disabled={alertCount === 0}
             color="inherit" aria-label="alerts" onClick={() => setShowAlerts(true)}>
             {alertCount > 0 ?
@@ -208,12 +221,11 @@ export default function App() {
         </Toolbar>
       </AppBar>
       <Grid container spacing={2} direction="column" justify="space-evenly">
-        {process.env.NODE_ENV !== 'production' && <Grid item xs={12}>
-          <div>Geo: {geolocationState}</div>
-          <div>Grid: {locationState}</div>
-          <div>Forecast: {forecastState}</div>
-          <div>Hourly: {hourlyState}</div>
-          <div>Alerts: {alertsState}</div>
+        {errors.length > 0 && <Grid item xs={12}>
+          {errors.map((error, i) => <Alert key={i} variant="filled" severity="error">{error}</Alert>)}
+        </Grid>}
+        {warnings.length > 0 && <Grid item xs={12}>
+          {warnings.map((warning, i) => <Alert key={i} variant="filled" severity="warning">{warning}</Alert>)}
         </Grid>}
         {Array.isArray(forecast) ? forecast.map(period =>
           <Grid item xs={12} key={`${period.number}_${period.name}`}>
@@ -242,7 +254,7 @@ export default function App() {
           </>
         }
       </Grid>
-      <Alerts data={alerts} open={showAlerts} onClose={() => setShowAlerts(false)} />
+      <WeatherAlerts data={alerts} open={showAlerts} onClose={() => setShowAlerts(false)} />
       {/* <span>{versionString}</span><span>Created by <a href="https://twitter.com/nearwood">@nearwood</a>.</span><span><a href="https://github.com/nearwood/skyanchor"><img alt="Github logo" height="32" width="32" src="https://cdn.jsdelivr.net/npm/simple-icons@v3/icons/github.svg" /></a></span> */}
     </div>
   );

@@ -33,7 +33,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 /** A modal that displays weather alerts and advisories */
-export default function Alerts(props) {
+export default function WeatherAlerts(props) {
   const { open, onClose, data } = props;
   const theme = useTheme();
   const fullScreen = useMediaQuery(theme.breakpoints.down('sm'));
@@ -41,7 +41,7 @@ export default function Alerts(props) {
   let alerts = <div>No active alerts</div>;
 
   if (Array.isArray(data) && data.length > 0) {
-    alerts = data.map(alert => <Alert key={alert.id} alert={alert.properties} />);
+    alerts = data.map(alert => <WeatherAlert key={alert.id} alert={alert.properties} />);
   }
 
   return (
@@ -58,7 +58,7 @@ export default function Alerts(props) {
 }
 
 /** A single alert, with a headline, severity, etc. */
-export function Alert({ alert }) {
+export function WeatherAlert({ alert }) {
   const classes = useStyles();
 
   return (<>
