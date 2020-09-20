@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
-// import LinearProgress from '@material-ui/core/LinearProgress';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
@@ -43,15 +42,8 @@ const headers = {
   //"User-Agent": "(https://github.com/nearwood/skyanchor, nearwood@gmail.com)" //TODO: Consider externalizing this
 };
 
-const ApiState = {
-  initial: 'initial',
-  loading: 'loading',
-  error: 'error',
-  loaded: 'loaded'
-};
-
-
 export default function App() {
+  //Track indvidual API call statuses with finite states.
   const [geolocationState, setGeolocationState] = useState(ApiState.initial);
   const [locationState, setLocationState] = useState(ApiState.initial);
   const [forecastState, setForecastState] = useState(ApiState.initial);
@@ -59,6 +51,7 @@ export default function App() {
   const [alertsState, setAlertsState] = useState(ApiState.initial);
   const appStatusMap = [geolocationState, locationState, forecastState, hourlyState, alertsState];
 
+  //Data results from various API calls
   const [latitude, setLatitude] = useState(null);
   const [longitude, setLongitude] = useState(null);
   const [cityState, setCityState] = useState("Loading...");
@@ -69,98 +62,87 @@ export default function App() {
   const [alertsURL, setAlertsURL] = useState(null);
   const [alerts, setAlerts] = useState(null);
 
+  //For the Alert modal dialog.
   const [showAlerts, setShowAlerts] = useState(false);
 
   const classes = useStyles();
 
-  useEffect(() => {
-    if (!navigator.geolocation) {
-      //TODO: Maybe a notification of some type.
-      setGeolocationState(ApiState.error);
-    } else {
-      function success(data) {
-        setLatitude(data.coords.latitude);
-        setLongitude(data.coords.longitude);
-        setGeolocationState(ApiState.loaded);
-      }
-
-      function failure(error) {
-        console.error(error);
+  useEffect(
+    /** Obtains the devices location, if possible. */
+    function getLocation() {
+      if (!navigator.geolocation) {
+        //TODO: Maybe a notification of some type.
         setGeolocationState(ApiState.error);
+      } else {
+        function success(data) {
+          setLatitude(data.coords.latitude);
+          setLongitude(data.coords.longitude);
+          setGeolocationState(ApiState.loaded);
+        }
+
+        function failure(error) {
+          console.error(error);
+          setGeolocationState(ApiState.error);
+        }
+
+        setGeolocationState(ApiState.loading);
+        navigator.geolocation.getCurrentPosition(success, failure);
+      }
+    }, []);
+
+  useEffect(
+    /** If the device location (lat/lon) is known, get the NOAA grid point it corresponds to for subsequent API calls.
+     * Sets API endpoints for all other API calls (forecast, hourly forecast, alerts), and misc. location data.
+    */
+    function getLocationGridPoint() {
+      async function fetchData() {
+        try {
+          const response = await fetch(`https://api.weather.gov/points/${latitude},${longitude}`, { headers }).then(results => results.json());
+          setCityState(parseLocation(response?.properties?.relativeLocation));
+          setForecastURL(response?.properties?.forecast);
+          setHourlyURL(response?.properties?.forecastHourly);
+          //State
+          //setAlertsURL(`https://api.weather.gov/alerts/active?status=actual&message_type=alert,update,cancel&area=CA`);
+          //API allows county value for zone, but location response only has that as part of a URL
+          const latLonPoint = `${latitude},${longitude}`;
+          setAlertsURL(`https://api.weather.gov/alerts/active?status=actual&message_type=alert,update,cancel&point=${encodeURIComponent(latLonPoint)}`);
+          setLocationState(ApiState.loaded);
+        } catch (err) {
+          console.error(err);
+          setLocationState(ApiState.error);
+        }
       }
 
-      setGeolocationState(ApiState.loading);
-      navigator.geolocation.getCurrentPosition(success, failure);
-    }
-  }, []);
-
-  const parseLocation = (relativeLocation) => {
-    if (relativeLocation?.properties) {
-      const { city, state } = relativeLocation?.properties;
-      return `${city}, ${state}`;
-    }
-
-    return '';
-  };
-
-  useEffect(() => {
-    async function fetchData() {
-      try {
-        const response = await fetch(`https://api.weather.gov/points/${latitude},${longitude}`, { headers }).then(results => results.json());
-        setCityState(parseLocation(response?.properties?.relativeLocation));
-        setForecastURL(response?.properties?.forecast);
-        setHourlyURL(response?.properties?.forecastHourly);
-        //State
-        //setAlertsURL(`https://api.weather.gov/alerts/active?status=actual&message_type=alert,update,cancel&area=CA`);
-        //API allows county value for zone, but location response only has that as part of a URL
-        const latLonPoint = `${latitude},${longitude}`;
-        setAlertsURL(`https://api.weather.gov/alerts/active?status=actual&message_type=alert,update,cancel&point=${encodeURIComponent(latLonPoint)}`);
-        setLocationState(ApiState.loaded);
-      } catch (err) {
-        console.error(err);
-        setLocationState(ApiState.error);
+      if (typeof latitude === 'number' && typeof longitude === 'number') {
+        setLocationState(ApiState.loading);
+        fetchData();
       }
-    }
+    }, [latitude, longitude]);
 
-    if (typeof latitude === 'number' && typeof longitude === 'number') {
-      setLocationState(ApiState.loading);
-      fetchData();
-    }
-  }, [latitude, longitude]);
-
-  useEffect(() => {
-    async function fetchData() {
-      try {
-        const response = await fetch(forecastURL, { headers }).then(results => results.json());
-        setForecast(response?.properties?.periods);
-        setForecastState(ApiState.loaded);
-      } catch (err) {
-        console.error(err);
-        setForecastState(ApiState.error);
+  useEffect(
+    /** Obtains weather forecast data for the current location. */
+    function getForecast() {
+      async function fetchData() {
+        try {
+          const response = await fetch(forecastURL, { headers }).then(results => results.json());
+          setForecast(response?.properties?.periods);
+          setForecastState(ApiState.loaded);
+        } catch (err) {
+          console.error(err);
+          setForecastState(ApiState.error);
+        }
       }
-    }
 
-    if (forecastURL) {
-      setForecastState(ApiState.loading);
-      fetchData();
-    }
-  }, [forecastURL]);
+      if (forecastURL) {
+        setForecastState(ApiState.loading);
+        fetchData();
+      }
+    }, [forecastURL]);
 
-  const getHourlySubset = (hourlyData, period) => {
-    if (!Array.isArray(hourlyData) || !period) {
-      return [];
-    }
-
-    const start = new Date(period.startTime);
-    const end = new Date(period.endTime);
-    return hourlyData.filter(hour => {
-      const hourStart = new Date(hour.startTime);
-      const hourEnd = new Date(hour.endTime);
-      return (hourStart >= start && hourEnd <= end);
-    });
-  };
-
-  useEffect(() => {
+  
+  useEffect(
+    /** Obtains hourly forecast data for the current location. */
+    function getHourlyForecast() {
     async function fetchData() {
       try {
         const response = await fetch(hourlyURL).then(results => results.json());
@@ -179,7 +161,9 @@ export default function App() {
   }, [hourlyURL]);
 
 
-  useEffect(() => {
+  useEffect(
+    /** Obtains weather alert/advisory data for the current location. */
+    function getWeatherAlerts() {
     async function fetchData() {
       try {
         const response = await fetch(alertsURL).then(results => results.json());
@@ -198,13 +182,12 @@ export default function App() {
   }, [alertsURL]);
 
 
-
   const loadingComplete = appStatusMap.every(state => state === ApiState.loaded);
 
   const alertCount = Array.isArray(alerts) ? alerts.length : 0;
 
   return (
-    <div className="App" style={{ padding: 10 }}>
+    <div>
       <AppBar position="static" className={classes.appBar}>
         <Toolbar className={classes.toolbar}>
           <Typography variant="h6" noWrap className={classes.title}>
@@ -212,7 +195,7 @@ export default function App() {
             {cityState}
           </Typography>
           {!loadingComplete && <CircularProgress className={classes.progress} />}
-          {loadingComplete && <IconButton edge="end" className={classes.menuButton} disabled={alertCount === 0}
+          <IconButton edge="end" className={classes.menuButton} disabled={alertCount === 0}
             color="inherit" aria-label="alerts" onClick={() => setShowAlerts(true)}>
             {alertCount > 0 ?
               <Badge badgeContent={alertCount} color="error">
@@ -221,12 +204,11 @@ export default function App() {
               :
               <NotificationImportantIcon />
             }
-          </IconButton>}
+          </IconButton>
         </Toolbar>
       </AppBar>
-      {/* {!loadingComplete && <LinearProgress variant="determinate" value={loadingProgress()}/>} */}
-      <Grid container spacing={2}>
-        {process.env.NODE_ENV !== 'production' && <Grid item xs={12} md={6} lg={2}>
+      <Grid container spacing={2} direction="column" justify="space-evenly">
+        {process.env.NODE_ENV !== 'production' && <Grid item xs={12}>
           <div>Geo: {geolocationState}</div>
           <div>Grid: {locationState}</div>
           <div>Forecast: {forecastState}</div>
@@ -234,29 +216,29 @@ export default function App() {
           <div>Alerts: {alertsState}</div>
         </Grid>}
         {Array.isArray(forecast) ? forecast.map(period =>
-          <Grid item xs={12} md={6} lg={2} key={`${period.number}_${period.name}`}>
+          <Grid item xs={12} key={`${period.number}_${period.name}`}>
             <WeatherCard period={period} hourlyData={getHourlySubset(hourlyForecast, period)} />
           </Grid>)
           :
           <>
-          <Grid item xs={12} md={6} lg={2}>
-            <WeatherCardSkeleton />
-          </Grid>
-          <Grid item xs={12} md={6} lg={2}>
-            <WeatherCardSkeleton />
-          </Grid>
-          <Grid item xs={12} md={6} lg={2}>
-            <WeatherCardSkeleton />
-          </Grid>
-          <Grid item xs={12} md={6} lg={2}>
-            <WeatherCardSkeleton />
-          </Grid>
-          <Grid item xs={12} md={6} lg={2}>
-            <WeatherCardSkeleton />
-          </Grid>
-          <Grid item xs={12} md={6} lg={2}>
-            <WeatherCardSkeleton />
-          </Grid>
+            <Grid item xs={12}>
+              <WeatherCardSkeleton />
+            </Grid>
+            <Grid item xs={12}>
+              <WeatherCardSkeleton />
+            </Grid>
+            <Grid item xs={12}>
+              <WeatherCardSkeleton />
+            </Grid>
+            <Grid item xs={12}>
+              <WeatherCardSkeleton />
+            </Grid>
+            <Grid item xs={12}>
+              <WeatherCardSkeleton />
+            </Grid>
+            <Grid item xs={12}>
+              <WeatherCardSkeleton />
+            </Grid>
           </>
         }
       </Grid>
@@ -265,3 +247,42 @@ export default function App() {
     </div>
   );
 }
+
+/** Enum to track the state of an API call */
+const ApiState = {
+  initial: 'initial',
+  loading: 'loading',
+  error: 'error',
+  loaded: 'loaded'
+};
+
+/** Given a api.weather.gov `relativeLocation` from the `/points` call, piece a "city, state" string together.
+ * @returns {string} A string of the format: `City, ST` or an empty string `''` if the argument cannot be parsed.
+*/
+const parseLocation = (relativeLocation) => {
+  if (relativeLocation?.properties) {
+    const { city, state } = relativeLocation?.properties;
+    return `${city}, ${state}`;
+  }
+
+  return '';
+};
+
+/** Hourly data comes as a large array for the entire forecast (7 days). This filters the hourly forecast
+ * data to just what occurs between a general forecast period's `startTime` and `endTime`.
+ * @returns {Array} An array containing any items from `hourlyData` that have `startTime` and `endTime` between the
+ *                  period's `startTime` and `endTime`, or an empty array if the arguments cannot be parsed.
+*/
+const getHourlySubset = (hourlyData, period) => {
+  if (!Array.isArray(hourlyData) || !period) {
+    return [];
+  }
+
+  const start = new Date(period.startTime);
+  const end = new Date(period.endTime);
+  return hourlyData.filter(hour => {
+    const hourStart = new Date(hour.startTime);
+    const hourEnd = new Date(hour.endTime);
+    return (hourStart >= start && hourEnd <= end);
+  });
+};

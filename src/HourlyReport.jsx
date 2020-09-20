@@ -18,7 +18,7 @@ const useStyles = makeStyles((theme) => ({
 const getHour = (dateString) => new Date(dateString).getHours();
 
 
-export default function HourlyReport(props) { //TODO prop-types
+export default function HourlyReport(props) {
   const { data } = props;
 
   const classes = useStyles();

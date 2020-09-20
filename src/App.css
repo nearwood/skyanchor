@@ -2,10 +2,6 @@ body {
   background-color: azure;
 }
 
-.App {
-  margin-bottom: 56px; /* TODO theme spacing */
-}
-
 footer {
   display: flex;
   width: 100%;
