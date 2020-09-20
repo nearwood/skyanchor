@@ -251,7 +251,7 @@ export default function App() {
         <Drawer className={classes.drawer} variant="permanent" anchor="left">
           <List component="nav" aria-label="weather location and options" className={classes.list}>
             <ListItem className={classes.listHeader}>
-              <ListItemIcon><span role="img" aria-label="Skyanchor logo">🌩️</span></ListItemIcon>
+              <ListItemIcon><span role="img" aria-label="Skyanchor logo">🌩️</span>{showLoadingIndicator && <CircularProgress size="1em" className={classes.progress} />}</ListItemIcon>
               <ListItemText primary={cityState} />
             </ListItem>
             <ListItem button onClick={() => setShowAlerts(true)}>
