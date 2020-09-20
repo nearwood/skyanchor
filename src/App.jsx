@@ -41,6 +41,9 @@ const useStyles = makeStyles((theme) => ({
       display: 'inline-block'
     }
   },
+  list: {
+    paddingTop: 0,
+  },
   listHeader: {
     backgroundColor: theme.palette.primary.dark,
     color: 'white'
@@ -246,7 +249,7 @@ export default function App() {
       </AppBar>
       <div className={classes.drawerContainer}>
         <Drawer className={classes.drawer} variant="permanent" anchor="left">
-          <List component="nav" aria-label="weather location and options">
+          <List component="nav" aria-label="weather location and options" className={classes.list}>
             <ListItem className={classes.listHeader}>
               <ListItemIcon><span role="img" aria-label="Skyanchor logo">🌩️</span></ListItemIcon>
               <ListItemText primary={cityState} />
