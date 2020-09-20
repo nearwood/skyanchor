@@ -32,7 +32,9 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-/** A modal that displays weather alerts and advisories */
+/** A modal that displays weather alerts and advisories
+ * Note: Currently React complains about MUI's Modal using `findDOMNode`. See: https://github.com/mui-org/material-ui/issues/13394.
+ */
 export default function WeatherAlerts(props) {
   const { open, onClose, data } = props;
   const theme = useTheme();

@@ -7,7 +7,6 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
 import Badge from '@material-ui/core/Badge';
-import Divider from '@material-ui/core/Divider';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
@@ -25,6 +24,9 @@ import WeatherAlerts from './WeatherAlerts';
 const useStyles = makeStyles((theme) => ({
   root: {
   },
+  drawerContainer: {
+    display: 'flex',
+  },
   appBar: {
     display: 'none',
     [theme.breakpoints.down('sm')]: {
@@ -38,6 +40,10 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.up('md')]: {
       display: 'inline-block'
     }
+  },
+  listHeader: {
+    backgroundColor: theme.palette.primary.dark,
+    color: 'white'
   },
   toolbar: {
     position: 'relative'
@@ -67,6 +73,7 @@ export default function App() {
   const [alertsState, setAlertsState] = useState(ApiState.initial);
   const appStatusMap = [geolocationState, locationState, forecastState, hourlyState, alertsState];
 
+  //Any issues with getting data will be stored here as simple string arrays.
   const [errors, setErrors] = useState([]);
   const [warnings, setWarnings] = useState([]);
 
@@ -237,49 +244,62 @@ export default function App() {
           </IconButton>
         </Toolbar>
       </AppBar>
-      <Drawer className={classes.drawer} variant="permanent" anchor="left">
-        <List>
-          <ListItem button>
-            <ListItemIcon></ListItemIcon>
-            <ListItemText primary={"Alerts"} />
-          </ListItem>
-        </List>
-        <Divider />
-      </Drawer>
-      <Grid container direction="column">
-        {errors.length > 0 && <Grid item xs={12} md={6}>
-          {errors.map((error, i) => <Alert key={i} variant="filled" severity="error">{error}</Alert>)}
-        </Grid>}
-        {warnings.length > 0 && <Grid item xs={12} md={6}>
-          {warnings.map((warning, i) => <Alert key={i} variant="filled" severity="warning">{warning}</Alert>)}
-        </Grid>}
-        {Array.isArray(forecast) ? forecast.map(period =>
-          <Grid item xs={12} md={6} key={`${period.number}_${period.name}`}>
-            <WeatherCard period={period} hourlyData={getHourlySubset(hourlyForecast, period)} />
-          </Grid>)
-          :
-          <>
-            <Grid item xs={12}>
-              <WeatherCardSkeleton />
-            </Grid>
-            <Grid item xs={12}>
-              <WeatherCardSkeleton />
-            </Grid>
-            <Grid item xs={12}>
-              <WeatherCardSkeleton />
-            </Grid>
-            <Grid item xs={12}>
-              <WeatherCardSkeleton />
-            </Grid>
-            <Grid item xs={12}>
-              <WeatherCardSkeleton />
-            </Grid>
-            <Grid item xs={12}>
-              <WeatherCardSkeleton />
-            </Grid>
-          </>
-        }
-      </Grid>
+      <div className={classes.drawerContainer}>
+        <Drawer className={classes.drawer} variant="permanent" anchor="left">
+          <List component="nav" aria-label="weather location and options">
+            <ListItem className={classes.listHeader}>
+              <ListItemIcon><span role="img" aria-label="Skyanchor logo">🌩️</span></ListItemIcon>
+              <ListItemText primary={cityState} />
+            </ListItem>
+            <ListItem button onClick={() => setShowAlerts(true)}>
+              <ListItemIcon>
+                {alertCount > 0 ?
+                  <Badge badgeContent={alertCount} color="error">
+                    <NotificationImportantIcon />
+                  </Badge>
+                  :
+                  <NotificationImportantIcon />
+                }
+              </ListItemIcon>
+              <ListItemText primary={"Alerts"} />
+            </ListItem>
+          </List>
+        </Drawer>
+        <Grid container direction="column">
+          {errors.length > 0 && <Grid item xs={12}>
+            {errors.map((error, i) => <Alert key={i} variant="filled" severity="error">{error}</Alert>)}
+          </Grid>}
+          {warnings.length > 0 && <Grid item xs={12}>
+            {warnings.map((warning, i) => <Alert key={i} variant="filled" severity="warning">{warning}</Alert>)}
+          </Grid>}
+          {Array.isArray(forecast) ? forecast.map(period =>
+            <Grid item xs={12} key={`${period.number}_${period.name}`}>
+              <WeatherCard period={period} hourlyData={getHourlySubset(hourlyForecast, period)} />
+            </Grid>)
+            :
+            <>
+              <Grid item xs={12}>
+                <WeatherCardSkeleton />
+              </Grid>
+              <Grid item xs={12}>
+                <WeatherCardSkeleton />
+              </Grid>
+              <Grid item xs={12}>
+                <WeatherCardSkeleton />
+              </Grid>
+              <Grid item xs={12}>
+                <WeatherCardSkeleton />
+              </Grid>
+              <Grid item xs={12}>
+                <WeatherCardSkeleton />
+              </Grid>
+              <Grid item xs={12}>
+                <WeatherCardSkeleton />
+              </Grid>
+            </>
+          }
+        </Grid>
+      </div>
       <WeatherAlerts data={alerts} open={showAlerts} onClose={() => setShowAlerts(false)} />
       {/* <span>{versionString}</span><span>Created by <a href="https://twitter.com/nearwood">@nearwood</a>.</span><span><a href="https://github.com/nearwood/skyanchor"><img alt="Github logo" height="32" width="32" src="https://cdn.jsdelivr.net/npm/simple-icons@v3/icons/github.svg" /></a></span> */}
     </div>

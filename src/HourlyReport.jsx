@@ -22,7 +22,7 @@ const useStyles = makeStyles((theme) => ({
 
 const getHour = (dateString) => new Date(dateString).getHours();
 
-
+/** A table of weather data for each hour: Wind, temperature, etc. */
 export default function HourlyReport(props) {
   const { data } = props;
 
