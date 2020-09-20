@@ -41,7 +41,7 @@ Deployed to: https://nearwood.dev/skyanchor/
 
 ## Deployment
 * Handled by GitHub Actions: https://github.com/nearwood/skyanchor/actions
-* Deployed to Github pages, where a DNS CNAME record points to my domain.
+* Deployed to Github pages, where a DNS CNAME record points to my domain
 
 ## To Do
 - Check API status: GET https://api.weather.gov/
@@ -50,7 +50,8 @@ Deployed to: https://nearwood.dev/skyanchor/
 ## Known Issues; Caveats
 
 ### UI
-- Theme colors, consistency could be better.
+- Theme colors, consistency could be better
+- Firefox has issues with the flexbox column
 
 ### Performance
 - Virtualize hourly list
@@ -65,7 +66,7 @@ Deployed to: https://nearwood.dev/skyanchor/
 - Custom logo
 - Zip code alternative to HTML5 geolocation
 - Dark mode (easy with MUI)
-- Would really like prob. of precip. more prominent and by the hour.
+- Would really like prob. of precip. more prominent and by the hour
 - Better icons/emoji. Parse icon URL to derive emoji + percentage?
 - Settable units C/F
 - Radar
