@@ -18,6 +18,7 @@
     "start": "react-scripts start",
     "build": "REACT_APP_GIT_COMMIT_HASH=\"$(git rev-parse HEAD)\" react-scripts build",
     "test": "react-scripts test",
+    "coverage": "react-scripts test --coverage --watchAll=false",
     "eject": "react-scripts eject",
     "deploy": "gh-pages -d build"
   },
@@ -29,6 +30,9 @@
         "always"
       ]
     }
+  },
+  "jest": {
+    "coverageReporters": ["text-summary"]
   },
   "browserslist": {
     "production": [
