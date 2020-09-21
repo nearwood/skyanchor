@@ -1,9 +1,13 @@
 import React from 'react';
 import { render } from '@testing-library/react';
-import App from './App';
+import { act } from "react-dom/test-utils";
+
+import WeatherCard from './WeatherCard';
+
+import forecast from './exampleData/forecast.json';
 
 test('renders learn react link', () => {
-  const { getByText } = render(<App />);
-  // const linkElement = getByText("Bogus");
-  // expect(linkElement).toBeInTheDocument();
+  const { getByText } = render(<WeatherCard period={forecast.properties.periods[0]} />);
+  //const linkElement = getByText(/Today - .*/);
+  //expect(linkElement).toBeInTheDocument();
 });
