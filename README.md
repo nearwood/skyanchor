@@ -41,10 +41,27 @@ Deployed to: https://nearwood.dev/skyanchor/
 
 > Snapshot testing MUI components turned out to be more tricky than I thought. See https://material-ui.com/guides/testing/
 
+### Coverage
+
+As of 94ede39:
+
+```
+Statements   : 43.56% ( 71/163 )
+Branches     : 53.97% ( 34/63 )
+Functions    : 36.17% ( 17/47 )
+Lines        : 45.89% ( 67/146 )
+```
+
+#### Notes:
+
+- Inflated due to simple render tests.
+- Not much business logic to actually test.
+
 ### `src/exampleData`
 
 - Contains saved responses from api.weather.gov
 - Embedded URLs have been modified to work with tests
+- However testing against mocked *external* APIs was non-trivial with react-testing-library, msw, etc.
 
 ## Deployment
 * Handled by GitHub Actions: https://github.com/nearwood/skyanchor/actions
