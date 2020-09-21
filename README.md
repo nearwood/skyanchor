@@ -35,9 +35,14 @@ Deployed to: https://nearwood.dev/skyanchor/
 * HTML geolocation
 
 ## Testing
-* API Tests?
-* Meaningful React component tests
-* Selenium? Overkill?
+
+- `yarn test` - run tests and watch files.
+- `yarn run coverage` - to run all tests and generate a code coverage report.
+
+### `src/exampleData`
+
+- Contains saved responses from api.weather.gov
+- Embedded URLs have been modified to work with tests
 
 ## Deployment
 * Handled by GitHub Actions: https://github.com/nearwood/skyanchor/actions
