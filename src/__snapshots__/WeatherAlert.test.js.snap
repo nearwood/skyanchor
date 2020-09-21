@@ -1,0 +1,115 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Snapshot: Extreme WeatherAlert 1`] = `
+"<table class=\\"MuiTable-root\\" aria-label=\\"weather alerts/advisories\\">
+  <thead class=\\"MuiTableHead-root makeStyles-alertHeader-13\\">
+    <tr class=\\"MuiTableRow-root MuiTableRow-head\\">
+      <th class=\\"MuiTableCell-root MuiTableCell-head MuiTableCell-alignLeft MuiTableCell-sizeSmall\\" scope=\\"col\\"></th>
+      <th class=\\"MuiTableCell-root MuiTableCell-head MuiTableCell-alignRight MuiTableCell-sizeSmall\\" scope=\\"col\\"></th>
+    </tr>
+  </thead>
+  <tbody class=\\"MuiTableBody-root\\">
+    <tr class=\\"MuiTableRow-root\\">
+      <th class=\\"MuiTableCell-root MuiTableCell-body MuiTableCell-sizeSmall\\" role=\\"cell\\" colspan=\\"2\\"></th>
+    </tr>
+    <tr class=\\"MuiTableRow-root\\">
+      <td class=\\"MuiTableCell-root MuiTableCell-body MuiTableCell-alignCenter MuiTableCell-sizeSmall\\" colspan=\\"2\\"></td>
+    </tr>
+    <tr class=\\"MuiTableRow-root\\">
+      <td class=\\"MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall\\">Effective:</td>
+      <td class=\\"MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall\\"></td>
+    </tr>
+    <tr class=\\"MuiTableRow-root\\">
+      <td class=\\"MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall\\">Expires:</td>
+      <td class=\\"MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall\\"></td>
+    </tr>
+  </tbody>
+</table>
+<div class=\\"makeStyles-divider-15\\"></div>"
+`;
+
+exports[`Snapshot: Minor WeatherAlert 1`] = `
+"<table class=\\"MuiTable-root\\" aria-label=\\"weather alerts/advisories\\">
+  <thead class=\\"MuiTableHead-root makeStyles-alertHeader-1\\">
+    <tr class=\\"MuiTableRow-root MuiTableRow-head\\">
+      <th class=\\"MuiTableCell-root MuiTableCell-head MuiTableCell-alignLeft MuiTableCell-sizeSmall\\" scope=\\"col\\"></th>
+      <th class=\\"MuiTableCell-root MuiTableCell-head MuiTableCell-alignRight MuiTableCell-sizeSmall\\" scope=\\"col\\"></th>
+    </tr>
+  </thead>
+  <tbody class=\\"MuiTableBody-root\\">
+    <tr class=\\"MuiTableRow-root\\">
+      <th class=\\"MuiTableCell-root MuiTableCell-body MuiTableCell-sizeSmall\\" role=\\"cell\\" colspan=\\"2\\"></th>
+    </tr>
+    <tr class=\\"MuiTableRow-root\\">
+      <td class=\\"MuiTableCell-root MuiTableCell-body MuiTableCell-alignCenter MuiTableCell-sizeSmall\\" colspan=\\"2\\"></td>
+    </tr>
+    <tr class=\\"MuiTableRow-root\\">
+      <td class=\\"MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall\\">Effective:</td>
+      <td class=\\"MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall\\"></td>
+    </tr>
+    <tr class=\\"MuiTableRow-root\\">
+      <td class=\\"MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall\\">Expires:</td>
+      <td class=\\"MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall\\"></td>
+    </tr>
+  </tbody>
+</table>
+<div class=\\"makeStyles-divider-3\\"></div>"
+`;
+
+exports[`Snapshot: Moderate WeatherAlert 1`] = `
+"<table class=\\"MuiTable-root\\" aria-label=\\"weather alerts/advisories\\">
+  <thead class=\\"MuiTableHead-root makeStyles-alertHeader-5\\">
+    <tr class=\\"MuiTableRow-root MuiTableRow-head\\">
+      <th class=\\"MuiTableCell-root MuiTableCell-head MuiTableCell-alignLeft MuiTableCell-sizeSmall\\" scope=\\"col\\"></th>
+      <th class=\\"MuiTableCell-root MuiTableCell-head MuiTableCell-alignRight MuiTableCell-sizeSmall\\" scope=\\"col\\"></th>
+    </tr>
+  </thead>
+  <tbody class=\\"MuiTableBody-root\\">
+    <tr class=\\"MuiTableRow-root\\">
+      <th class=\\"MuiTableCell-root MuiTableCell-body MuiTableCell-sizeSmall\\" role=\\"cell\\" colspan=\\"2\\"></th>
+    </tr>
+    <tr class=\\"MuiTableRow-root\\">
+      <td class=\\"MuiTableCell-root MuiTableCell-body MuiTableCell-alignCenter MuiTableCell-sizeSmall\\" colspan=\\"2\\"></td>
+    </tr>
+    <tr class=\\"MuiTableRow-root\\">
+      <td class=\\"MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall\\">Effective:</td>
+      <td class=\\"MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall\\"></td>
+    </tr>
+    <tr class=\\"MuiTableRow-root\\">
+      <td class=\\"MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall\\">Expires:</td>
+      <td class=\\"MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall\\"></td>
+    </tr>
+  </tbody>
+</table>
+<div class=\\"makeStyles-divider-7\\"></div>"
+`;
+
+exports[`Snapshot: Severe WeatherAlert 1`] = `
+"<table class=\\"MuiTable-root\\" aria-label=\\"weather alerts/advisories\\">
+  <thead class=\\"MuiTableHead-root makeStyles-alertHeader-9\\">
+    <tr class=\\"MuiTableRow-root MuiTableRow-head\\">
+      <th class=\\"MuiTableCell-root MuiTableCell-head MuiTableCell-alignLeft MuiTableCell-sizeSmall\\" scope=\\"col\\"></th>
+      <th class=\\"MuiTableCell-root MuiTableCell-head MuiTableCell-alignRight MuiTableCell-sizeSmall\\" scope=\\"col\\"></th>
+    </tr>
+  </thead>
+  <tbody class=\\"MuiTableBody-root\\">
+    <tr class=\\"MuiTableRow-root\\">
+      <th class=\\"MuiTableCell-root MuiTableCell-body MuiTableCell-sizeSmall\\" role=\\"cell\\" colspan=\\"2\\"></th>
+    </tr>
+    <tr class=\\"MuiTableRow-root\\">
+      <td class=\\"MuiTableCell-root MuiTableCell-body MuiTableCell-alignCenter MuiTableCell-sizeSmall\\" colspan=\\"2\\"></td>
+    </tr>
+    <tr class=\\"MuiTableRow-root\\">
+      <td class=\\"MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall\\">Effective:</td>
+      <td class=\\"MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall\\"></td>
+    </tr>
+    <tr class=\\"MuiTableRow-root\\">
+      <td class=\\"MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall\\">Expires:</td>
+      <td class=\\"MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall\\"></td>
+    </tr>
+  </tbody>
+</table>
+<div class=\\"makeStyles-divider-11\\"></div>"
+`;
+
+exports[`renders learn react link 1`] = `""`;
