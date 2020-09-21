@@ -1,6 +1,6 @@
 import React from 'react';
-import { act } from "react-dom/test-utils";
-import { render, waitFor, screen, getByLabelText } from '@testing-library/react';
+//import { act } from "react-dom/test-utils";
+import { render, waitFor, screen } from '@testing-library/react';
 
 import { rest } from 'msw';
 import { setupServer } from 'msw/node';
@@ -18,20 +18,26 @@ const server = setupServer(
   })
 );
 
-// let container = null;
 
 beforeAll(() => server.listen());
 afterEach(() => server.resetHandlers());
 afterAll(() => server.close());
 
 test('Loads and displays an initial logo', async () => {
+  const { getByLabelText } = render(<App />);
+
+  const mobileLogo = getByLabelText("Skyanchor mobile logo");
+  expect(mobileLogo).toBeInTheDocument();
+});
+
+xtest('Loads and displays a forecast', async () => {
   // await act(async () => {
   //   const result = render(<App />);
   //   container = result.container;
   //   //await waitFor(() => getByText("Mostly Cloudy then Slight Chance Rain Showers"));
   // });
 
-  const { getByLabelText } = render(<App />);
+  render(<App />);
 
   //aria-label="brief forecast"
   // expect(container.querySelector('[aria-label="brief forecast"]').some(x =>
@@ -39,11 +45,10 @@ test('Loads and displays an initial logo', async () => {
 
   //console.log(container.innerHTML);
 
-  const mobileLogo = getByLabelText("Skyanchor mobile logo");
-  expect(mobileLogo).toBeInTheDocument();
+  const exampleForecast = await waitFor(() => screen.findAllByLabelText('brief forecast'));
 
   // const exampleForecast = getByText("Mostly Cloudy then Slight Chance Rain Showers");
-  // expect(exampleForecast).toBeInTheDocument();
+  expect(exampleForecast).toBeInTheDocument();
 
   // expect(screen.getAllByLabel('location')[0]).toHaveTextContent('Baton Rouge, LA');
 });
