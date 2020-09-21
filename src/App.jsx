@@ -48,8 +48,10 @@ const useStyles = makeStyles((theme) => ({
     width: drawerWidth
   },
   forecast: {
-    width: `calc(100% - ${drawerWidth}px)`,
-    flexShrink: 1
+    [theme.breakpoints.up('md')]: {
+      width: `calc(100% - ${drawerWidth}px)`,
+      flexShrink: 1
+    }
   },
   list: {
     paddingTop: 0
