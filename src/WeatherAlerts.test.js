@@ -1,7 +1,6 @@
 import React from "react";
 import { render } from "@testing-library/react";
 import { act } from "react-dom/test-utils";
-// import { render, unmountComponentAtNode } from "react-dom";
 import pretty from "pretty";
 
 import { WeatherAlert } from "./WeatherAlerts";
