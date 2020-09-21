@@ -111,5 +111,3 @@ exports[`Snapshot: Severe WeatherAlert 1`] = `
 </table>
 <div class=\\"makeStyles-divider-11\\"></div>"
 `;
-
-exports[`renders learn react link 1`] = `""`;
