@@ -320,10 +320,12 @@ const ApiState = {
 /** Given a api.weather.gov `relativeLocation` from the `/points` call, piece a "city, state" string together.
  * @returns {string} A string of the format: `City, ST` or an empty string `''` if the argument cannot be parsed.
 */
-const parseLocation = (relativeLocation) => {
+export function parseLocation(relativeLocation) {
   if (relativeLocation?.properties) {
     const { city, state } = relativeLocation?.properties;
-    return `${city}, ${state}`;
+    if (typeof city === 'string' && typeof state === 'string') {
+      return `${city}, ${state}`;
+    }
   }
 
   return '';
@@ -331,10 +333,10 @@ const parseLocation = (relativeLocation) => {
 
 /** Hourly data comes as a large array for the entire forecast (7 days). This filters the hourly forecast
  * data to just what occurs between a general forecast period's `startTime` and `endTime`.
- * @returns {Array} An array containing any items from `hourlyData` that have `startTime` and `endTime` between the
+ * @returns {Array} A new array containing any items from `hourlyData` that have `startTime` and `endTime` between the
  *                  period's `startTime` and `endTime`, or an empty array if the arguments cannot be parsed.
 */
-const getHourlySubset = (hourlyData, period) => {
+export function getHourlySubset(hourlyData, period) {
   if (!Array.isArray(hourlyData) || !period) {
     return [];
   }
