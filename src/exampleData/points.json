@@ -3,11 +3,11 @@
         "https://geojson.org/geojson-ld/geojson-context.jsonld",
         {
             "@version": "1.1",
-            "wx": "https://api.weather.gov/ontology#",
+            "wx": "/ontology#",
             "s": "https://schema.org/",
             "geo": "http://www.opengis.net/ont/geosparql#",
             "unit": "http://codes.wmo.int/common/unit/",
-            "@vocab": "https://api.weather.gov/ontology#",
+            "@vocab": "/ontology#",
             "geometry": {
                 "@id": "s:GeoCoordinates",
                 "@type": "geo:wktLiteral"
@@ -42,7 +42,7 @@
             }
         }
     ],
-    "id": "https://api.weather.gov/points/30.4042,-91.1431",
+    "id": "/points/30.4042,-91.1431",
     "type": "Feature",
     "geometry": {
         "type": "Point",
@@ -52,17 +52,17 @@
         ]
     },
     "properties": {
-        "@id": "https://api.weather.gov/points/30.4042,-91.1431",
+        "@id": "/points/30.4042,-91.1431",
         "@type": "wx:Point",
         "cwa": "LIX",
-        "forecastOffice": "https://api.weather.gov/offices/LIX",
+        "forecastOffice": "/offices/LIX",
         "gridId": "LIX",
         "gridX": 27,
         "gridY": 108,
-        "forecast": "https://api.weather.gov/gridpoints/LIX/27,108/forecast",
-        "forecastHourly": "https://api.weather.gov/gridpoints/LIX/27,108/forecast/hourly",
-        "forecastGridData": "https://api.weather.gov/gridpoints/LIX/27,108",
-        "observationStations": "https://api.weather.gov/gridpoints/LIX/27,108/stations",
+        "forecast": "/gridpoints/LIX/27,108/forecast",
+        "forecastHourly": "/gridpoints/LIX/27,108/forecast/hourly",
+        "forecastGridData": "/gridpoints/LIX/27,108",
+        "observationStations": "/gridpoints/LIX/27,108/stations",
         "relativeLocation": {
             "type": "Feature",
             "geometry": {
@@ -85,9 +85,9 @@
                 }
             }
         },
-        "forecastZone": "https://api.weather.gov/zones/forecast/LAZ048",
-        "county": "https://api.weather.gov/zones/county/LAC033",
-        "fireWeatherZone": "https://api.weather.gov/zones/fire/LAZ048",
+        "forecastZone": "/zones/forecast/LAZ048",
+        "county": "/zones/county/LAC033",
+        "fireWeatherZone": "/zones/fire/LAZ048",
         "timeZone": "America/Chicago",
         "radarStation": "KLIX"
     }

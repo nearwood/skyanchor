@@ -4,10 +4,10 @@
     {
       "@version": "1.1",
       "wmoUnit": "https://codes.wmo.int/common/unit/",
-      "nwsUnit": "https://api.weather.gov/ontology/unit/"
+      "nwsUnit": "/ontology/unit/"
     }
   ],
-  "id": "https://api.weather.gov/gridpoints/PQR/111,66",
+  "id": "/gridpoints/PQR/111,66",
   "type": "Feature",
   "geometry": {
     "type": "Polygon",
@@ -37,7 +37,7 @@
     ]
   },
   "properties": {
-    "@id": "https://api.weather.gov/gridpoints/PQR/111,66",
+    "@id": "/gridpoints/PQR/111,66",
     "@type": "wx:Gridpoint",
     "updateTime": "2020-09-20T20:02:06+00:00",
     "validTimes": "2020-09-20T14:00:00+00:00/P7DT11H",
@@ -45,7 +45,7 @@
       "unitCode": "wmoUnit:m",
       "value": 303.8856
     },
-    "forecastOffice": "https://api.weather.gov/offices/PQR",
+    "forecastOffice": "/offices/PQR",
     "gridId": "PQR",
     "gridX": "111",
     "gridY": "66",

@@ -3,18 +3,18 @@
     "https://geojson.org/geojson-ld/geojson-context.jsonld",
     {
       "@version": "1.1",
-      "wx": "https://api.weather.gov/ontology#",
-      "@vocab": "https://api.weather.gov/ontology#"
+      "wx": "/ontology#",
+      "@vocab": "/ontology#"
     }
   ],
   "type": "FeatureCollection",
   "features": [
     {
-      "id": "https://api.weather.gov/alerts/NWS-IDP-PROD-4449750-3702356",
+      "id": "/alerts/NWS-IDP-PROD-4449750-3702356",
       "type": "Feature",
       "geometry": null,
       "properties": {
-        "@id": "https://api.weather.gov/alerts/NWS-IDP-PROD-4449750-3702356",
+        "@id": "/alerts/NWS-IDP-PROD-4449750-3702356",
         "@type": "wx:Alert",
         "id": "NWS-IDP-PROD-4449750-3702356",
         "areaDesc": "Greater Lake Tahoe Area; Greater Lake Tahoe Area",
@@ -34,8 +34,8 @@
           ]
         },
         "affectedZones": [
-          "https://api.weather.gov/zones/forecast/NVZ002",
-          "https://api.weather.gov/zones/forecast/CAZ072"
+          "/zones/forecast/NVZ002",
+          "/zones/forecast/CAZ072"
         ],
         "references": [],
         "sent": "2020-09-17T21:56:00-07:00",
@@ -78,11 +78,11 @@
       }
     },
     {
-      "id": "https://api.weather.gov/alerts/NWS-IDP-PROD-4449749-3702354",
+      "id": "/alerts/NWS-IDP-PROD-4449749-3702354",
       "type": "Feature",
       "geometry": null,
       "properties": {
-        "@id": "https://api.weather.gov/alerts/NWS-IDP-PROD-4449749-3702354",
+        "@id": "/alerts/NWS-IDP-PROD-4449749-3702354",
         "@type": "wx:Alert",
         "id": "NWS-IDP-PROD-4449749-3702354",
         "areaDesc": "Northern Washoe County; Lassen-Eastern Plumas-Eastern Sierra Counties; Mono; Surprise Valley California; Mineral and Southern Lyon Counties; Greater Reno-Carson City-Minden Area",
@@ -110,40 +110,40 @@
           ]
         },
         "affectedZones": [
-          "https://api.weather.gov/zones/forecast/NVZ005",
-          "https://api.weather.gov/zones/forecast/CAZ071",
-          "https://api.weather.gov/zones/forecast/CAZ073",
-          "https://api.weather.gov/zones/forecast/CAZ070",
-          "https://api.weather.gov/zones/forecast/NVZ001",
-          "https://api.weather.gov/zones/forecast/NVZ003"
+          "/zones/forecast/NVZ005",
+          "/zones/forecast/CAZ071",
+          "/zones/forecast/CAZ073",
+          "/zones/forecast/CAZ070",
+          "/zones/forecast/NVZ001",
+          "/zones/forecast/NVZ003"
         ],
         "references": [
           {
-            "@id": "https://api.weather.gov/alerts/NWS-IDP-PROD-4445771-3699315",
+            "@id": "/alerts/NWS-IDP-PROD-4445771-3699315",
             "identifier": "NWS-IDP-PROD-4445771-3699315",
             "sender": "w-nws.webmaster@noaa.gov",
             "sent": "2020-09-15T13:46:00-07:00"
           },
           {
-            "@id": "https://api.weather.gov/alerts/NWS-IDP-PROD-4444399-3698208",
+            "@id": "/alerts/NWS-IDP-PROD-4444399-3698208",
             "identifier": "NWS-IDP-PROD-4444399-3698208",
             "sender": "w-nws.webmaster@noaa.gov",
             "sent": "2020-09-14T14:18:00-07:00"
           },
           {
-            "@id": "https://api.weather.gov/alerts/NWS-IDP-PROD-4449407-3702090",
+            "@id": "/alerts/NWS-IDP-PROD-4449407-3702090",
             "identifier": "NWS-IDP-PROD-4449407-3702090",
             "sender": "w-nws.webmaster@noaa.gov",
             "sent": "2020-09-17T16:58:00-07:00"
           },
           {
-            "@id": "https://api.weather.gov/alerts/NWS-IDP-PROD-4447492-3700683",
+            "@id": "/alerts/NWS-IDP-PROD-4447492-3700683",
             "identifier": "NWS-IDP-PROD-4447492-3700683",
             "sender": "w-nws.webmaster@noaa.gov",
             "sent": "2020-09-16T14:29:00-07:00"
           },
           {
-            "@id": "https://api.weather.gov/alerts/NWS-IDP-PROD-4448827-3701679",
+            "@id": "/alerts/NWS-IDP-PROD-4448827-3701679",
             "identifier": "NWS-IDP-PROD-4448827-3701679",
             "sender": "w-nws.webmaster@noaa.gov",
             "sent": "2020-09-17T10:56:00-07:00"
@@ -189,11 +189,11 @@
       }
     },
     {
-      "id": "https://api.weather.gov/alerts/NWS-IDP-PROD-4449750-3702355",
+      "id": "/alerts/NWS-IDP-PROD-4449750-3702355",
       "type": "Feature",
       "geometry": null,
       "properties": {
-        "@id": "https://api.weather.gov/alerts/NWS-IDP-PROD-4449750-3702355",
+        "@id": "/alerts/NWS-IDP-PROD-4449750-3702355",
         "@type": "wx:Alert",
         "id": "NWS-IDP-PROD-4449750-3702355",
         "areaDesc": "Greater Lake Tahoe Area; Greater Lake Tahoe Area",
@@ -213,54 +213,54 @@
           ]
         },
         "affectedZones": [
-          "https://api.weather.gov/zones/forecast/NVZ002",
-          "https://api.weather.gov/zones/forecast/CAZ072"
+          "/zones/forecast/NVZ002",
+          "/zones/forecast/CAZ072"
         ],
         "references": [
           {
-            "@id": "https://api.weather.gov/alerts/NWS-IDP-PROD-4448826-3701678",
+            "@id": "/alerts/NWS-IDP-PROD-4448826-3701678",
             "identifier": "NWS-IDP-PROD-4448826-3701678",
             "sender": "w-nws.webmaster@noaa.gov",
             "sent": "2020-09-17T10:56:00-07:00"
           },
           {
-            "@id": "https://api.weather.gov/alerts/NWS-IDP-PROD-4448826-3701677",
+            "@id": "/alerts/NWS-IDP-PROD-4448826-3701677",
             "identifier": "NWS-IDP-PROD-4448826-3701677",
             "sender": "w-nws.webmaster@noaa.gov",
             "sent": "2020-09-17T10:56:00-07:00"
           },
           {
-            "@id": "https://api.weather.gov/alerts/NWS-IDP-PROD-4445771-3699315",
+            "@id": "/alerts/NWS-IDP-PROD-4445771-3699315",
             "identifier": "NWS-IDP-PROD-4445771-3699315",
             "sender": "w-nws.webmaster@noaa.gov",
             "sent": "2020-09-15T13:46:00-07:00"
           },
           {
-            "@id": "https://api.weather.gov/alerts/NWS-IDP-PROD-4449405-3702087",
+            "@id": "/alerts/NWS-IDP-PROD-4449405-3702087",
             "identifier": "NWS-IDP-PROD-4449405-3702087",
             "sender": "w-nws.webmaster@noaa.gov",
             "sent": "2020-09-17T16:58:00-07:00"
           },
           {
-            "@id": "https://api.weather.gov/alerts/NWS-IDP-PROD-4449405-3702086",
+            "@id": "/alerts/NWS-IDP-PROD-4449405-3702086",
             "identifier": "NWS-IDP-PROD-4449405-3702086",
             "sender": "w-nws.webmaster@noaa.gov",
             "sent": "2020-09-17T16:58:00-07:00"
           },
           {
-            "@id": "https://api.weather.gov/alerts/NWS-IDP-PROD-4444399-3698208",
+            "@id": "/alerts/NWS-IDP-PROD-4444399-3698208",
             "identifier": "NWS-IDP-PROD-4444399-3698208",
             "sender": "w-nws.webmaster@noaa.gov",
             "sent": "2020-09-14T14:18:00-07:00"
           },
           {
-            "@id": "https://api.weather.gov/alerts/NWS-IDP-PROD-4447493-3700685",
+            "@id": "/alerts/NWS-IDP-PROD-4447493-3700685",
             "identifier": "NWS-IDP-PROD-4447493-3700685",
             "sender": "w-nws.webmaster@noaa.gov",
             "sent": "2020-09-16T14:29:00-07:00"
           },
           {
-            "@id": "https://api.weather.gov/alerts/NWS-IDP-PROD-4447493-3700684",
+            "@id": "/alerts/NWS-IDP-PROD-4447493-3700684",
             "identifier": "NWS-IDP-PROD-4447493-3700684",
             "sender": "w-nws.webmaster@noaa.gov",
             "sent": "2020-09-16T14:29:00-07:00"
@@ -306,11 +306,11 @@
       }
     },
     {
-      "id": "https://api.weather.gov/alerts/NWS-IDP-PROD-4449727-3702337",
+      "id": "/alerts/NWS-IDP-PROD-4449727-3702337",
       "type": "Feature",
       "geometry": null,
       "properties": {
-        "@id": "https://api.weather.gov/alerts/NWS-IDP-PROD-4449727-3702337",
+        "@id": "/alerts/NWS-IDP-PROD-4449727-3702337",
         "@type": "wx:Alert",
         "id": "NWS-IDP-PROD-4449727-3702337",
         "areaDesc": "West Humboldt Basin - Pershing County; Eastern Lassen County; Lahontan Basin - Churchill and Eastern Mineral Counties; Northern Washoe County; Surprise Valley California",
@@ -333,75 +333,75 @@
           ]
         },
         "affectedZones": [
-          "https://api.weather.gov/zones/fire/NVZ423",
-          "https://api.weather.gov/zones/fire/CAZ278",
-          "https://api.weather.gov/zones/fire/NVZ429",
-          "https://api.weather.gov/zones/fire/NVZ458",
-          "https://api.weather.gov/zones/fire/CAZ270"
+          "/zones/fire/NVZ423",
+          "/zones/fire/CAZ278",
+          "/zones/fire/NVZ429",
+          "/zones/fire/NVZ458",
+          "/zones/fire/CAZ270"
         ],
         "references": [
           {
-            "@id": "https://api.weather.gov/alerts/NWS-IDP-PROD-4449713-3702323",
+            "@id": "/alerts/NWS-IDP-PROD-4449713-3702323",
             "identifier": "NWS-IDP-PROD-4449713-3702323",
             "sender": "w-nws.webmaster@noaa.gov",
             "sent": "2020-09-17T20:09:00-07:00"
           },
           {
-            "@id": "https://api.weather.gov/alerts/NWS-IDP-PROD-4449711-3702321",
+            "@id": "/alerts/NWS-IDP-PROD-4449711-3702321",
             "identifier": "NWS-IDP-PROD-4449711-3702321",
             "sender": "w-nws.webmaster@noaa.gov",
             "sent": "2020-09-17T20:09:00-07:00"
           },
           {
-            "@id": "https://api.weather.gov/alerts/NWS-IDP-PROD-4449711-3702320",
+            "@id": "/alerts/NWS-IDP-PROD-4449711-3702320",
             "identifier": "NWS-IDP-PROD-4449711-3702320",
             "sender": "w-nws.webmaster@noaa.gov",
             "sent": "2020-09-17T20:09:00-07:00"
           },
           {
-            "@id": "https://api.weather.gov/alerts/NWS-IDP-PROD-4449266-3701996",
+            "@id": "/alerts/NWS-IDP-PROD-4449266-3701996",
             "identifier": "NWS-IDP-PROD-4449266-3701996",
             "sender": "w-nws.webmaster@noaa.gov",
             "sent": "2020-09-17T14:33:00-07:00"
           },
           {
-            "@id": "https://api.weather.gov/alerts/NWS-IDP-PROD-4449266-3701995",
+            "@id": "/alerts/NWS-IDP-PROD-4449266-3701995",
             "identifier": "NWS-IDP-PROD-4449266-3701995",
             "sender": "w-nws.webmaster@noaa.gov",
             "sent": "2020-09-17T14:33:00-07:00"
           },
           {
-            "@id": "https://api.weather.gov/alerts/NWS-IDP-PROD-4447536-3700716",
+            "@id": "/alerts/NWS-IDP-PROD-4447536-3700716",
             "identifier": "NWS-IDP-PROD-4447536-3700716",
             "sender": "w-nws.webmaster@noaa.gov",
             "sent": "2020-09-16T15:12:00-07:00"
           },
           {
-            "@id": "https://api.weather.gov/alerts/NWS-IDP-PROD-4447536-3700715",
+            "@id": "/alerts/NWS-IDP-PROD-4447536-3700715",
             "identifier": "NWS-IDP-PROD-4447536-3700715",
             "sender": "w-nws.webmaster@noaa.gov",
             "sent": "2020-09-16T15:12:00-07:00"
           },
           {
-            "@id": "https://api.weather.gov/alerts/NWS-IDP-PROD-4447536-3700714",
+            "@id": "/alerts/NWS-IDP-PROD-4447536-3700714",
             "identifier": "NWS-IDP-PROD-4447536-3700714",
             "sender": "w-nws.webmaster@noaa.gov",
             "sent": "2020-09-16T15:12:00-07:00"
           },
           {
-            "@id": "https://api.weather.gov/alerts/NWS-IDP-PROD-4449268-3701998",
+            "@id": "/alerts/NWS-IDP-PROD-4449268-3701998",
             "identifier": "NWS-IDP-PROD-4449268-3701998",
             "sender": "w-nws.webmaster@noaa.gov",
             "sent": "2020-09-17T14:33:00-07:00"
           },
           {
-            "@id": "https://api.weather.gov/alerts/NWS-IDP-PROD-4447537-3700718",
+            "@id": "/alerts/NWS-IDP-PROD-4447537-3700718",
             "identifier": "NWS-IDP-PROD-4447537-3700718",
             "sender": "w-nws.webmaster@noaa.gov",
             "sent": "2020-09-16T15:12:00-07:00"
           },
           {
-            "@id": "https://api.weather.gov/alerts/NWS-IDP-PROD-4447537-3700717",
+            "@id": "/alerts/NWS-IDP-PROD-4447537-3700717",
             "identifier": "NWS-IDP-PROD-4447537-3700717",
             "sender": "w-nws.webmaster@noaa.gov",
             "sent": "2020-09-16T15:12:00-07:00"
@@ -447,11 +447,11 @@
       }
     },
     {
-      "id": "https://api.weather.gov/alerts/NWS-IDP-PROD-4449725-3702335",
+      "id": "/alerts/NWS-IDP-PROD-4449725-3702335",
       "type": "Feature",
       "geometry": null,
       "properties": {
-        "@id": "https://api.weather.gov/alerts/NWS-IDP-PROD-4449725-3702335",
+        "@id": "/alerts/NWS-IDP-PROD-4449725-3702335",
         "@type": "wx:Alert",
         "id": "NWS-IDP-PROD-4449725-3702335",
         "areaDesc": "Northern Sierra Front - Carson City/Douglas/Storey/Southern Washoe/Eastern Lyon/Far Southern Lassen Counties; Greater Lake Tahoe; Western Lassen/Eastern Plumas/Eastern Sierra/Eastern Nevada Counties",
@@ -477,31 +477,31 @@
           ]
         },
         "affectedZones": [
-          "https://api.weather.gov/zones/fire/NVZ420",
-          "https://api.weather.gov/zones/fire/CAZ272",
-          "https://api.weather.gov/zones/fire/CAZ271"
+          "/zones/fire/NVZ420",
+          "/zones/fire/CAZ272",
+          "/zones/fire/CAZ271"
         ],
         "references": [
           {
-            "@id": "https://api.weather.gov/alerts/NWS-IDP-PROD-4449269-3701999",
+            "@id": "/alerts/NWS-IDP-PROD-4449269-3701999",
             "identifier": "NWS-IDP-PROD-4449269-3701999",
             "sender": "w-nws.webmaster@noaa.gov",
             "sent": "2020-09-17T14:33:00-07:00"
           },
           {
-            "@id": "https://api.weather.gov/alerts/NWS-IDP-PROD-4449712-3702322",
+            "@id": "/alerts/NWS-IDP-PROD-4449712-3702322",
             "identifier": "NWS-IDP-PROD-4449712-3702322",
             "sender": "w-nws.webmaster@noaa.gov",
             "sent": "2020-09-17T20:09:00-07:00"
           },
           {
-            "@id": "https://api.weather.gov/alerts/NWS-IDP-PROD-4447539-3700722",
+            "@id": "/alerts/NWS-IDP-PROD-4447539-3700722",
             "identifier": "NWS-IDP-PROD-4447539-3700722",
             "sender": "w-nws.webmaster@noaa.gov",
             "sent": "2020-09-16T15:12:00-07:00"
           },
           {
-            "@id": "https://api.weather.gov/alerts/NWS-IDP-PROD-4447539-3700721",
+            "@id": "/alerts/NWS-IDP-PROD-4447539-3700721",
             "identifier": "NWS-IDP-PROD-4447539-3700721",
             "sender": "w-nws.webmaster@noaa.gov",
             "sent": "2020-09-16T15:12:00-07:00"
@@ -547,11 +547,11 @@
       }
     },
     {
-      "id": "https://api.weather.gov/alerts/NWS-IDP-PROD-4449726-3702336",
+      "id": "/alerts/NWS-IDP-PROD-4449726-3702336",
       "type": "Feature",
       "geometry": null,
       "properties": {
-        "@id": "https://api.weather.gov/alerts/NWS-IDP-PROD-4449726-3702336",
+        "@id": "/alerts/NWS-IDP-PROD-4449726-3702336",
         "@type": "wx:Alert",
         "id": "NWS-IDP-PROD-4449726-3702336",
         "areaDesc": "Southern Sierra Front - Alpine/Northern Mono/Southern Lyon/Western Mineral Counties; Southern Mono County",
@@ -570,30 +570,30 @@
           ]
         },
         "affectedZones": [
-          "https://api.weather.gov/zones/fire/NVZ421",
-          "https://api.weather.gov/zones/fire/CAZ274"
+          "/zones/fire/NVZ421",
+          "/zones/fire/CAZ274"
         ],
         "references": [
           {
-            "@id": "https://api.weather.gov/alerts/NWS-IDP-PROD-4447538-3700720",
+            "@id": "/alerts/NWS-IDP-PROD-4447538-3700720",
             "identifier": "NWS-IDP-PROD-4447538-3700720",
             "sender": "w-nws.webmaster@noaa.gov",
             "sent": "2020-09-16T15:12:00-07:00"
           },
           {
-            "@id": "https://api.weather.gov/alerts/NWS-IDP-PROD-4447538-3700719",
+            "@id": "/alerts/NWS-IDP-PROD-4447538-3700719",
             "identifier": "NWS-IDP-PROD-4447538-3700719",
             "sender": "w-nws.webmaster@noaa.gov",
             "sent": "2020-09-16T15:12:00-07:00"
           },
           {
-            "@id": "https://api.weather.gov/alerts/NWS-IDP-PROD-4449267-3701997",
+            "@id": "/alerts/NWS-IDP-PROD-4449267-3701997",
             "identifier": "NWS-IDP-PROD-4449267-3701997",
             "sender": "w-nws.webmaster@noaa.gov",
             "sent": "2020-09-17T14:33:00-07:00"
           },
           {
-            "@id": "https://api.weather.gov/alerts/NWS-IDP-PROD-4449714-3702324",
+            "@id": "/alerts/NWS-IDP-PROD-4449714-3702324",
             "identifier": "NWS-IDP-PROD-4449714-3702324",
             "sender": "w-nws.webmaster@noaa.gov",
             "sent": "2020-09-17T20:09:00-07:00"
@@ -639,11 +639,11 @@
       }
     },
     {
-      "id": "https://api.weather.gov/alerts/NWS-IDP-PROD-4449422",
+      "id": "/alerts/NWS-IDP-PROD-4449422",
       "type": "Feature",
       "geometry": null,
       "properties": {
-        "@id": "https://api.weather.gov/alerts/NWS-IDP-PROD-4449422",
+        "@id": "/alerts/NWS-IDP-PROD-4449422",
         "@type": "wx:Alert",
         "id": "NWS-IDP-PROD-4449422",
         "areaDesc": "Mariposa, CA; Tuolumne, CA",
@@ -658,8 +658,8 @@
           ]
         },
         "affectedZones": [
-          "https://api.weather.gov/zones/county/CAC043",
-          "https://api.weather.gov/zones/county/CAC109"
+          "/zones/county/CAC043",
+          "/zones/county/CAC109"
         ],
         "references": [],
         "sent": "2020-09-17T17:16:00-07:00",
@@ -693,11 +693,11 @@
       }
     },
     {
-      "id": "https://api.weather.gov/alerts/NWS-IDP-PROD-4449423",
+      "id": "/alerts/NWS-IDP-PROD-4449423",
       "type": "Feature",
       "geometry": null,
       "properties": {
-        "@id": "https://api.weather.gov/alerts/NWS-IDP-PROD-4449423",
+        "@id": "/alerts/NWS-IDP-PROD-4449423",
         "@type": "wx:Alert",
         "id": "NWS-IDP-PROD-4449423",
         "areaDesc": "Fresno, CA; Tulare, CA; Kings, CA; Stanislaus, CA; San Joaquin, CA; Merced, CA; Madera, CA",
@@ -722,13 +722,13 @@
           ]
         },
         "affectedZones": [
-          "https://api.weather.gov/zones/county/CAC019",
-          "https://api.weather.gov/zones/county/CAC107",
-          "https://api.weather.gov/zones/county/CAC031",
-          "https://api.weather.gov/zones/county/CAC099",
-          "https://api.weather.gov/zones/county/CAC077",
-          "https://api.weather.gov/zones/county/CAC047",
-          "https://api.weather.gov/zones/county/CAC039"
+          "/zones/county/CAC019",
+          "/zones/county/CAC107",
+          "/zones/county/CAC031",
+          "/zones/county/CAC099",
+          "/zones/county/CAC077",
+          "/zones/county/CAC047",
+          "/zones/county/CAC039"
         ],
         "references": [],
         "sent": "2020-09-17T17:16:00-07:00",
@@ -762,11 +762,11 @@
       }
     },
     {
-      "id": "https://api.weather.gov/alerts/NWS-IDP-PROD-4449421",
+      "id": "/alerts/NWS-IDP-PROD-4449421",
       "type": "Feature",
       "geometry": null,
       "properties": {
-        "@id": "https://api.weather.gov/alerts/NWS-IDP-PROD-4449421",
+        "@id": "/alerts/NWS-IDP-PROD-4449421",
         "@type": "wx:Alert",
         "id": "NWS-IDP-PROD-4449421",
         "areaDesc": "Kern, CA",
@@ -779,7 +779,7 @@
           ]
         },
         "affectedZones": [
-          "https://api.weather.gov/zones/county/CAC029"
+          "/zones/county/CAC029"
         ],
         "references": [],
         "sent": "2020-09-17T17:16:00-07:00",
@@ -813,11 +813,11 @@
       }
     },
     {
-      "id": "https://api.weather.gov/alerts/NWS-IDP-PROD-4448745",
+      "id": "/alerts/NWS-IDP-PROD-4448745",
       "type": "Feature",
       "geometry": null,
       "properties": {
-        "@id": "https://api.weather.gov/alerts/NWS-IDP-PROD-4448745",
+        "@id": "/alerts/NWS-IDP-PROD-4448745",
         "@type": "wx:Alert",
         "id": "NWS-IDP-PROD-4448745",
         "areaDesc": "San Luis Obispo County Interior Valleys; San Luis Obispo County Central Coast; San Luis Obispo County Mountains",
@@ -832,9 +832,9 @@
           ]
         },
         "affectedZones": [
-          "https://api.weather.gov/zones/forecast/CAZ037",
-          "https://api.weather.gov/zones/forecast/CAZ034",
-          "https://api.weather.gov/zones/forecast/CAZ051"
+          "/zones/forecast/CAZ037",
+          "/zones/forecast/CAZ034",
+          "/zones/forecast/CAZ051"
         ],
         "references": [],
         "sent": "2020-09-17T09:16:00-07:00",
@@ -871,11 +871,11 @@
       }
     },
     {
-      "id": "https://api.weather.gov/alerts/NWS-IDP-PROD-4448523",
+      "id": "/alerts/NWS-IDP-PROD-4448523",
       "type": "Feature",
       "geometry": null,
       "properties": {
-        "@id": "https://api.weather.gov/alerts/NWS-IDP-PROD-4448523",
+        "@id": "/alerts/NWS-IDP-PROD-4448523",
         "@type": "wx:Alert",
         "id": "NWS-IDP-PROD-4448523",
         "areaDesc": "Ventura County Coastal Valleys; Ventura County Mountains; Ventura County Interior Valleys; Ventura County Coast",
@@ -891,10 +891,10 @@
           ]
         },
         "affectedZones": [
-          "https://api.weather.gov/zones/forecast/CAZ045",
-          "https://api.weather.gov/zones/forecast/CAZ053",
-          "https://api.weather.gov/zones/forecast/CAZ044",
-          "https://api.weather.gov/zones/forecast/CAZ040"
+          "/zones/forecast/CAZ045",
+          "/zones/forecast/CAZ053",
+          "/zones/forecast/CAZ044",
+          "/zones/forecast/CAZ040"
         ],
         "references": [],
         "sent": "2020-09-17T07:06:00-07:00",
@@ -931,11 +931,11 @@
       }
     },
     {
-      "id": "https://api.weather.gov/alerts/NWS-IDP-PROD-4448524",
+      "id": "/alerts/NWS-IDP-PROD-4448524",
       "type": "Feature",
       "geometry": null,
       "properties": {
-        "@id": "https://api.weather.gov/alerts/NWS-IDP-PROD-4448524",
+        "@id": "/alerts/NWS-IDP-PROD-4448524",
         "@type": "wx:Alert",
         "id": "NWS-IDP-PROD-4448524",
         "areaDesc": "San Luis Obispo County Interior Valleys; San Luis Obispo County Central Coast; San Luis Obispo County Mountains",
@@ -950,9 +950,9 @@
           ]
         },
         "affectedZones": [
-          "https://api.weather.gov/zones/forecast/CAZ037",
-          "https://api.weather.gov/zones/forecast/CAZ034",
-          "https://api.weather.gov/zones/forecast/CAZ051"
+          "/zones/forecast/CAZ037",
+          "/zones/forecast/CAZ034",
+          "/zones/forecast/CAZ051"
         ],
         "references": [],
         "sent": "2020-09-17T07:06:00-07:00",
