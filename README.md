@@ -34,6 +34,20 @@ Deployed to: https://nearwood.dev/skyanchor/
 * Progressive Web App (PWA) - though lacks active offline capabilities
 * HTML geolocation
 
+### Screenshots
+
+Desktop | Mobile
+| -- | -- |
+![Screenshot of desktop view](docs/desktop.png) | ![Screenshot of mobile view](docs/mobile.png)
+![Screenshot of desktop view](docs/desktop_hourly.png) | ![Screenshot of mobile hourly forecast](docs/mobile_hourly.png)
+![Screenshot of desktop alerts](docs/desktop_alerts.png) | ![Screenshot of mobile alerts](docs/mobile_alerts.png)
+
+
+
+## Deployment
+* Handled by GitHub Actions: https://github.com/nearwood/skyanchor/actions
+* Deployed to Github pages, where a DNS CNAME record points to my domain
+
 ## Testing
 
 - `yarn test` - run tests and watch files.
@@ -63,13 +77,7 @@ Lines        : 45.89% ( 67/146 )
 - Embedded URLs have been modified to work with tests
 - However testing against mocked *external* APIs was non-trivial with react-testing-library, msw, etc.
 
-## Deployment
-* Handled by GitHub Actions: https://github.com/nearwood/skyanchor/actions
-* Deployed to Github pages, where a DNS CNAME record points to my domain
-
-## To Do
-- Check API status: GET https://api.weather.gov/
-- Add tests
+---
 
 ## Known Issues; Caveats
 
@@ -83,6 +91,7 @@ Lines        : 45.89% ( 67/146 )
 - Reduce calculations made within rendering
 
 ### API
+- Check API status: GET https://api.weather.gov/
 - Should decouple from NOAA weather and add intermediary layer
 - Authentication discrepancy (sending `User-Agent` requires API to send correct CORS preflight)
 
