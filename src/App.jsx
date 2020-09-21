@@ -21,6 +21,8 @@ import WeatherAlerts from './WeatherAlerts';
 
 //import alertData from './exampleData/alerts';
 
+const drawerWidth = 208;
+
 const useStyles = makeStyles((theme) => ({
   root: {
   },
@@ -35,14 +37,22 @@ const useStyles = makeStyles((theme) => ({
     marginBottom: theme.spacing(1)
   },
   drawer: {
-    width: 200,
+    flexBasis: drawerWidth,
+    flexGrow: 1,
     display: 'none',
     [theme.breakpoints.up('md')]: {
       display: 'inline-block'
     }
   },
+  drawerPaper: {
+    width: drawerWidth
+  },
+  forecast: {
+    width: `calc(100% - ${drawerWidth}px)`,
+    flexShrink: 1
+  },
   list: {
-    paddingTop: 0,
+    paddingTop: 0
   },
   listHeader: {
     backgroundColor: theme.palette.primary.dark,
@@ -52,7 +62,7 @@ const useStyles = makeStyles((theme) => ({
     position: 'relative'
   },
   title: {
-    flexGrow: 1,
+    flexGrow: 1
   },
   progress: {
     color: 'gold'
@@ -242,7 +252,9 @@ export default function App() {
         </Toolbar>
       </AppBar>
       <div className={classes.drawerContainer}>
-        <Drawer className={classes.drawer} variant="permanent" anchor="left">
+        <Drawer variant="permanent" anchor="left"
+          className={classes.drawer}
+          classes={{ paper: classes.drawerPaper }}>
           <List component="nav" aria-label="weather location and options" className={classes.list}>
             <ListItem className={classes.listHeader}>
               <ListItemIcon><span role="img" aria-label="Skyanchor desktop logo">🌩️</span>{showLoadingIndicator && <CircularProgress size={20} className={classes.progress} />}</ListItemIcon>
@@ -262,7 +274,7 @@ export default function App() {
             </ListItem>
           </List>
         </Drawer>
-        <Grid container direction="column">
+        <Grid container direction="column" className={classes.forecast}>
           {errors.length > 0 && <Grid item xs={12}>
             {errors.map((error, i) => <Alert key={i} variant="filled" severity="error">{error}</Alert>)}
           </Grid>}
