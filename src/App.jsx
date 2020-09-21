@@ -61,12 +61,6 @@ const useStyles = makeStyles((theme) => ({
 
 //const versionString = process.env.REACT_APP_GIT_COMMIT_HASH ? `${process.env.REACT_APP_GIT_COMMIT_HASH}`.substr(0, 7) : 'dev';
 
-const headers = {
-  //Sigh... https://bugs.chromium.org/p/chromium/issues/detail?id=571722
-  //Also User-Agent isn't allowed for CORS
-  //"User-Agent": "(https://github.com/nearwood/skyanchor, nearwood@gmail.com)" //TODO: Consider externalizing this
-};
-
 export default function App() {
   //Track indvidual API call statuses with finite states.
   const [geolocationState, setGeolocationState] = useState(ApiState.initial);
@@ -128,7 +122,7 @@ export default function App() {
     function getLocationGridPoint() {
       async function fetchData() {
         try {
-          const response = await fetch(`${process.env.REACT_APP_API_BASEURL}/points/${latitude},${longitude}`, { headers }).then(results => results.json());
+          const response = await fetch(`${process.env.REACT_APP_API_BASEURL}/points/${latitude},${longitude}`).then(results => results.json());
           setCityState(parseLocation(response?.properties?.relativeLocation));
           setForecastURL(response?.properties?.forecast);
           setHourlyURL(response?.properties?.forecastHourly);
@@ -157,7 +151,7 @@ export default function App() {
     function getForecast() {
       async function fetchData() {
         try {
-          const response = await fetch(forecastURL, { headers }).then(results => results.json());
+          const response = await fetch(forecastURL).then(results => results.json());
           setForecast(response?.properties?.periods);
           setForecastState(ApiState.loaded);
         } catch (err) {
