@@ -39,6 +39,8 @@ Deployed to: https://nearwood.dev/skyanchor/
 - `yarn test` - run tests and watch files.
 - `yarn run coverage` - to run all tests and generate a code coverage report.
 
+> Snapshot testing MUI components turned out to be more tricky than I thought. See https://material-ui.com/guides/testing/
+
 ### `src/exampleData`
 
 - Contains saved responses from api.weather.gov
