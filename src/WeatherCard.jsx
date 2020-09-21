@@ -37,6 +37,10 @@ export default function WeatherCard(props) {
 
   const classes = useStyles();
 
+  if (!Array.isArray(hourlyData) || typeof period !== 'object') {
+    return null;
+  }
+
   const convertDate = (utcString) => {
     const dateObj = new Date(utcString);
     return dateObj?.toLocaleDateString();
@@ -47,7 +51,7 @@ export default function WeatherCard(props) {
       <CardActionArea onClick={() => hourlyData.length > 0 ? setShowHourly(!showHourly) : void 0}>
         <CardHeader
           avatar={<Avatar src={period.icon} variant="square" aria-label="weather icon" className={classes.avatar} />}
-          title={<span className={classes.forecast}><span className={classes.nowrap}>{period.name}</span> - <span className={classes.nowrap}>{period.temperature} °{period.temperatureUnit}</span> - <span>{period.shortForecast}</span></span>}
+          title={<span className={classes.forecast}><span className={classes.nowrap}>{period.name}</span> - <span className={classes.nowrap}>{`${period.temperature} °${period.temperatureUnit}`}</span> - <span aria-label="brief forecast">{period.shortForecast}</span></span>}
           subheader={convertDate(period.startTime)}
         />
       </CardActionArea>

@@ -28,6 +28,10 @@ export default function HourlyReport(props) {
 
   const classes = useStyles();
 
+  if (!Array.isArray(data)) {
+    return null;
+  }
+
   return (
     <Table size="small" aria-label="hourly weather table">
       <TableHead>
@@ -43,8 +47,8 @@ export default function HourlyReport(props) {
           <TableRow key={hour.startTime}>
             <TableCell component="th" scope="row">{getHour(hour.startTime)}:00</TableCell>
             <TableCell align="right">{hour.shortForecast}</TableCell>
-            <TableCell align="right" className={classes.noWrap}>{hour.temperature} °{hour.temperatureUnit}</TableCell>
-            <TableCell align="right" className={`${classes.noWrap} ${classes.extraData}`}>{hour.windSpeed} {hour.windDirection}</TableCell>
+            <TableCell align="right" className={classes.noWrap}>{`${hour.temperature} °${hour.temperatureUnit}`}</TableCell>
+            <TableCell align="right" className={`${classes.noWrap} ${classes.extraData}`}>{`${hour.windSpeed} ${hour.windDirection}`}</TableCell>
           </TableRow>
         ))}
       </TableBody>

@@ -128,15 +128,15 @@ export default function App() {
     function getLocationGridPoint() {
       async function fetchData() {
         try {
-          const response = await fetch(`https://api.weather.gov/points/${latitude},${longitude}`, { headers }).then(results => results.json());
+          const response = await fetch(`${process.env.REACT_APP_API_BASEURL}/points/${latitude},${longitude}`, { headers }).then(results => results.json());
           setCityState(parseLocation(response?.properties?.relativeLocation));
           setForecastURL(response?.properties?.forecast);
           setHourlyURL(response?.properties?.forecastHourly);
           //State
-          //setAlertsURL(`https://api.weather.gov/alerts/active?status=actual&message_type=alert,update,cancel&area=CA`);
+          //setAlertsURL(`${process.env.REACT_APP_API_BASEURL}/alerts/active?status=actual&message_type=alert,update,cancel&area=CA`);
           //API allows county value for zone, but location response only has that as part of a URL
           const latLonPoint = `${latitude},${longitude}`;
-          setAlertsURL(`https://api.weather.gov/alerts/active?status=actual&message_type=alert,update,cancel&point=${encodeURIComponent(latLonPoint)}`);
+          setAlertsURL(`${process.env.REACT_APP_API_BASEURL}/alerts/active?status=actual&message_type=alert,update,cancel&point=${encodeURIComponent(latLonPoint)}`);
           setLocationState(ApiState.loaded);
         } catch (err) {
           setErrors(errors => [...errors, "Could not obtain NOAA grid point."]);
@@ -232,7 +232,7 @@ export default function App() {
         <Toolbar className={classes.toolbar}>
           <Typography variant="h6" noWrap className={classes.title}>
             <span role="img" aria-label="Skyanchor mobile logo">🌩️</span>
-            {cityState}
+            <span aria-label="location">{cityState}</span>
           </Typography>
           {showLoadingIndicator && <CircularProgress className={classes.progress} />}
           <IconButton edge="end" className={classes.menuButton} disabled={alertCount === 0}
@@ -252,7 +252,7 @@ export default function App() {
           <List component="nav" aria-label="weather location and options" className={classes.list}>
             <ListItem className={classes.listHeader}>
               <ListItemIcon><span role="img" aria-label="Skyanchor desktop logo">🌩️</span>{showLoadingIndicator && <CircularProgress size={20} className={classes.progress} />}</ListItemIcon>
-              <ListItemText primary={cityState} />
+              <ListItemText primary={<span aria-label="location">{cityState}</span>} />
             </ListItem>
             <ListItem button disabled={alertCount === 0} onClick={() => setShowAlerts(true)}>
               <ListItemIcon>
